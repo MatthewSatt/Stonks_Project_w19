@@ -32,6 +32,37 @@ body {
     box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
 }
 
+.navbar NavLink {
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.menuNav {
+    overflow-y: scroll;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    background: darkcyan;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 0;
+    overflow: hidden;
+    max-width: 290px;
+    z-index: 9;
+}
+
+.menuNav.showMenu {
+    width: 100%;
+}
+
+.menuNav li:first-child {
+    margin-top: 7rem;
+}
+
 .right-nav {
     padding-top: 2%;
 }
