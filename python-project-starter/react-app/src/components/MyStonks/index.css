@@ -1,0 +1,23 @@
+.my-stonks-table{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: ease-in-out;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td{
+    border: 1px solid white;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+}
+
+th{
+    background-color: green;
+}
