@@ -1,0 +1,12 @@
+body{
+    background-color: black;
+  }
+
+  #root,
+  body,
+  html,
+  .App{
+    height: 100%;
+    color: white;
+    overflow: hidden;
+  }
