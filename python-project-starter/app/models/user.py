@@ -11,7 +11,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String)
-    balance = db.Column(db.Decimal)
+    cash = db.Column(db.Decimal)
+    #check to see if you make a default value
 
     @property
     def password(self):
@@ -30,5 +31,5 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             "profile_pic": self.profile_pic,
-            "balance": self.balance
+            "cash": self.cash
         }

@@ -1,13 +1,13 @@
 from models.db import db
 
-class WatchlistTickers(db.Model):
+class WatchlistTicker(db.Model):
     __tablename__ = "WatchlistTickers"
 
     id = db.Column(db.Integer, primary_key=True)
     ticker = db.Column(db.String, nullable=False)
     watchlist_id = db.Column(db.Integer, db.ForeignKey("Watchlists.id"), nullable=False)
 
-    watchlist = db.relationship("Watchlists")
+    watchlist = db.relationship("Watchlists", back_populates="tickers")
 
     def to_dict(self):
         return {
