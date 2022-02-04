@@ -1,3 +1,4 @@
+from app.models import portfolio_value
 from .db import db
 
 class Portfolio(db.Model):
@@ -10,6 +11,7 @@ class Portfolio(db.Model):
     average_price = db.Column(db.Numeric(10, 2))
 
     user = db.relationship("User", back_populates="portfolio")
+
 
     def to_dict(self):
         return {
