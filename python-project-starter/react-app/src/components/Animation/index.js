@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls } from '@react-three/drei'
+import './animation.css'
 
 
 //diffuse, Occlusion, Specular, Shadow
