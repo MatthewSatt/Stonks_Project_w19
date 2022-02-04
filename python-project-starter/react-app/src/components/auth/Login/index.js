@@ -4,6 +4,7 @@ import LoginForm from './LoginForm';
 
 function LoginFormModal({ prop = false }) {
     const [showModal, setShowModal] = useState(prop);
+
     const hideButtonStyle = {
         display: 'none',
     }
