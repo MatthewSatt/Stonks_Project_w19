@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_pic = db.Column(db.String)
-    cash = db.Column(db.Decimal)
+    cash = db.Column(db.Numeric(10, 2))
     #check to see if you make a default value
 
     @property

@@ -1,4 +1,4 @@
-from models.db import db
+from .db import db
 
 class Portfolio(db.Model):
     __tablename__ = "Portfolios"
@@ -7,7 +7,7 @@ class Portfolio(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     ticker = db.Column(db.String, nullable=False)
     quantity = db.Column(db.Integer)
-    average_price = db.Column(db.Decimal)
+    average_price = db.Column(db.Numeric(10, 2))
 
     user = db.relationship("User", back_populates="portfolio")
 
