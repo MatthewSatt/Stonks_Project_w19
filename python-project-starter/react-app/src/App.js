@@ -11,6 +11,8 @@ import SignUpFormModal from './components/auth/SignUp';
 import Splash from './components/Splash'
 import { Animation } from './components/Animation'
 import { Canvas } from '@react-three/fiber';
+import Portfolio from './components/Portfolio';
+import StockDetail from './components/StockDetail';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,19 +33,20 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        {/* Must make sure to add ProtectedRoute back to Routes we want a user to be logged in ot see, disabled for dev */}
+        <Route path='/home' exact={true}>
+          <Portfolio />
+        </Route>
 
-        <ProtectedRoute path='/home' exact={true}>
-          <h1>Portfolio Page</h1>
-        </ProtectedRoute>
-
-        <ProtectedRoute path='/stonk/id' exact={true}>
-          <h1>Stonk Detail page</h1>
-        </ProtectedRoute>
+        <Route path='/stonk/id' exact={true}>
+          <StockDetail />
+        </Route>
 
         <Route path='/' exact={true} >
           <Splash />
           <Suspense fallback='loding app...'>
             <Canvas
+              id='canvas'
               camera={{ position: [100, 17.5, 0], fav: 50 }}
             >
               <Animation />
