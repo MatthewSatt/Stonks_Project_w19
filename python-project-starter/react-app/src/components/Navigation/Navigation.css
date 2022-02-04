@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    letter-spacing: normal;
+    line-height: 18px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.products__tab, .learn__tab, .whoweare__tab, svg {
+    transform: translateY(25%);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.all__links {
+    margin-bottom: 0.5%;
+}
+
+.navbar {
+    /* background-color: white; */
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 24px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 12px;
+}
+
+/* .vanstorent, .github, .linkedIn {
+    color: #FF5A5F;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15pt;
+    padding-right: 50px;
+    text-decoration: none;
+} */
+
+.right-nav {
+    padding-top: 2%;
+}
+
+.profile-menu {
+    margin-right: 10%;
+    appearance: none;
+    background: transparent;
+    border: 1px solid #DDDDDD;
+    color: #222222;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0px;
+    outline: none;
+    overflow: visible;
+    padding: 5px 5px 5px 12px;
+    text-align: inherit;
+    text-decoration: none;
+    user-select: auto;
+    -webkit-align-items: center;
+    align-items: center;
+    /* background-color: #FFFFFF; */
+    border-radius: 21px;
+    height: 42px;
+    background-color: red;
+}
+
+.logo {
+    transform: scale(1.4);
+}
+
+.fa-shuttle-van {
+    transform: scale(1.5);
+    margin-right: 10px;
+    color: #FF5A5F;
+}
+
+.fa-caravan {
+    color: #FF5A5F;
+}
+
+.logo:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+.fa-bars {
+    padding-right: 10px;
+}
+
+.fa-user-circle {
+    transform: scale(1.4);
+    padding-top: 3px;
+    padding-right: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+.profile-dropdown {
+    padding: 35px;
+    margin-right: 0.5%;
+    position: absolute;
+    right: 0;
+    margin-top: 1%;
+    border: black 1.5px solid;
+}
+
+/* .Dd-username {
+    font-size: 14pt;
+    font-weight: bold;
+    list-style: none;
+    padding-bottom: 15px;
+} */
+
+.Dd-email {
+    list-style: none;
+    padding-bottom: 45px;
+}
+
+.logout-btn {
+    left: 50px;
+    list-style: none;
+    background: none;
+    border: none;
+    color: #FF5A5F;
+    background-color: white; /* Green */
+    border: 2px solid #FF5A5F;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom: 5px;
+    margin-left: 28%;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #FF5A5F;
+    color: white;
+}
+
+.learn__tab {
+    font-size: 13pt;
+    color: grey;
+    text-decoration: none;
+    align-self: center;
+    margin-right: 15px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.learn__tab::after {
+  content: '';
+  width: 0px;
+  height: 3px;
+  display: block;
+  background: grey;
+  transition: 300ms;
+}
+
+.learn__tab:hover::after {
+  width: 100%;
+}
+
+.products__tab {
+    font-size: 13pt;
+    font-weight: bold;
+    color: grey;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.products__tab::after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    display: block;
+    background: grey;
+    transition: 300ms;
+  }
+
+  .products__tab:hover::after {
+    width: 100%;
+  }
+
+  .whoweare__tab {
+    font-size: 13pt;
+    font-weight: bold;
+    color: grey;
+    align-items: center;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.whoweare__tab::after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    display: block;
+    background: grey;
+    transition: 300ms;
+  }
+
+  .whoweare__tab:hover::after {
+    width: 100%;
+  }
+
+.demo-user {
+    background-color: white; /* Green */
+    border: 2px solid #FF5A5F;
+    color: #FF5A5F;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 6px 4px;
+    transition-duration: 0.4s;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+.demo-user:hover {
+  background-color: #FF5A5F;
+  color: white;
+}
