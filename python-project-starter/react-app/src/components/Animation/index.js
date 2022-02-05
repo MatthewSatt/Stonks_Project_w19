@@ -21,7 +21,7 @@ export function Animation(props) {
         <>
             <ambientLight intensity={0.3} />
             <points ref={ref}>
-                <sphereGeometry args={[15, 64, 64]} />
+                <sphereGeometry args={[35, 64, 64]} />
                 <pointsMaterial color='green' size='0.5' />
                 <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={0.6}
                     panSpeed={0.5} rotateSpeed={0.4} />
