@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const StockDetail = () => {
+    const ticker = useParams()
+
+    const stockDetails = useSelector(state => state.stock.currentStock);
+
+
+    useEffect(() => {
+        dispatchEvent(stockDetailReducer.getStockDetails(ticker))
+    }, [dispatch, ticker])
+
+    if(!stockDetails){
+        return null
+    }
+
     return (
         <div className='container'>
             <h1> Graph </h1>
