@@ -56,12 +56,20 @@ body {
     z-index: 9;
 }
 
-.menuNav li {
+.menuNav a {
+    color: white;
+    font-size: 16pt;
     text-decoration: none;
 }
 
+.menuNav a:hover {
+    color: rgb(54, 54, 54);
+}
+
 .menuNav.showMenu {
-    width: 100%;
+    padding: 10px 10px 10px 10px;
+    width: 30vw;
+    height: 7vh;
     background: grey;
 }
 
