@@ -3,28 +3,23 @@ import { FaAngleDown, FaAngleUp, FaChartLine, FaGithub } from 'react-icons/fa';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 // import Demo from './demo-user';
 
 function Navbar({ isLoaded }){
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [navbarOpen2, setNavbarOpen2] = useState(false)
-  const [navbarOpen3, setNavbarOpen3] = useState(false)
+
+  // const closeMenu = () => {
+  //   setNavbarOpen(false)
+  // }
 
   const handleToggle = () => {
     setNavbarOpen(prev => !prev)
   }
 
-  const closeMenu = () => {
-    setNavbarOpen(false)
-  }
-
   const handleToggle2 = () => {
     setNavbarOpen2(prev => !prev)
-  }
-
-  const handleToggle3 = () => {
-    setNavbarOpen3(prev => !prev)
   }
 
   return (
@@ -34,21 +29,37 @@ function Navbar({ isLoaded }){
         <FaChartLine />
       </div>
       <div className='all__links'>
-        <span>
+        {/* <span>
           <NavLink onClick={handleToggle} className='products__tab' to={''}>Products {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
           <ul className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>...</ul>
+        </span> */}
+
+        <span>
+          <NavLink onClick={handleToggle} className='learn__tab' to={''}>Learn {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>
+            <div>
+              <li className='stocks__info__container'><a href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
+            </div>
+            <div>
+              <li className='latest__news__container'><a href='https://finance.yahoo.com/topic/stock-market-news/'>Latest News</a></li>
+            </div>
+          </ul>
         </span>
         <span>
-          <NavLink onClick={handleToggle2} className='learn__tab' to={''}>Learn {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
-          <ul className={`menuNav ${navbarOpen2 ? "showMenu" : ""}`}>...</ul>
-        </span>
-        <span>
-          <NavLink onClick={handleToggle3} className='whoweare__tab' to={''}>Who we are {navbarOpen3 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
-          <ul className={`menuNav ${navbarOpen3 ? "showMenu" : ""}`}>
-            <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
-            <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
-            <li><a href='https://github.com/ta-cos'><FaGithub/> Nathan Treadaway</a></li>
-            <li><a href='https://github.com/MatthewSatt'><FaGithub/> Matthew Satterwhite</a></li>
+          <NavLink onClick={handleToggle2} className='whoweare__tab' to={''}>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu" : ""}`}>
+            <div className='github__container'>
+              <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
+            </div>
+            <div className='github__container'>
+              <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
+            </div>
+            <div className='github__container'>
+              <li><a href='https://github.com/ta-cos'><FaGithub/> Nathan Treadaway</a></li>
+            </div>
+            <div className='github__container'>
+              <li><a href='https://github.com/MatthewSatt'><FaGithub/> Matthew Satterwhite</a></li>
+            </div>
           </ul>
         </span>
       </div>
