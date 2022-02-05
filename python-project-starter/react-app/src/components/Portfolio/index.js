@@ -8,6 +8,10 @@ const Portfolio = () => {
     const [showStonks, setStonks] = useState(false)
     const [showWatchlist, setWatchlist] = useState(false)
 
+    const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
+
+
+
     const hideTable = {
         display: 'none',
     }
@@ -24,12 +28,17 @@ const Portfolio = () => {
 
             {showStonks && <MyStonks />}
 
-            <button
-                onClick={(e) => setWatchlist(!showWatchlist)}
-                className="accordion"
-            >
-                Watchlist 1
-            </button>
+            {watchlist.map((list, i) => (
+
+                <button
+                    onClick={(e) => setWatchlist(!showWatchlist)}
+                    className="accordion"
+                >
+                    {list}
+                </button>
+
+
+            ))}
 
             {showWatchlist && <Watchlist />}
 

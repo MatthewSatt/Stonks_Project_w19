@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../../store/session';
+import './SignUpForm.css'
 
 const SignUpForm = () => {
     const [errors, setErrors] = useState([]);
@@ -11,6 +12,7 @@ const SignUpForm = () => {
     const [repeatPassword, setRepeatPassword] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const onSignUp = async (e) => {
         e.preventDefault();
@@ -18,6 +20,9 @@ const SignUpForm = () => {
             const data = await dispatch(signUp(username, email, password));
             if (data) {
                 setErrors(data)
+            }
+            else {
+                history.push('/home')
             }
         }
     };
@@ -54,6 +59,7 @@ const SignUpForm = () => {
                 <input
                     type='text'
                     name='username'
+                    placeholder='User Name'
                     onChange={updateUsername}
                     value={username}
                 ></input>
@@ -63,6 +69,7 @@ const SignUpForm = () => {
                 <input
                     type='text'
                     name='email'
+                    placeholder='Email'
                     onChange={updateEmail}
                     value={email}
                 ></input>
@@ -72,6 +79,7 @@ const SignUpForm = () => {
                 <input
                     type='password'
                     name='password'
+                    placeholder='Password'
                     onChange={updatePassword}
                     value={password}
                 ></input>
@@ -81,6 +89,7 @@ const SignUpForm = () => {
                 <input
                     type='password'
                     name='repeat_password'
+                    placeholder='Confirm Password'
                     onChange={updateRepeatPassword}
                     value={repeatPassword}
                     required={true}
