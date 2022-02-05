@@ -9,7 +9,7 @@ const Splash = () => {
     return (
         <div className='container'>
             <div className='content'>
-                <h1> Stonks </h1>
+                <h1> The Stonks </h1>
                 <h3>Investing for everyone</h3>
             </div>
 
