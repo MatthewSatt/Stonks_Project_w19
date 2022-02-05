@@ -16,6 +16,7 @@ const Splash = () => {
             <div className='buttonWrapper'>
                 <LoginFormModal />
                 <GetStartedModal />
+                <button>Demo</button>
             </div>
         </div>
     );
