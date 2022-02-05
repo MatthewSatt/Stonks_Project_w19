@@ -15,6 +15,10 @@ function Navbar({ isLoaded }){
     setNavbarOpen(prev => !prev)
   }
 
+  const closeMenu = () => {
+    setNavbarOpen(false)
+  }
+
   const handleToggle2 = () => {
     setNavbarOpen2(prev => !prev)
   }

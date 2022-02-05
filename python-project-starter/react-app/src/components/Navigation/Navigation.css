@@ -69,7 +69,7 @@ body {
 .menuNav.showMenu {
     padding: 10px 10px 10px 10px;
     width: 30vw;
-    height: 7vh;
+    height: 9.7vh;
     background: grey;
 }
 
@@ -114,6 +114,10 @@ body {
     color: grey;
     margin-bottom: 0.8%;
     transform: scale(2.5);
+}
+
+.logo Link:visited {
+    text-decoration: none;
 }
 
 .logo:hover {
@@ -170,9 +174,9 @@ body {
     list-style: none;
     background: none;
     border: none;
-    color: #FF5A5F;
-    background-color: white; /* Green */
-    border: 2px solid #FF5A5F;
+    color: white;
+    background-color: rgb(0, 170, 0);
+    border: 2px solid rgb(0, 170, 0);
     padding: 4px 8px;
     text-align: center;
     text-decoration: none;
@@ -188,7 +192,8 @@ body {
 .logout-btn:hover {
     cursor: pointer;
     transform: scale(1.1);
-    background-color: #FF5A5F;
+    border: 2px solid rgb(0, 131, 0);
+    background-color: rgb(0, 112, 0);
     color: white;
 }
 
