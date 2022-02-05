@@ -35,15 +35,15 @@ function Navbar({ isLoaded }){
       </div>
       <div className='all__links'>
         <span>
-          <NavLink onClick={handleToggle} className='products__tab' to={'/'}>Products {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <NavLink onClick={handleToggle} className='products__tab' to={''}>Products {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
           <ul className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>...</ul>
         </span>
         <span>
-          <NavLink onClick={handleToggle2} className='learn__tab' to={'/'}>Learn {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <NavLink onClick={handleToggle2} className='learn__tab' to={''}>Learn {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
           <ul className={`menuNav ${navbarOpen2 ? "showMenu" : ""}`}>...</ul>
         </span>
         <span>
-          <NavLink onClick={handleToggle3} className='whoweare__tab' to={'/'}>Who we are {navbarOpen3 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <NavLink onClick={handleToggle3} className='whoweare__tab' to={''}>Who we are {navbarOpen3 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
           <ul className={`menuNav ${navbarOpen3 ? "showMenu" : ""}`}>
             <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
             <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
