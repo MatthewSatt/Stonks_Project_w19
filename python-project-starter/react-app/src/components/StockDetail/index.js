@@ -48,8 +48,13 @@ const StockDetail = () => {
     return (
         <div className='container'>
             <h1>Right Menu</h1>
-            <p>{about}</p>
-            <h1>Key Stats</h1>
+            <div>
+                <h1>About {name}</h1>
+            </div>
+            <div>
+                <p>{about}</p>
+            </div>
+            <h1>Stats</h1>
             <div>
                 <StockGraph dates={dates} values={values}/>
             </div>
