@@ -8,21 +8,21 @@ const StockDetail = () => {
     const ticker = useParams()
 
     const user = useSelector(state => state.session.user)
+
+    //Stock Details is an object with all of the information we need for the detail page
     const stockDetails = useSelector(state => state.stockDetailReducer.stockDetail);
 
     useEffect(() => {
-        console.log("TICKER")
         async function getDetails() {
             await dispatch(getStockDetails(ticker.ticker))
         }
         getDetails()
-        console.log("TICKER2")
 
     }, [dispatch, ticker])
 
-    // if(!stockDetails){
-    //     return null
-    // }
+    if(!stockDetails){
+        return null
+    }
 
     console.log(stockDetails)
     return (
