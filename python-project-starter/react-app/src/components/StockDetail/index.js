@@ -30,11 +30,25 @@ const StockDetail = () => {
     let dates = stockDetails["dates"]
     let values = stockDetails["values"]
 
+    let price = stockDetails["price"]
+    let name = stockDetails["name"]
+    let about = stockDetails["about"]
+    let employees = stockDetails["employees"]
+    let city = stockDetails["city"]
+    let state = stockDetails["state"]
+    let sector = stockDetails["sector"]
+    let volume = stockDetails["volume"]
+    let avgVolume = stockDetails["avgvolume"]
+    let marketcap = stockDetails["marketcap"]
+    let peRatio = stockDetails["peratio"]
+    let divYield = stockDetails["divyield"]
+    let yearHigh = stockDetails["52high"]
+    let yearLow = stockDetails["52low"]
+
     return (
         <div className='container'>
-            <h1> Graph </h1>
             <h1>Right Menu</h1>
-            <h1>About Company</h1>
+            <p>{about}</p>
             <h1>Key Stats</h1>
             <div>
                 <StockGraph dates={dates} values={values}/>

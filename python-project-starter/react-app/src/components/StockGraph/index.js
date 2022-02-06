@@ -95,7 +95,7 @@ function StockGraph({dates, values}){
         },
       };
     return (
-        <div>
+        <div className='stock-graph-container'>
              <Line options={options} data={data}/>
         </div>
     )
