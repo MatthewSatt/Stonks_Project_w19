@@ -4,9 +4,11 @@ import os
 
 stock_detail_routes = Blueprint("stonk", __name__)
 
-@stock_detail_routes.route('/<ticker>')
+@stock_detail_routes.route("/<ticker>")
 def get_company_stats(ticker):
+
     company_stats = {}
+    print("ROUTE TICKER", ticker)
 
     url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
 
@@ -36,5 +38,4 @@ def get_company_stats(ticker):
     company_stats["52high"] = object["summaryDetail"]["fiftyTwoWeekHigh"]["raw"]
     company_stats["52low"] = object["summaryDetail"]["fiftyTwoWeekLow"]["raw"]
 
-    print("COMPANY STATS", company_stats)
-    return company_stats
+    return(company_stats)
