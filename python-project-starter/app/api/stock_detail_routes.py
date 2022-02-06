@@ -9,8 +9,7 @@ stock_detail_routes = Blueprint("stonk", __name__)
 def get_company_stats(ticker):
 
     company_stats = {}
-    print("ROUTE TICKER", ticker)
-
+    
     url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
 
     querystring = {"symbol": ticker.upper(),"region":"US"}
