@@ -23,10 +23,10 @@ function StockGraph({dates, values}){
       );
 
       //for the slice make the second number a variable that will change with a useEffect when the user clicks how many days to view.
-      const daySlicer = dates.slice(90)
-      const valuesSlicer = values.slice(90)
+      const daySlicer = dates.slice(0, 30)
+      const valuesSlicer = values.slice(0, 30)
 
-      const lineColor = 'rgb(0, 200, 5)'
+      const lineColor = 'rgb(50, 190, 50)'
       const data = {
         labels: daySlicer.reverse(),
         datasets: [
@@ -34,7 +34,7 @@ function StockGraph({dates, values}){
             label: 'Price',
             data: valuesSlicer.reverse(),
             fill: true,
-            backgroundColor: 'rgb(, 0, 0)',
+            backgroundColor: 'rgb(0, 0, 0)',
             borderColor: lineColor,
             borderWidth: '1.5',
           },
