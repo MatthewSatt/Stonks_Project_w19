@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockDetails } from '../../store/stockDetails';
+import StockGraph from "../StockGraph"
 
 const StockDetail = () => {
     const dispatch = useDispatch();
@@ -25,12 +26,19 @@ const StockDetail = () => {
     }
 
     console.log(stockDetails)
+
+    let dates = stockDetails["dates"]
+    let values = stockDetails["values"]
+
     return (
         <div className='container'>
             <h1> Graph </h1>
             <h1>Right Menu</h1>
             <h1>About Company</h1>
             <h1>Key Stats</h1>
+            <div>
+                <StockGraph dates={dates} values={values}/>
+            </div>
         </div>
     )
 };
