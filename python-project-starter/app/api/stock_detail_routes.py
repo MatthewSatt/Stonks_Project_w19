@@ -26,7 +26,10 @@ def get_company_stats(ticker):
     company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
     company_stats["name"] = object["price"]["longName"]
     company_stats["about"] = object["assetProfile"]["longBusinessSummary"]
-    company_stats["employees"] = object["assetProfile"]["fullTimeEmployees"]
+    try:
+        company_stats["employees"] = object["assetProfile"]["fullTimeEmployees"]
+    except:
+        company_stats["employees"] = "N/A"
     company_stats["city"] = object["assetProfile"]["city"]
     company_stats["state"] = object["assetProfile"]["state"]
     company_stats["sector"] = object["assetProfile"]["sector"]
@@ -34,7 +37,10 @@ def get_company_stats(ticker):
     company_stats["avgvolume"] = object["price"]["averageDailyVolume10Day"]["fmt"]
     company_stats["marketcap"] = object["price"]["marketCap"]["fmt"]
     company_stats["peratio"] = object["summaryDetail"]["forwardPE"]["fmt"]
-    company_stats["divyield"] = object["summaryDetail"]["dividendYield"]["fmt"]
+    try:
+        company_stats["divyield"] = object["summaryDetail"]["dividendYield"]["fmt"]
+    except:
+        company_stats["divyield"] = "--"
     company_stats["52high"] = object["summaryDetail"]["fiftyTwoWeekHigh"]["raw"]
     company_stats["52low"] = object["summaryDetail"]["fiftyTwoWeekLow"]["raw"]
 
