@@ -31,14 +31,14 @@ const LoginForm = () => {
     }
 
     return (
-        <form onSubmit={onLogin}>
-            <div>
+        <form className='loginformmodel' onSubmit={onLogin}>
+            <h2>Login</h2>
+            <div className='errors'>
                 {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                 ))}
             </div>
             <div>
-                <label htmlFor='email'>Email</label>
                 <input
                     name='email'
                     type='text'
@@ -48,7 +48,6 @@ const LoginForm = () => {
                 />
             </div>
             <div>
-                <label htmlFor='password'>Password</label>
                 <input
                     name='password'
                     type='password'
@@ -56,8 +55,8 @@ const LoginForm = () => {
                     value={password}
                     onChange={updatePassword}
                 />
-                <button type='submit'>Login</button>
             </div>
+                <button type='submit'>Login</button>
         </form>
     );
 };

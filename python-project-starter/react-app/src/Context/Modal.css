@@ -9,7 +9,7 @@
     align-items: center;
     margin: auto;
     border-radius: 12px;
-    margin-left: 150px;
+    /* margin-left: 150px; */
     z-index: 9998;
   }
 
@@ -23,7 +23,12 @@
   }
 
   #modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    background-color:white;
-    border-radius: 12px;
+    border-radius: 50px;
+    background-color: rgb(0, 41, 10);
+    height: 40%;
+    width: 60%;
   }
