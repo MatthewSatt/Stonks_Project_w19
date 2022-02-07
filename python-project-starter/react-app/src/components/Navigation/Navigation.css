@@ -66,6 +66,10 @@ body {
     color: rgb(54, 54, 54);
 }
 
+.menuNav:hover {
+    background-color: black;
+}
+
 .menuNav.showMenu {
     padding: 10px 10px 10px 10px;
     width: 30vw;
@@ -83,10 +87,10 @@ body {
     min-height: 90px;
     height: 7.3%;
 }
-
+/*
 .right-nav {
     padding-top: 2%;
-}
+} */
 
 .profile-menu {
     appearance: none;
@@ -218,6 +222,7 @@ body {
     color: white;
     background-color: rgb(194, 0, 0);
     border: 2px solid rgb(194, 0, 0);
+    border-radius: 50px;
     padding: 2%;
     text-align: center;
     text-decoration: none;
@@ -263,6 +268,10 @@ body {
   width: 100%;
 }
 
+.learn__tab > *:hover {
+    cursor: pointer;
+}
+
 .stocks__info__container {
     border-bottom: 1px black solid;
     margin: 0;
@@ -275,6 +284,10 @@ body {
 .latest__news__container {
     padding-top: 5%;
     padding-bottom: 2%;
+}
+
+.latest__news__container:hover .stocks__info__container:hover {
+    background-color: black;
 }
 
 .whoweare__tab {
