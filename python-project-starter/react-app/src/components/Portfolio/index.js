@@ -4,7 +4,7 @@ import Watchlist from '../Watchlist';
 import './index.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserPortfolios } from '../../store/portfolio';
-
+import { loadUserPortfolioValues } from '../../store/portfolioValues';
 const Portfolio = () => {
     const dispatch = useDispatch();
 
@@ -14,6 +14,7 @@ const Portfolio = () => {
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
     const user = useSelector(state => state.session.user)
     const portfolios = useSelector(state => state.portfolioReducer)
+    const portfolioValues = useSelector(state => state.portfolioValuesReducer)
 
     useEffect(() => {
         async function getPortfolios() {
@@ -22,7 +23,15 @@ const Portfolio = () => {
         getPortfolios()
     }, [setWatchlist])
 
-    console.log(portfolios)
+    useEffect(() => {
+        async function getPortfolioValues() {
+            await dispatch(loadUserPortfolioValues(user.id))
+        }
+        getPortfolioValues()
+    }, [setWatchlist])
+
+    console.log("PORTFOLIOS", portfolios)
+    console.log("PORTFOLIO VALUES", portfolioValues)
 
 
     const hideTable = {
