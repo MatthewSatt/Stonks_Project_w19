@@ -156,7 +156,7 @@ body {
     flex-direction: column;
     justify-content: center;
     font-size: 14pt;
-    width: 10vw;
+    width: 10%;
     padding: 1px;
     margin-right: 0.5%;
     position: absolute;
@@ -209,23 +209,20 @@ body {
 }
 
 .logout-btn {
-    /* left: 50px; */
-    /* list-style: none; */
     background: none;
     border: none;
     color: white;
     background-color: rgb(194, 0, 0);
     border: 2px solid rgb(194, 0, 0);
-    padding: 5px;
+    padding: 2%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 11.5pt;
-    margin: 2px 80px;
+    margin: 2% 30%;
     transition-duration: 0.4s;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    /* margin-left: 28%; */
+    margin-top: 8%;
+    margin-bottom: 5.5%;
     cursor: pointer;
 }
 
@@ -252,7 +249,7 @@ body {
 .learn__tab::after {
   content: '';
   width: 0px;
-  height: 3px;
+  height: 4px;
   display: block;
   background: grey;
   transition: 300ms;
@@ -267,48 +264,17 @@ body {
     margin: 0;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-top: 2%;
+    padding-bottom: 4%;
 }
 
-.latest__news__container {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.products__tab {
+.whoweare__tab {
+    display: inline-block;
+    align-items: center;
+    color: grey;
     font-size: 13pt;
     font-weight: bold;
-    color: grey;
-    align-items: center;
     text-decoration: none;
-    margin-right: 15px;
-    margin-left: 10px;
-    display: inline-block;
-}
-
-.products__tab::after {
-    content: '';
-    width: 0px;
-    height: 3px;
-    display: block;
-    background: grey;
-    transition: 300ms;
-}
-
-  .products__tab:hover::after {
-    width: 100%;
-}
-
-  .whoweare__tab {
-    font-size: 13pt;
-    font-weight: bold;
-    color: grey;
-    align-items: center;
-    text-decoration: none;
-    margin-right: 15px;
-    margin-left: 10px;
-    display: inline-block;
 }
 
 .whoweare__tab::after {
