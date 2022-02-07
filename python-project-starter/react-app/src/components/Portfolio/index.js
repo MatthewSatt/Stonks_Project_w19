@@ -5,6 +5,9 @@ import './index.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
+import PortfolioGraph from "../PortfolioGraph"
+
+
 const Portfolio = () => {
     const dispatch = useDispatch();
 
@@ -30,15 +33,30 @@ const Portfolio = () => {
         getPortfolioValues()
     }, [setWatchlist])
 
-    console.log("PORTFOLIOS", portfolios)
-    console.log("PORTFOLIO VALUES", portfolioValues)
-
 
     const hideTable = {
         display: 'none',
     }
+    let valuesArr = Object.values(portfolioValues)
+
+    let valueArr = valuesArr.map(value => {
+        return value["value"]
+    })
+
+    let dateArr = valuesArr.map(value => {
+        return value["date"]
+    })
+
+    let dateFormatArr = dateArr.map(date =>{
+        let dstr = new Date(date).toLocaleDateString()
+        return dstr
+    })
 
     return (
+        <>
+        <div>
+            <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+        </div>
         <div className='accordion-container'>
 
             <button
@@ -60,12 +78,16 @@ const Portfolio = () => {
                 </button>
 
 
-            ))}
+))}
 
             {showWatchlist && <Watchlist />}
 
 
-        </div >)
+        </div >
+
+        </>
+        )
+
 };
 
 export default Portfolio;
