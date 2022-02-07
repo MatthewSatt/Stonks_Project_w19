@@ -9,7 +9,9 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.stock_detail_routes import stock_detail_routes
-
+from .api.watchlist_routes import watchlist_routes
+from .api.watchlist_tickers_routes import watchlist_tickers_routes
+from .api.portfolio_routes import portfolio_routes
 from .seeds import seed_commands
 
 from .config import Config
@@ -31,8 +33,11 @@ app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
-# app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(stock_detail_routes, url_prefix='/api/stonk')
+app.register_blueprint(watchlist_routes, url_prefix='/api/watchlist')
+app.register_blueprint(watchlist_tickers_routes, url_prefix='/api/watchlist-tickers')
+app.register_blueprint(portfolio_routes, url_prefix='/api/portfolio')
 db.init_app(app)
 Migrate(app, db)
 
