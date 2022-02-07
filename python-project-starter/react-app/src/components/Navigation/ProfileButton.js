@@ -1,16 +1,16 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
 import { FaSmile } from "react-icons/fa";
-import { Link } from "react-router-dom";
-// import { Link, useHistory } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import * as sessionActions from '../../store/session';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
 import "./Navigation.css"
 
-function ProfileButton({ user }) {
-  // const dispatch = useDispatch();
+
+function ProfileButton() {
+  const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  // const history = useHistory();
+  const history = useHistory();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -29,13 +29,11 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  // const logout = (e) => {
-  //   e.preventDefault();
+  const handleLogout = async () => {
+    await dispatch(sessionActions.logout());
 
-  //   dispatch(sessionActions.logout());
-
-  //   history.push('/');
-  // };
+    history.push('/');
+  };
 
   return (
     <>
@@ -54,7 +52,7 @@ function ProfileButton({ user }) {
           <div className="my__profile__container">
             <Link to={""} className="my__profile"><FaSmile/> Profile</Link>
           </div>
-          <button className="logout-btn">logout</button>
+          <button className="logout-btn" onClick={handleLogout}>logout</button>
         </ul>
       )}
     </>

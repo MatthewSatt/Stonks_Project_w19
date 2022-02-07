@@ -4,6 +4,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from "react"
+
 // import Demo from './demo-user';
 
 function Navbar({ isLoaded }){
@@ -49,10 +50,10 @@ function Navbar({ isLoaded }){
           <NavLink onClick={handleToggle2} className='whoweare__tab' to={''}>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
           <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu" : ""}`}>
             <div className='github__container'>
-              <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
+              <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
             </div>
             <div className='github__container'>
-              <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
+              <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
             </div>
             <div className='github__container'>
               <li><a href='https://github.com/ta-cos'><FaGithub/> Nathan Treadaway</a></li>
