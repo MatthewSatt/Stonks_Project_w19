@@ -12,9 +12,9 @@ export const loadUserWatchlists = (userId) => async (dispatch) => {
         headers: {"Content-Type": "application/json"}
     })
     if (res.ok) {
-        const data = await res.json();
-        dispatch(loadWatchlists(data))
-        return data
+        const watchlists = await res.json();
+        dispatch(loadWatchlists(watchlists))
+        return watchlists
     }
 }
 
