@@ -38,7 +38,7 @@ function App() {
           <Portfolio />
         </Route>
 
-        <Route path='/stonk/id' exact={true}>
+        <Route path='/stonk/:ticker' exact={true}>
           <StockDetail />
         </Route>
 
