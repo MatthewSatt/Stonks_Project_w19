@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../MyStonks/index.css'
+import { useDispatch, useSelector } from "react-redux";
+import { loadUserWatchlists } from '../../store/watchlists';
 
 const Watchlist = () => {
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
+
+    const watchlists = useSelector(state => state.watchlistReducer.watchlist)
+
+    useEffect(() => {
+        async function getWatchlists() {
+            await dispatch(loadUserWatchlists(user.id))
+        }
+        getWatchlists()
+
+    }, [dispatch])
 
     const data = [
         { ticker: "TSLA", price: 19 },
