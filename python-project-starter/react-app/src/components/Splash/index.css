@@ -23,7 +23,7 @@ body{
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     overflow: hidden;
 
-    animation: spreadContent 5s;
+    animation: fadeContent 5s;
 }
 
 
@@ -60,7 +60,38 @@ h1, h3{
 
 }
 
-@keyframes spreadContent{
-    from{width: 0%;}
-    to{ width: 100%;}
-}
+ .authButton{
+        font-size: 22px;
+        border-radius: 50px;
+        padding: 10px;
+        color: white;
+        background-color: green;
+        border: none;
+        outline: none;
+        margin-bottom: 15px;
+        z-index: 50;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        margin-right: 25px;
+        width: 10%;
+        max-width: 150px;
+
+        animation: fadeButton 5s;
+    }
+
+    .authButton:hover{
+        color: green;
+        background-color: white;
+    }
+
+    @keyframes fadeContent{
+        from{opacity: 0;}
+        to{ opacity: 1;}
+    }
+
+    @keyframes fadeButton {
+        from{opacity: 0;}
+        to{opacity: 1;}
+    }

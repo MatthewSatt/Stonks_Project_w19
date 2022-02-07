@@ -1,3 +1,7 @@
+body{
+text-align: center;
+}
+
 .auth-button{
     font-size: 22px;
     border-radius: 50px;
@@ -10,13 +14,13 @@
     z-index: 50;
     margin-bottom: 25px;
     display: flex;
-    align-items: space-around;
-    justify-content: space-between;
+    justify-content: center;
     overflow: hidden;
     margin-right: 25px;
     width: 10%;
+    max-width: 150px;
 
-    animation: spreadButton 4s;
+    animation: fadeButton 5s;
 }
 
 
@@ -36,7 +40,7 @@
     margin: 5px;
 }
 
-@keyframes spreadButton{
-    from{width: 0%;}
-    to{ width: 10%;}
+@keyframes fadeButton {
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
