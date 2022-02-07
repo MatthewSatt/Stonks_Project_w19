@@ -5,13 +5,15 @@ import stockDetailReducer from './stockDetails';
 import watchlistReducer from './watchlists';
 import watchlistTickerReducer from './watchlistTickers';
 import portfolioReducer from './portfolio';
+import portfolioValuesReducer from './portfolioValues';
 
 const rootReducer = combineReducers({
   session,
   stockDetailReducer,
   watchlistReducer,
   watchlistTickerReducer,
-  portfolioReducer
+  portfolioReducer,
+  portfolioValuesReducer
 });
 
 
