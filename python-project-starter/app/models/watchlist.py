@@ -13,6 +13,6 @@ class Watchlist(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "name": self.user_id,
+            "name": self.name,
             "user_id": self.user_id
         }

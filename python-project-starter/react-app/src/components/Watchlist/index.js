@@ -15,7 +15,7 @@ const Watchlist = () => {
         }
         getWatchlists()
 
-    }, [dispatch])
+    }, [])
 
     const data = [
         { ticker: "TSLA", price: 19 },
