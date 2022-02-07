@@ -1,3 +1,5 @@
+//THIS MAY NOT BE NEEDED NOW THAT WATCHLIST INCLUDES TICKERS
+
 const LOAD_WATCHLIST_TICKERS = "watchlistTickers/LOAD_WATCHLISTS_TICKERS"
 
 const loadTickers = (watchlistTickers) => {

@@ -1,3 +1,6 @@
+//THIS MAY NOT BE NEEDED NOW THAT WATCHLIST INCLUDES TICKERS
+
+
 // import React, { useEffect, useState } from 'react';
 // import { useDispatch, useSelector } from "react-redux";
 
