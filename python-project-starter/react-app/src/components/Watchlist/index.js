@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import '../MyStonks/index.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserWatchlists } from '../../store/watchlists';
+import WatchlistTickers from '../WatchlistTickers';
+
 
 const Watchlist = () => {
     const dispatch = useDispatch();
@@ -14,10 +16,12 @@ const Watchlist = () => {
             await dispatch(loadUserWatchlists(user.id))
         }
         getWatchlists()
-
     }, [])
 
-    console.log("WATCHLISTS in COMPONENT", watchlists)
+
+    //Returns the watchlist and the tickers associated with it.
+    let watchlistsArr = Object.values(watchlists)
+    console.log("WATCHLISTS in COMPONENT", watchlistsArr[0])
 
     const data = [
         { ticker: "TSLA", price: 19 },
@@ -26,6 +30,7 @@ const Watchlist = () => {
     ]
 
     return (
+
         <div className='my-stonks-table'>
             <table>
                 <thead>
@@ -44,7 +49,9 @@ const Watchlist = () => {
                 </tbody>
             </table>
 
-        </div>)
+        </div>
+
+        )
 };
 
 export default Watchlist;

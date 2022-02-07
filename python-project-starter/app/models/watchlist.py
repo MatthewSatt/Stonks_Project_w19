@@ -14,5 +14,12 @@ class Watchlist(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "watchlist_tickers": [watchlist_ticker.to_dict() for watchlist_ticker in self.watchlist_tickers]
         }
+    # def to_dict_with_tickers(self):
+    #     return {
+    #         "id": self.id,
+    #         "name": self.name,
+    #         "user_id": self.user_id,
+    #     }

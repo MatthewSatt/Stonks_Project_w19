@@ -11,10 +11,8 @@ export const loadUserWatchlists = (userId) => async (dispatch) => {
     const res = await fetch(`/api/watchlist/${userId}`, {
         headers: {"Content-Type": "application/json"}
     })
-    console.log("RES IN STORE", res)
     if (res.ok) {
         const watchlists = await res.json();
-        console.log("WATCHLISTS IN STORE", watchlists)
         dispatch(loadWatchlists(watchlists))
         return watchlists
     }
