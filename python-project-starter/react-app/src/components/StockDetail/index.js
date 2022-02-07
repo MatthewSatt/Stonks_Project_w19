@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockDetails } from '../../store/stockDetails';
 import StockGraph from "../StockGraph"
+import "./index.css"
 
 const StockDetail = () => {
     const dispatch = useDispatch();
@@ -47,16 +48,22 @@ const StockDetail = () => {
 
     return (
         <div className='container'>
-            <h1>Right Menu</h1>
-            <div>
-                <h1>About {name}</h1>
+            <div className='graph-title'>
+                <h1 id='title'>{name}</h1>
+                <div>
+                    <StockGraph dates={dates} values={values}/>
+                </div>
             </div>
-            <div>
-                <p>{about}</p>
-            </div>
-            <h1>Stats</h1>
-            <div>
-                <StockGraph dates={dates} values={values}/>
+                <h2>Key Stats</h2>
+            <div className='all-kpi'>
+                <div className='kpi'><p>Name:</p> {name}</div>
+                <div className='kpi'><p>Price:</p> {price}</div>
+                <div className='kpi'><p>Market Cap:</p> {marketcap}</div>
+                <div className='kpi'><p>P/E Ratio</p> {peRatio}</div>
+                <div className='kpi'><p>Dividend Yield:</p> {divYield}</div>
+                <div className='kpi'><p>52-week High:</p> {yearHigh}</div>
+                <div className='kpi'><p>52-week Low</p> {yearLow}</div>
+                <div className='kpi'><p>Sector:</p> {sector}</div>
             </div>
         </div>
     )

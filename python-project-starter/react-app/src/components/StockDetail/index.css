@@ -1,0 +1,23 @@
+
+#title{
+    border: solid 1px white;
+}
+
+.graph-title {
+    border: solid 2px white;
+}
+
+
+.all-kpi{
+    display: flex;
+    justify-content: space-around;
+}
+
+.grid-area-template div {
+    font-size: 50;
+}
+
+.kpi p {
+    color: rgb(20, 242, 0);
+
+}
