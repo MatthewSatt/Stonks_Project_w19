@@ -73,11 +73,15 @@ body {
 }
 
 #whoweare__container {
-    height: 13.6vh;
+    z-index: 1000;
+    min-height: 175px;
+    height: 13.6%;
 }
 
 #learn__container {
-    height: 7.3vh;
+    z-index: 1000;
+    min-height: 90px;
+    height: 7.3%;
 }
 
 .right-nav {
@@ -152,6 +156,7 @@ body {
 }
 
 .profile-dropdown {
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,6 +273,11 @@ body {
     padding-bottom: 4%;
 }
 
+.latest__news__container {
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
 .whoweare__tab {
     display: inline-block;
     align-items: center;
@@ -292,8 +302,8 @@ body {
 
 .github__container {
     border-bottom: 1px black solid;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-top: 1.5%;
+    padding-bottom: 4%;
 }
 
 .demo-user {
