@@ -2,12 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { FaSmile } from "react-icons/fa";
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./Navigation.css"
 
 
 function ProfileButton() {
+  const user = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
@@ -52,7 +53,7 @@ function ProfileButton() {
           <div className="my__profile__container">
             <Link to={""} className="my__profile"><FaSmile/> Profile</Link>
           </div>
-          <button className="logout-btn" onClick={handleLogout}>logout</button>
+          {user ? <button className="logout-btn" onClick={handleLogout}>logout</button> : null}
         </ul>
       )}
     </>

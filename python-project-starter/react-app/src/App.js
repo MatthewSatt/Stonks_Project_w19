@@ -34,13 +34,13 @@ function App() {
       <NavBar />
       <Switch>
         {/* Must make sure to add ProtectedRoute back to Routes we want a user to be logged in ot see, disabled for dev */}
-        <Route path='/home' exact={true}>
+        <ProtectedRoute path='/home' exact={true}>
           <Portfolio />
-        </Route>
+        </ProtectedRoute>
 
-        <Route path='/stonk/:ticker' exact={true}>
+        <ProtectedRoute path='/stonk/:ticker' exact={true}>
           <StockDetail />
-        </Route>
+        </ProtectedRoute>
 
         <Route path='/' exact={true} >
           <Splash />

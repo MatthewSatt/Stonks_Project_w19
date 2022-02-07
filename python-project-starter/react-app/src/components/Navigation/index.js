@@ -36,7 +36,7 @@ function Navbar({ isLoaded }){
         </span> */}
 
         <span>
-          <NavLink onClick={handleToggle} className='learn__tab' to={''}>Learn {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <a onClick={handleToggle} className='learn__tab'>Learn {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</a>
           <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu" : ""}`}>
             <div>
               <li className='stocks__info__container'><a href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
@@ -47,7 +47,7 @@ function Navbar({ isLoaded }){
           </ul>
         </span>
         <span>
-          <NavLink onClick={handleToggle2} className='whoweare__tab' to={''}>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</NavLink>
+          <a onClick={handleToggle2} className='whoweare__tab'>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</a>
           <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu" : ""}`}>
             <div className='github__container'>
               <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
