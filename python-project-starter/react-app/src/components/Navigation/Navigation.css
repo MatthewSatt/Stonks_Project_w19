@@ -46,10 +46,8 @@ body {
     list-style: none;
     position: fixed;
     top: 0;
-    margin-top: 75px;
-    /* background: darkcyan; */
     bottom: 0;
-    height: 10vh;
+    height: 5%;
     width: 0;
     overflow: hidden;
     max-width: 290px;
@@ -63,25 +61,42 @@ body {
 }
 
 .menuNav a:hover {
-    color: rgb(54, 54, 54);
+    color: rgb(160, 160, 160);
 }
 
-.menuNav.showMenu {
-    padding: 10px 10px 10px 10px;
-    width: 30vw;
-    background: rgb(98, 98, 98);
+.menuNav:hover {
+    background-color: black;
+}
+
+.wrapper {
+    margin-right: 80%;
+}
+
+.menuNav.showMenu1 {
+    border: 2px solid rgb(136, 136, 136);
+    margin-top: 3%;
+    width: 100%;
+    background-color: rgb(87, 87, 87);}
+
+.menuNav.showMenu2 {
+    border: 2px solid rgb(136, 136, 136);
+    margin-top: 3%;
+    width: 100%;
+    background-color: rgb(87, 87, 87);}
+
+#learn__container {
+    padding: 0;
+    z-index: 1000;
+    min-height: 90px;
+    height: 7.1%;
 }
 
 #whoweare__container {
-    height: 13.6vh;
-}
-
-#learn__container {
-    height: 7.3vh;
-}
-
-.right-nav {
-    padding-top: 2%;
+    /* margin: 0; */
+    padding: 0;
+    z-index: 1000;
+    min-height: 221px;
+    height: 16%;
 }
 
 .profile-menu {
@@ -119,10 +134,6 @@ body {
     transform: scale(2.5);
 }
 
-.logo Link:visited {
-    text-decoration: none;
-}
-
 .logo:hover {
     transform: scale(2.7);
     cursor: pointer;
@@ -138,7 +149,6 @@ body {
     color: #FF5A5F;
 }
 
-
 .fa-bars {
     padding-right: 10px;
 }
@@ -152,11 +162,12 @@ body {
 }
 
 .profile-dropdown {
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 14pt;
-    width: 10vw;
+    width: 10%;
     padding: 1px;
     margin-right: 0.5%;
     position: absolute;
@@ -167,13 +178,12 @@ body {
 }
 
 .Dd-username {
+    padding-top: 8%;
+    padding-bottom: 8%;
     font-size: 14pt;
-    margin-top: 15px;
-    margin-left: 10px;
-    width: 100vw;
+    width: 100%;
     font-weight: bold;
     list-style: none;
-    padding-bottom: 15px;
 }
 
 .username__container {
@@ -194,6 +204,7 @@ body {
 }
 
 .my__profile {
+    text-decoration: none;
     color: white;
     font-size: 14pt;
     font-weight: bold;
@@ -202,30 +213,37 @@ body {
     margin-left: 10px;
 }
 
+.my__profile:hover {
+    color: rgb(160, 160, 160);
+}
+
 .my__profile__container {
     border-bottom: 1px black solid;
-    margin-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 6%;
+    padding-bottom: 8%;
+    padding-right: 6%;
+}
+
+.my__profile__container:hover {
+    color: rgb(255, 251, 0);
 }
 
 .logout-btn {
-    /* left: 50px; */
-    /* list-style: none; */
     background: none;
     border: none;
     color: white;
     background-color: rgb(194, 0, 0);
     border: 2px solid rgb(194, 0, 0);
-    padding: 5px;
+    border-radius: 50px;
+    padding: 2%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 11.5pt;
-    margin: 2px 80px;
+    margin: 2% 30%;
     transition-duration: 0.4s;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    /* margin-left: 28%; */
+    margin-top: 8%;
+    margin-bottom: 5.5%;
     cursor: pointer;
 }
 
@@ -252,7 +270,7 @@ body {
 .learn__tab::after {
   content: '';
   width: 0px;
-  height: 3px;
+  height: 4px;
   display: block;
   background: grey;
   transition: 300ms;
@@ -262,53 +280,42 @@ body {
   width: 100%;
 }
 
+.learn__tab:hover {
+    cursor: pointer;
+}
+
 .stocks__info__container {
     border-bottom: 1px black solid;
-    margin: 0;
+    width: 100%;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
 
 .latest__news__container {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.products__tab {
-    font-size: 13pt;
-    font-weight: bold;
-    color: grey;
-    align-items: center;
-    text-decoration: none;
-    margin-right: 15px;
-    margin-left: 10px;
-    display: inline-block;
-}
-
-.products__tab::after {
-    content: '';
-    width: 0px;
-    height: 3px;
-    display: block;
-    background: grey;
-    transition: 300ms;
-}
-
-  .products__tab:hover::after {
     width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
 
-  .whoweare__tab {
+.latest__news__container:hover {
+    background-color: rgb(68, 68, 68);
+}
+
+.stocks__info__container:hover {
+    background-color: rgb(68, 68, 68);
+}
+
+.whoweare__tab {
+    display: inline-block;
+    align-items: center;
+    color: grey;
     font-size: 13pt;
     font-weight: bold;
-    color: grey;
-    align-items: center;
     text-decoration: none;
-    margin-right: 15px;
-    margin-left: 10px;
-    display: inline-block;
 }
 
 .whoweare__tab::after {
@@ -320,32 +327,20 @@ body {
     transition: 300ms;
 }
 
-  .whoweare__tab:hover::after {
+.whoweare__tab:hover::after {
     width: 100%;
+}
+
+.whoweare__tab:hover {
+    cursor: pointer;
 }
 
 .github__container {
     border-bottom: 1px black solid;
-    padding-top: 5px;
-    padding-bottom: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
-.demo-user {
-    background-color: white; /* Green */
-    border: 2px solid #FF5A5F;
-    color: #FF5A5F;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 6px 4px;
-    transition-duration: 0.4s;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.demo-user:hover {
-  background-color: #FF5A5F;
-  color: white;
+.github__container:hover {
+    background-color: rgb(68, 68, 68);
 }

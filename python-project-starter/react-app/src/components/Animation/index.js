@@ -8,7 +8,6 @@ import './animation.css'
 //disp and occ
 
 export function Animation(props) {
-
     const ref = useRef();
 
     useFrame(({ clock }) => {

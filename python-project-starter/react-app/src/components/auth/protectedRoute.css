@@ -1,0 +1,27 @@
+#auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+}
+
+#mustLoginMsg {
+    font-size: 40px;
+    margin-bottom: 5%;
+}
+
+#formButtons {
+    display: flex;
+    justify-content: space-around;
+    min-width: 150px;
+}
+
+#formButtons > * {
+    width: 150px;
+}
+
+#formButtons > *:hover {
+    cursor: pointer;
+}
