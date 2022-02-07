@@ -7,7 +7,7 @@ const Watchlist = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
 
-    const watchlists = useSelector(state => state.watchlistReducer.watchlist)
+    const watchlists = useSelector(state => state.watchlistReducer)
 
     useEffect(() => {
         async function getWatchlists() {
@@ -16,6 +16,8 @@ const Watchlist = () => {
         getWatchlists()
 
     }, [])
+
+    console.log("WATCHLISTS in COMPONENT", watchlists)
 
     const data = [
         { ticker: "TSLA", price: 19 },
