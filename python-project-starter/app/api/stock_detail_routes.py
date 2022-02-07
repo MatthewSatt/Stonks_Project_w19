@@ -1,5 +1,5 @@
 from flask import Blueprint
-import json, requests
+import requests
 import os
 import pandas as pd
 
@@ -9,7 +9,7 @@ stock_detail_routes = Blueprint("stonk", __name__)
 def get_company_stats(ticker):
 
     company_stats = {}
-    
+
     url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
 
     querystring = {"symbol": ticker.upper(),"region":"US"}
