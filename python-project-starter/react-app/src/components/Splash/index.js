@@ -2,7 +2,7 @@
 import GetStartedModal from '../auth/SignUp';
 import LoginFormModal from '../auth/Login';
 import * as sessionActions from "../../store/session"
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './index.css'
 import { useEffect } from 'react';
@@ -10,15 +10,11 @@ import { useEffect } from 'react';
 const Splash = () => {
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleClick = async (e) => {
-
-        console.log("hello")
-
-        // const email = 'demo@aa.io';
-        // const password = 'password';
-
         await dispatch(sessionActions.login('demo@aa.io', 'password'))
+        history.push('/home')
     }
 
     return (
