@@ -48,6 +48,13 @@ const StockDetail = () => {
 
     return (
         <div className='container'>
+            <div className='Order66'>
+                <button id='buybutton'>Buy</button>
+                <span>none</span>
+                <input placeholder='quantity' type='number'/>
+                <span>none</span>
+                <button id='sellbutton'>Sell</button>
+            </div>
             <div className='graph-title'>
                 <h1 id='title'>{name}</h1>
                 <div>
@@ -55,6 +62,7 @@ const StockDetail = () => {
                 </div>
             </div>
                 <h2>Key Stats</h2>
+            <button className='notabutton'>Add To Watchlist</button>
             <div className='all-kpi'>
                 <div className='kpi'><p>Name:</p> {name}</div>
                 <div className='kpi'><p>Price:</p> {price}</div>
