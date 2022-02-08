@@ -14,6 +14,7 @@ const Portfolio = () => {
     const [showStonks, setStonks] = useState(false)
     const [showWatchlist, setWatchlist] = useState(false)
     const [stonkticker, setStonkTicker] = useState(false)
+    const [userTickersAndValues, setUserTickersAndValues] = useState()
 
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
     const user = useSelector(state => state.session.user)
@@ -25,14 +26,14 @@ const Portfolio = () => {
             await dispatch(loadUserPortfolios(user.id))
         }
         getPortfolios()
-    }, [setStonks])
+    }, [])
 
     useEffect(() => {
         async function getPortfolioValues() {
             await dispatch(loadUserPortfolioValues(user.id))
         }
         getPortfolioValues()
-    }, [setStonks])
+    }, [])
 
 
     const hideTable = {
@@ -47,18 +48,21 @@ const Portfolio = () => {
 
     console.log(" TICKERS", tickerArr)
 
+//THIS PULLS FROM THE API TO GET THE TICKERS AND CURRENT VALUE FOR THEIR TICKERS
     useEffect(() => {
         async function getValues() {
           const response = await fetch(`/api/stonk/user/${tickerArr}`);
           const values = await response.json();
-          console.log("VALUE IN COMPONENT", values)
+          setUserTickersAndValues(values)
         }
         getValues()
-      }, [stonkticker]);
+      }, []);
+
+      console.log("USER TICKER", userTickersAndValues)
 
 
 
-
+    //The Below Code gets the days and values for the graph to render
     let valuesArr = Object.values(portfolioValues)
 
     let valueArr = valuesArr.map(value => {
@@ -73,21 +77,14 @@ const Portfolio = () => {
         let dstr = new Date(date).toLocaleDateString()
         return dstr
     })
+    //End code needed for the graph
 
     return (
         <>
         <div>
             <PortfolioGraph dates={dateFormatArr} values={valueArr} />
         </div>
-        <h1>Hello World</h1>
-        <div>
-        <button
-                onClick={(e) => setStonkTicker(true)}
-                className={'accordion'}
-            >
-                My Stonks
-            </button>
-        </div>
+
         <div className='accordion-container'>
 
             <button
