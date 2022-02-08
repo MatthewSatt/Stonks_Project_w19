@@ -1,14 +1,19 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockDetails } from '../../store/stockDetails';
+import { buyStonk, getStockDetails } from '../../store/stockDetails';
 import StockGraph from "../StockGraph"
+import "./index.css"
 
 const StockDetail = () => {
     const dispatch = useDispatch();
     const ticker = useParams()
+    const ref = useRef()
 
     const user = useSelector(state => state.session.user)
+
+    const [cost, setCost] = useState(0)
+
 
     //Stock Details is an object with all of the information we need for the detail page
     const stockDetails = useSelector(state => state.stockDetailReducer.stockDetail);
@@ -21,9 +26,17 @@ const StockDetail = () => {
 
     }, [dispatch, ticker])
 
-    if(!stockDetails){
+
+    const handleBuy = async () => {
+        await dispatch(buyStonk(ticker, ref.current.value))
+        console.log(ticker)
+        console.log(ref.current.value)
+    }
+
+    if (!stockDetails) {
         return null
     }
+
 
     console.log(stockDetails)
 
@@ -47,16 +60,30 @@ const StockDetail = () => {
 
     return (
         <div className='container'>
-            <h1>Right Menu</h1>
-            <div>
-                <h1>About {name}</h1>
+            <div className='Order66'>
+                <button id='buybutton' onClick={handleBuy}>Buy</button>
+                <span id='buyprice'>$ {cost}</span>
+                <input placeholder='quantity' onChange={e => setCost((e.target.value * price))} type='number' min='0' ref={ref} />
+                <span id='sellprice'>-$ {cost}</span>
+                <button id='sellbutton'>Sell</button>
             </div>
-            <div>
-                <p>{about}</p>
+            <div className='graph-title'>
+                <h1 id='title'>{name}</h1>
+                <div>
+                    <StockGraph dates={dates} values={values} />
+                </div>
             </div>
-            <h1>Stats</h1>
-            <div>
-                <StockGraph dates={dates} values={values}/>
+            <h2>Key Stats</h2>
+            <button className='notabutton'>Add To Watchlist</button>
+            <div className='all-kpi'>
+                <div className='kpi'><p>Name:</p> {name}</div>
+                <div className='kpi'><p>Price:</p> {price}</div>
+                <div className='kpi'><p>Market Cap:</p> {marketcap}</div>
+                <div className='kpi'><p>P/E Ratio</p> {peRatio}</div>
+                <div className='kpi'><p>Dividend Yield:</p> {divYield}</div>
+                <div className='kpi'><p>52-week High:</p> {yearHigh}</div>
+                <div className='kpi'><p>52-week Low</p> {yearLow}</div>
+                <div className='kpi'><p>Sector:</p> {sector}</div>
             </div>
         </div>
     )

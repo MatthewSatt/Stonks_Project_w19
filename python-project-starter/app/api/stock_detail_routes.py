@@ -23,7 +23,10 @@ def get_company_stats(ticker):
 
     object = response.json()
 
-    company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
+    try:
+        company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
+    except:
+        company_stats["price"] = "N/A"
     company_stats["name"] = object["price"]["longName"]
     company_stats["about"] = object["assetProfile"]["longBusinessSummary"]
     try:
@@ -75,5 +78,52 @@ def get_company_stats(ticker):
 
     company_stats["dates"] = dates
     company_stats["values"] = values
+
+    return(company_stats)
+
+
+
+@stock_detail_routes.route("/user/<tickers>")
+def get_values(tickers):
+    print("TICKERS IN APIIIIIIIIIIIIIIIIII", tickers)
+
+    ticker_list = tickers.split(",")
+    # print("TICKERLIST", ticker_list)
+    # print(len(ticker_list))
+    company_stats = {}
+    ticker_array = []
+    [ticker_array.append(i) for i in ticker_list]
+    print("TICKER ARRAY", ticker_array)
+
+    for x in range(len(ticker_array)):
+        print("TICK", ticker_array[x])
+        # url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
+
+        # querystring = {"symbol": ticker.upper(),"region":"US"}
+
+        # headers = {
+        #     'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+        #     'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
+        #     }
+
+        # response = requests.request("GET", url, headers=headers, params=querystring)
+
+        # object = response.json()
+
+        # company_stats[ticker] = object["price"]["regularMarketPrice"]["raw"]
+
+        # url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
+
+        # querystring = {"symbol": ticker.upper(),"region":"US"}
+
+        # headers = {
+        #     'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+        #     'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
+        #     }
+
+        # response = requests.request("GET", url, headers=headers, params=querystring)
+
+        # object = response.json()
+        # company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
 
     return(company_stats)
