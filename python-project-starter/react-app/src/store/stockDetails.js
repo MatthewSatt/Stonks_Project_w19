@@ -29,7 +29,10 @@ export const addStonk = (stonk) => {
 }
 
 export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
-    console.log(ticker, 'HEEEEELLLOOOOOOOOOOOO')
+    console.log(ticker, 'Store Ticker')
+    console.log(quantity)
+    console.log(price)
+    console.log(id)
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'POST',
         headers: {
@@ -44,6 +47,7 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     })
     if(res.ok) {
         let data = await res.json()
+        console.log(data)
         dispatch(addStonk(data))
     } else {
         console.log("it's your STORE!!!!!!")
