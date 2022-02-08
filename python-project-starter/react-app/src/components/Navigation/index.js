@@ -16,6 +16,7 @@ const user = useSelector(state => state.session.user)
 const [navbarOpen, setNavbarOpen] = useState(false)
 const [navbarOpen2, setNavbarOpen2] = useState(false)
 // const [isMenuOpen, setIsMenuOpen] = useState(false)
+
 // useEffect(() => {
 //   const checkIfClickedOutside = e => {
 //     // If the menu is open and the clicked target is not within the menu,
