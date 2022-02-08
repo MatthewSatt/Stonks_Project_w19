@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from numpy import average
 from app.models import Portfolio, db
 
 portfolio_routes = Blueprint("portfolio", __name__)

@@ -1,7 +1,6 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from numpy import require
 from app.models import Watchlist, db
 from app.forms import New_Watchlist
 from app.forms import EditWatchlist
