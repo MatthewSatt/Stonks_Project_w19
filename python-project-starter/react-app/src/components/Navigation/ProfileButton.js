@@ -45,10 +45,10 @@ function ProfileButton() {
       {showMenu && (
         <ul className="profile-dropdown">
           <div className="username__container">
-            <li className="Dd-username">Welcome, {user.username}</li>
+            <li className="Dd-username">Welcome, {user?.username}</li>
           </div>
           <div className="email__container">
-            <li className="Dd-email">Email: {user.email}</li>
+            <li className="Dd-email">Email: {user?.email}</li>
           </div>
           <div className="my__profile__container" >
             <FaSmile className="my__profile__smiley"/>

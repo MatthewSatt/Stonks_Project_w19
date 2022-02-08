@@ -1,12 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Redirect, useHistory } from 'react-router-dom';
+import * as sessionActions from "../../store/session"
 import LoginFormModal from './Login';
 import SignUpFormModal from './SignUp';
 import "./protectedRoute.css"
+import handleClick from '../Splash';
 
 const ProtectedRoute = props => {
   const user = useSelector(state => state.session.user)
+
+  const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleClick = async (e) => {
+        await dispatch(sessionActions.login('demo@aa.io', 'password'))
+        history.push('/home')
+    }
+
   return (
     <Route {...props}>
       {(user) ? props.children : <div id="auth">
@@ -14,7 +25,7 @@ const ProtectedRoute = props => {
         <div id="formButtons">
           <LoginFormModal />
           <SignUpFormModal />
-          <button className='authButton'>Demo</button>
+          <button onClick={handleClick} className='authButton'>Demo</button>
         </div>
         </div>
       }

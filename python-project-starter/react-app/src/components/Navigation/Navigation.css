@@ -19,6 +19,14 @@ body {
     margin-bottom: 0.5%;
 }
 
+.user__balance {
+    color: grey;
+    font-size: 14.5pt;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-right: 6%;
+}
+
 .navbar {
     z-index: 99;
     position: fixed;
@@ -66,10 +74,6 @@ body {
 
 .menuNav:hover {
     background-color: black;
-}
-
-.wrapper {
-    margin-right: 80%;
 }
 
 .menuNav.showMenu1 {
@@ -124,29 +128,27 @@ body {
     /* background-color: red; */
 }
 
-.logo {
+.profile-menu:hover {
+    transform: scale(1.04);
+}
+
+.logo__container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 0.7%;
     color: grey;
-    margin-bottom: 0.8%;
+    /* margin-bottom: 0.8%; */
+}
+
+.logo {
+    color: grey;
     transform: scale(2.5);
 }
 
 .logo:hover {
     transform: scale(2.7);
     cursor: pointer;
-}
-
-.fa-shuttle-van {
-    transform: scale(1.5);
-    margin-right: 10px;
-    color: #FF5A5F;
-}
-
-.fa-caravan {
-    color: #FF5A5F;
 }
 
 .fa-bars {
@@ -263,7 +265,7 @@ body {
     text-decoration: none;
     align-self: center;
     margin-right: 15px;
-    margin-left: 10px;
+    /* margin-left: 10%; */
     display: inline-block;
 }
 

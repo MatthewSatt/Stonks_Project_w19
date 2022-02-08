@@ -18,6 +18,19 @@ export const getStockDetails = (ticker) => async (dispatch) => {
     }
 }
 
+export const buyStonk = (ticker, quantity) => async (dispatch) =>{
+    const res = await fetch(`/api/stonk/${ticker}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ticker,
+            quantity
+        })
+    })
+}
+
 const initialState = {};
 
 const stockDetailReducer = (state = initialState, action) => {
@@ -33,4 +46,19 @@ const stockDetailReducer = (state = initialState, action) => {
     }
 };
 
+
+
 export default stockDetailReducer
+
+
+// export const login = (email, password) => async (dispatch) => {
+//     const response = await fetch('/api/auth/login', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         email,
+//         password
+//       })
+//     });
