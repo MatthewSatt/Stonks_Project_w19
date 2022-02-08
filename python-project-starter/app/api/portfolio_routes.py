@@ -28,3 +28,18 @@ def add_stonky(**args):
     db.session.add(stock_info)
     db.session.commit()
     return 'Successful Post'
+
+
+# @portfolio_routes.route("/<string:ticker>", methods=["PUT"])
+# @login_required
+# def sell_stonky(**args):
+#     ticker = request.json["ticker"]
+    # quantity = request.json['quantity']
+    # average_price = request.json['price']
+    # user_id = request.json['id']
+
+    # match = Portfolio.query.filter(Portfolio.ticker == ticker)
+
+    # print("MATCHED", match[Portfolio.quantity])
+    # if match:
+    #     db.session.add(match[Portfolio.quantity])

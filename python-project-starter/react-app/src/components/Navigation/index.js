@@ -43,7 +43,7 @@ return (
       <NavLink to={'/home'}><FaChartLine className='logo'/></NavLink>
     </div>
     {!user ? null : <div className='user__balance'>
-      <p>Balance: {}</p>
+      <p>Balance: ${user.cash}</p>
     </div>}
     {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
       <div className='all__links'>

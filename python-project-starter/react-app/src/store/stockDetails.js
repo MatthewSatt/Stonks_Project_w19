@@ -54,6 +54,32 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     }
 }
 
+const SELL_STONK = "stock/SELL_STONK"
+
+export const sell_action = (stonk) => {
+    return {
+        type: SELL_STONK,
+        stonk
+    }
+}
+
+export const sellStonk = (ticker, quantity, price, id) => async (dispatch) => {
+    console.log("From the dispatch")
+    // console.log(stonk)
+    const res = await fetch(`/api/portfolio/${ticker}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ticker,
+            quantity,
+            price,
+            id
+        })
+    })
+    console.log(res.body)
+}
 
 const initialState = {};
 
@@ -95,5 +121,3 @@ export default stockDetailReducer
 //         password
 //       })
 //     });
-
-
