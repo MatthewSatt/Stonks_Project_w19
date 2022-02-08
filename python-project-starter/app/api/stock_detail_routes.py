@@ -82,48 +82,35 @@ def get_company_stats(ticker):
     return(company_stats)
 
 
+#THIS CODE IS USED IN PROFILE COMPONENT TO PULL THE PRICE OF ALL TICKERS IN A USERS PORTFOLIO i.e.{AAPL: 171.77}
 
-@stock_detail_routes.route("/user/<tickers>")
-def get_values(tickers):
-    print("TICKERS IN APIIIIIIIIIIIIIIIIII", tickers)
 
-    ticker_list = tickers.split(",")
-    # print("TICKERLIST", ticker_list)
-    # print(len(ticker_list))
-    company_stats = {}
-    ticker_array = []
-    [ticker_array.append(i) for i in ticker_list]
-    print("TICKER ARRAY", ticker_array)
+#We may no longer need to pull prices since the portfolio model now pulls price.
 
-    for x in range(len(ticker_array)):
-        print("TICK", ticker_array[x])
-        # url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
+# @stock_detail_routes.route("/user/<tickers>")
+# def get_values(tickers):
 
-        # querystring = {"symbol": ticker.upper(),"region":"US"}
+#     ticker_list = tickers.split(",")
+#     ticker_array = []
+#     [ticker_array.append(i) for i in ticker_list]
 
-        # headers = {
-        #     'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-        #     'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
-        #     }
+#     company_stats = {}
 
-        # response = requests.request("GET", url, headers=headers, params=querystring)
+#     for x in range(len(ticker_array)):
 
-        # object = response.json()
+#         url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
 
-        # company_stats[ticker] = object["price"]["regularMarketPrice"]["raw"]
+#         querystring = {"symbol": ticker_array[x].upper(),"region":"US"}
 
-        # url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
+#         headers = {
+#             'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+#             'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
+#             }
 
-        # querystring = {"symbol": ticker.upper(),"region":"US"}
+#         response = requests.request("GET", url, headers=headers, params=querystring)
 
-        # headers = {
-        #     'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-        #     'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
-        #     }
+#         object = response.json()
 
-        # response = requests.request("GET", url, headers=headers, params=querystring)
+#         company_stats[ticker_array[x]] = object["price"]["regularMarketPrice"]["raw"]
 
-        # object = response.json()
-        # company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
-
-    return(company_stats)
+#     return(company_stats)

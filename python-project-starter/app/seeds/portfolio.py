@@ -1,6 +1,5 @@
 from app.models import db, Portfolio
 
-
 def seed_portfolio():
 
     user_portfolio1 = Portfolio(

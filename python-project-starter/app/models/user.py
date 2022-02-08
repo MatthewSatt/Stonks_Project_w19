@@ -30,10 +30,26 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+
+        #sum the value of all of their stocks
+        val_list = []
+        for x in self.portfolio:
+            y = x.to_dict()
+            val_list.append(y["value"])
+        total_val = sum(val_list)
+
+        #sum their stocks' value + cash
+        aggregate_value = total_val + self.cash
+
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
             "profile_pic": self.profile_pic,
-            "cash": self.cash
+            "cash": self.cash,
+            "value_of_holdings": total_val,
+            "aggregate_value": aggregate_value,
+            "watchlists": [watchlist.to_dict() for watchlist in self.watchlists],
+            "portfolio_value": [value.to_dict() for value in self.portfolio_value],
+            "portfolio": [port.to_dict() for port in self.portfolio]
         }

@@ -1,5 +1,8 @@
 from app.models import portfolio_value
 from .db import db
+import os
+import finnhub
+
 
 class Portfolio(db.Model):
     __tablename__ = "Portfolios"
@@ -14,10 +17,23 @@ class Portfolio(db.Model):
 
 
     def to_dict(self):
+
+        #Code to pull the price for the ticker in the portfolio
+        finnhub_client = finnhub.Client(os.environ.get("FINNHUB_API_KEY"))
+
+        price = finnhub_client.quote(self.ticker.upper())
+
+        #Calculate value and gain/loss
+        value = price["c"] * self.quantity
+        gain_loss = value - (self.quantity * self.average_price)
+
         return {
             "id": self.id,
             "ticker": self.ticker,
             "user_id": self.user_id,
             "quantity": self.quantity,
-            "average_price": self.average_price
+            "average_price": self.average_price,
+            "current_price": price["c"],
+            "value": value,
+            "gain_loss": gain_loss
         }
