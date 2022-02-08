@@ -112,5 +112,3 @@ def get_company_stats(ticker):
 #         object = response.json()
 
 #         company_stats[ticker_array[x]] = object["price"]["regularMarketPrice"]["raw"]
-
-#     return(company_stats)
