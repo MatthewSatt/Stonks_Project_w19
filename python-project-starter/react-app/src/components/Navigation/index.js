@@ -16,6 +16,7 @@ const user = useSelector(state => state.session.user)
 const [navbarOpen, setNavbarOpen] = useState(false)
 const [navbarOpen2, setNavbarOpen2] = useState(false)
 // const [isMenuOpen, setIsMenuOpen] = useState(false)
+
 // useEffect(() => {
 //   const checkIfClickedOutside = e => {
 //     // If the menu is open and the clicked target is not within the menu,
@@ -42,7 +43,7 @@ return (
       <NavLink to={'/home'}><FaChartLine className='logo'/></NavLink>
     </div>
     {!user ? null : <div className='user__balance'>
-      <p>Balance: {}</p>
+      <p>Balance: ${user.cash}</p>
     </div>}
     {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
       <div className='all__links'>
