@@ -64,6 +64,7 @@
     margin-right: auto;
     border-radius: 50px;
     color: black;
+    border: none;
 }
 
 #buyprice {
