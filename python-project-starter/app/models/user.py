@@ -35,5 +35,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             "profile_pic": self.profile_pic,
-            "cash": self.cash
+            "cash": self.cash,
+            "watchlists": [watchlist.to_dict() for watchlist in self.watchlists],
+            "portfolio_value": [value.to_dict() for value in self.portfolio_value],
+            "portfolio": [port.to_dict() for port in self.portfolio]
         }
