@@ -127,3 +127,7 @@ def get_values(tickers):
         # company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
 
     return(company_stats)
+
+
+
+

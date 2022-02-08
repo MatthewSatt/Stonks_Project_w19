@@ -18,18 +18,39 @@ export const getStockDetails = (ticker) => async (dispatch) => {
     }
 }
 
-export const buyStonk = (ticker, quantity) => async (dispatch) =>{
-    const res = await fetch(`/api/stonk/${ticker}`, {
+
+const ADD_STONK = 'stock/ADD_STONK'
+
+export const addStonk = (stonk) => {
+    return {
+        type: ADD_STONK,
+        stonk
+    }
+}
+
+//nk(ticker, ref.current.value, price, user.id))
+export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
+    console.log(ticker, 'HEEEEELLLOOOOOOOOOOOO')
+    const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             ticker,
-            quantity
+            quantity,
+            price,
+            id
         })
     })
+    if(res.ok) {
+        let data = await res.json()
+        dispatch(addStonk(data))
+    } else {
+        console.log("it's your STORE!!!!!!")
+    }
 }
+
 
 const initialState = {};
 
@@ -39,8 +60,17 @@ const stockDetailReducer = (state = initialState, action) => {
         case SET_STOCK_DETAIL:
             newState = { ... state }
             newState.stockDetail = action.stockDetails
-
             return newState
+
+        case ADD_STONK: {
+            return {
+                ...state,
+                [action.list.id]: {
+                    ...state[action.list.id],
+                }
+            }
+        }
+
         default:
             return state
     }

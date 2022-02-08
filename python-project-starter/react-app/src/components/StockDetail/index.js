@@ -28,9 +28,10 @@ const StockDetail = () => {
 
 
     const handleBuy = async () => {
-        await dispatch(buyStonk(ticker, ref.current.value))
-        console.log(ticker)
-        console.log(ref.current.value)
+        // const tickernum = parseInt(ticker.ticker, 10)
+        console.log(ticker.ticker)
+        // console.log(tickernum)
+        await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
     }
 
     if (!stockDetails) {
