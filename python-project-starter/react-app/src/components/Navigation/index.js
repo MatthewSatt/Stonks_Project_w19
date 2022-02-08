@@ -3,6 +3,9 @@ import { FaAngleDown, FaAngleUp, FaChartLine, FaGithub } from 'react-icons/fa';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { useState } from "react"
+import { NavLink, Link } from 'react-router-dom';
+import SearchBar from '../SearchBar';
+import { user } from 'pg/lib/defaults';
 
 
 function Navbar({ isLoaded }){
@@ -39,10 +42,14 @@ function Navbar({ isLoaded }){
   return (
 
     <nav className='navbar'>
-      <div className='logo'>
-        <FaChartLine />
+      <div className='logo__container'>
+        <NavLink to={'/'}><FaChartLine className='logo'/></NavLink>
+      </div>
+      <div className='user__balance'>
+        <p>My Balance: {}</p>
       </div>
       {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
+        <SearchBar />
         <div className='all__links'>
           <span>
             <a onClick={handleToggle} className='learn__tab'>Learn {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</a>
