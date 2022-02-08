@@ -27,17 +27,19 @@ function SearchBar() {
 
     console.log("FINAL RESULT", searchResults)
     return (
-        <>
+        <div className='search_container'>
         <div className="search__bar">
-            <input type="text" placeholder="Search Stonks.." onChange={(e)=>setSearchTerm(e.target.value)}></input>
+            <input type="text" placeholder="Search Stonks.." onChange={(e)=>setSearchTerm(e.target.value.toUpperCase())}></input>
 
         </div>
-        <div>
+        <div id="search_results">
             {searchResults.map((result) => (
-                <Link to={`/stonk/${result[0]}`}> {result} </Link>
+                <>
+                <Link className="test" to={`/stonk/${result[0]}`}> {result} </Link>
+                </>
             ))}
         </div>
-        </>
+        </div>
     )
 }
 

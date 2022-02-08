@@ -7,3 +7,31 @@
     margin-top: 5%;
     font-size: 12pt;
 }
+
+.search_container {
+    display: flex;
+    flex-direction: column;
+    width: 17%;
+}
+
+
+#search_results {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    overflow: hidden;
+    list-style: none;
+    background-color: gray;
+    width: 100%;
+}
+
+
+.test{
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 7px;
+    text-align: left;
+}
