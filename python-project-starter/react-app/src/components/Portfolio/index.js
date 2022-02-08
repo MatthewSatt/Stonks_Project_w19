@@ -13,8 +13,6 @@ const Portfolio = () => {
 
     const [showStonks, setStonks] = useState(false)
     const [showWatchlist, setWatchlist] = useState(false)
-    const [stonkticker, setStonkTicker] = useState(false)
-    const [userTickersAndValues, setUserTickersAndValues] = useState()
 
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
     const user = useSelector(state => state.session.user)
@@ -48,16 +46,17 @@ const Portfolio = () => {
 
 
 //THIS PULLS FROM THE API TO GET THE TICKERS AND CURRENT VALUE FOR THEIR TICKERS
-    useEffect(() => {
-        async function getValues() {
-          const response = await fetch(`/api/stonk/user/${tickerArr}`);
-          const values = await response.json();
-          setUserTickersAndValues(values)
-        }
-        getValues()
-      }, [stonkticker]);
+//WE MAY NOT NEED THIS USE EFFECT...POSSIBLY DELETE --comment by Will
+// useEffect(() => {
+    //     async function getValues() {
+    //       const response = await fetch(`/api/stonk/user/${tickerArr}`);
+    //       const values = await response.json();
+    //       setUserTickersAndValues(values)
+    //     }
+    //     getValues()
+    //   }, [stonkticker]);
 
-      console.log("USER TICKER", userTickersAndValues)
+    //   console.log("USER TICKER", userTickersAndValues)
 
 
 
@@ -82,15 +81,6 @@ const Portfolio = () => {
         <>
         <div>
             <PortfolioGraph dates={dateFormatArr} values={valueArr} />
-        </div>
-        <div>
-
-        <button
-                onClick={(e) => setStonkTicker(true)}
-                className={'accordion'}
-                >
-                My Stonks
-            </button>
         </div>
 
         <div className='accordion-container'>
