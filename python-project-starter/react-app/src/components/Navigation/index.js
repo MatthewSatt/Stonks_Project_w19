@@ -5,10 +5,9 @@ import './Navigation.css';
 import { useState } from "react"
 import { NavLink, Link } from 'react-router-dom';
 import SearchBar from '../SearchBar';
-import { user } from 'pg/lib/defaults';
 
 
-function Navbar({ isLoaded }){
+function Navbar({ isLoaded }) {
   // const ref = useRef()
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [navbarOpen2, setNavbarOpen2] = useState(false)
@@ -43,55 +42,55 @@ function Navbar({ isLoaded }){
 
     <nav className='navbar'>
       <div className='logo__container'>
-        <NavLink to={'/'}><FaChartLine className='logo'/></NavLink>
+        <NavLink to={'/'}><FaChartLine className='logo' /></NavLink>
       </div>
       <div className='user__balance'>
-        <p>My Balance: {}</p>
+        <p>My Balance: { }</p>
       </div>
       {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
-        <SearchBar />
-        <div className='all__links'>
-          <span>
-            <a onClick={handleToggle} className='learn__tab'>Learn {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</a>
-            {/* {isMenuOpen && ( */}
-            <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu1" : ""}`}>
-              <div className='stocks__info__container'>
-                <li><a href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
-              </div>
-              <div className='latest__news__container'>
-                <li><a href='https://finance.yahoo.com/topic/stock-market-news/'>Latest News</a></li>
-              </div>
-            </ul>
-            {/* )} */}
-          </span>
-          <span>
-            <a onClick={handleToggle2} className='whoweare__tab'>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</a>
-            {/* {isMenuOpen && ( */}
-            <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu2" : ""}`}>
-              <div className='github__container'>
-                <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
-              </div>
-              <div className='github__container'>
-                <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
-              </div>
-              <div className='github__container'>
-                <li><a href='https://github.com/ta-cos'><FaGithub/> Nathan Treadaway</a></li>
-              </div>
-              <div className='github__container'>
-                <li><a href='https://github.com/MatthewSatt'><FaGithub/> Matthew Satterwhite</a></li>
-              </div>
-            </ul>
-            {/* )} */}
-          </span>
+      <SearchBar />
+      <div className='all__links'>
+        <span>
+          <a onClick={handleToggle} className='learn__tab'>Learn {navbarOpen ? < FaAngleUp /> : < FaAngleDown />}</a>
+          {/* {isMenuOpen && ( */}
+          <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu1" : ""}`}>
+            <div className='stocks__info__container'>
+              <li><a href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
+            </div>
+            <div className='latest__news__container'>
+              <li><a href='https://finance.yahoo.com/topic/stock-market-news/'>Latest News</a></li>
+            </div>
+          </ul>
+          {/* )} */}
+        </span>
+        <span>
+          <a onClick={handleToggle2} className='whoweare__tab'>Who we are {navbarOpen2 ? < FaAngleUp /> : < FaAngleDown />}</a>
+          {/* {isMenuOpen && ( */}
+          <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu2" : ""}`}>
+            <div className='github__container'>
+              <li><a href='https://github.com/w-duffy'><FaGithub /> Will Duffy</a></li>
+            </div>
+            <div className='github__container'>
+              <li><a href='https://github.com/DevDre783'><FaGithub /> Andres Soca</a></li>
+            </div>
+            <div className='github__container'>
+              <li><a href='https://github.com/ta-cos'><FaGithub /> Nathan Treadaway</a></li>
+            </div>
+            <div className='github__container'>
+              <li><a href='https://github.com/MatthewSatt'><FaGithub /> Matthew Satterwhite</a></li>
+            </div>
+          </ul>
+          {/* )} */}
+        </span>
+      </div>
+      <nav>
+        <div className='right-nav'>
+          <div className='profile-icon'>{isLoaded}</div>
         </div>
-        <nav>
-          <div className='right-nav'>
-            <div className='profile-icon'>{isLoaded}</div>
-          </div>
-          <div className='profile__icon'>
-            <ProfileButton/>
-          </div>
-        </nav>
+        <div className='profile__icon'>
+          <ProfileButton />
+        </div>
+      </nav>
       {/* </div> */}
     </nav>
   );
