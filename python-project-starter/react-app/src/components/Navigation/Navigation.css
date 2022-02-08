@@ -17,7 +17,7 @@ body {
 
 .all__links {
     margin-bottom: 0.5%;
-    margin-left: 15%;
+    margin-left: 17.5%;
     margin-right: 44.6%;
 }
 
@@ -26,7 +26,7 @@ body {
     font-weight: bold;
     text-decoration: underline;
     margin-left: 4%;
-    margin-right: 15%;
+    margin-right: 12.5%;
 }
 
 .navbar {
@@ -132,6 +132,10 @@ body {
     border-radius: 21px;
     height: 42px;
     /* background-color: red; */
+}
+
+.profile-menu:hover {
+    transform: scale(1.04);
 }
 
 .logo__container {
