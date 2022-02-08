@@ -5,10 +5,12 @@ import './Navigation.css';
 import { useState } from "react"
 import { NavLink, Link } from 'react-router-dom';
 import SearchBar from '../SearchBar';
-import { user } from 'pg/lib/defaults';
+import { useSelector } from 'react-redux';
+
 
 
 function Navbar({ isLoaded }){
+  const user = useSelector(state => state.session.user)
   // const ref = useRef()
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [navbarOpen2, setNavbarOpen2] = useState(false)
@@ -40,21 +42,19 @@ function Navbar({ isLoaded }){
   }
 
   return (
-
     <nav className='navbar'>
       <div className='logo__container'>
-        <NavLink to={'/'}><FaChartLine className='logo'/></NavLink>
+        <NavLink to={'/home'}><FaChartLine className='logo'/></NavLink>
       </div>
-      <div className='user__balance'>
-        <p>My Balance: {}</p>
-      </div>
+      {!user ? null : <div className='user__balance'>
+        <p>Balance: {}</p>
+      </div>}
       {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
-        <SearchBar />
         <div className='all__links'>
           <span>
             <a onClick={handleToggle} className='learn__tab'>Learn {navbarOpen ? < FaAngleUp/> : < FaAngleDown/>}</a>
             {/* {isMenuOpen && ( */}
-            <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu1" : ""}`}>
+              <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu1" : ""}`}>
               <div className='stocks__info__container'>
                 <li><a href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
               </div>
@@ -67,7 +67,7 @@ function Navbar({ isLoaded }){
           <span>
             <a onClick={handleToggle2} className='whoweare__tab'>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</a>
             {/* {isMenuOpen && ( */}
-            <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu2" : ""}`}>
+              <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu2" : ""}`}>
               <div className='github__container'>
                 <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
               </div>
@@ -84,6 +84,7 @@ function Navbar({ isLoaded }){
             {/* )} */}
           </span>
         </div>
+          {!user ? null : <SearchBar />}
         <nav>
           <div className='right-nav'>
             <div className='profile-icon'>{isLoaded}</div>
