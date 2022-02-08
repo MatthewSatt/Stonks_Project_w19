@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getStockDetails } from '../../store/stockDetails';
@@ -11,6 +11,9 @@ const StockDetail = () => {
 
     const user = useSelector(state => state.session.user)
 
+    const [cost, setCost] = useState(0)
+
+
     //Stock Details is an object with all of the information we need for the detail page
     const stockDetails = useSelector(state => state.stockDetailReducer.stockDetail);
 
@@ -22,9 +25,15 @@ const StockDetail = () => {
 
     }, [dispatch, ticker])
 
+    useEffect(() => {
+        console.log(cost)
+    }, [cost])
+
+
     if(!stockDetails){
         return null
     }
+
 
     console.log(stockDetails)
 
@@ -50,9 +59,9 @@ const StockDetail = () => {
         <div className='container'>
             <div className='Order66'>
                 <button id='buybutton'>Buy</button>
-                <span>none</span>
-                <input placeholder='quantity' type='number'/>
-                <span>none</span>
+                <span id='buyprice'>$ {cost}</span>
+                <input placeholder='quantity' onChange={e => setCost((e.target.value * price))} type='number' min='0'/>
+                <span id='sellprice'>-$ {cost}</span>
                 <button id='sellbutton'>Sell</button>
             </div>
             <div className='graph-title'>
