@@ -65,3 +65,13 @@
     border-radius: 50px;
     color: black;
 }
+
+#buyprice {
+    color: rgb(6, 220, 6);
+    font-weight: bold;
+}
+
+#sellprice {
+    color: red;
+    font-weight: bold;
+}
