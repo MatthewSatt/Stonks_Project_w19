@@ -17,16 +17,14 @@ body {
 
 .all__links {
     margin-bottom: 0.5%;
-    margin-left: 15%;
-    margin-right: 44.6%;
 }
 
 .user__balance {
-    font-size: 12pt;
+    color: grey;
+    font-size: 14.5pt;
     font-weight: bold;
     text-decoration: underline;
-    margin-left: 4%;
-    margin-right: 15%;
+    margin-right: 6%;
 }
 
 .navbar {
@@ -35,7 +33,7 @@ body {
     top: 0;
     width: 100%;
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: center;
     height: 80px;
     padding: 0 24px;
@@ -76,10 +74,6 @@ body {
 
 .menuNav:hover {
     background-color: black;
-}
-
-.wrapper {
-    margin-right: 80%;
 }
 
 .menuNav.showMenu1 {
@@ -134,6 +128,10 @@ body {
     /* background-color: red; */
 }
 
+.profile-menu:hover {
+    transform: scale(1.04);
+}
+
 .logo__container {
     display: flex;
     justify-content: center;
@@ -151,16 +149,6 @@ body {
 .logo:hover {
     transform: scale(2.7);
     cursor: pointer;
-}
-
-.fa-shuttle-van {
-    transform: scale(1.5);
-    margin-right: 10px;
-    color: #FF5A5F;
-}
-
-.fa-caravan {
-    color: #FF5A5F;
 }
 
 .fa-bars {
