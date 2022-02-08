@@ -28,7 +28,6 @@ export const addStonk = (stonk) => {
     }
 }
 
-//nk(ticker, ref.current.value, price, user.id))
 export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     console.log(ticker, 'HEEEEELLLOOOOOOOOOOOO')
     const res = await fetch(`/api/portfolio/${ticker}`, {
