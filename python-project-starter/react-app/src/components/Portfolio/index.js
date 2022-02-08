@@ -26,14 +26,14 @@ const Portfolio = () => {
             await dispatch(loadUserPortfolios(user.id))
         }
         getPortfolios()
-    }, [])
+    }, [setStonks])
 
     useEffect(() => {
         async function getPortfolioValues() {
             await dispatch(loadUserPortfolioValues(user.id))
         }
         getPortfolioValues()
-    }, [])
+    }, [setStonks])
 
 
     const hideTable = {
@@ -46,7 +46,6 @@ const Portfolio = () => {
         return ticker["ticker"]
     })
 
-    console.log(" TICKERS", tickerArr)
 
 //THIS PULLS FROM THE API TO GET THE TICKERS AND CURRENT VALUE FOR THEIR TICKERS
     useEffect(() => {
@@ -56,7 +55,7 @@ const Portfolio = () => {
           setUserTickersAndValues(values)
         }
         getValues()
-      }, []);
+      }, [stonkticker]);
 
       console.log("USER TICKER", userTickersAndValues)
 
@@ -83,6 +82,15 @@ const Portfolio = () => {
         <>
         <div>
             <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+        </div>
+        <div>
+
+        <button
+                onClick={(e) => setStonkTicker(true)}
+                className={'accordion'}
+                >
+                My Stonks
+            </button>
         </div>
 
         <div className='accordion-container'>

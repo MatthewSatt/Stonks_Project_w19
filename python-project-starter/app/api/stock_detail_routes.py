@@ -108,5 +108,5 @@ def get_values(tickers):
         object = response.json()
 
         company_stats[ticker_array[x]] = object["price"]["regularMarketPrice"]["raw"]
-    print("COMPANY STATS", company_stats)
+
     return(company_stats)
