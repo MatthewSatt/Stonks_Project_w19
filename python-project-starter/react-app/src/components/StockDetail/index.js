@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { buyStonk, getStockDetails } from '../../store/stockDetails';
+import { buyStonk, getStockDetails, sellStonk } from '../../store/stockDetails';
 import StockGraph from "../StockGraph"
 import "./index.css"
 
@@ -39,6 +39,14 @@ const StockDetail = () => {
         await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
     }
 
+    const handleSell = async (e) => {
+        e.preventDefault()
+
+        console.log("this works!")
+        console.log("Value", ref.current.value)
+        await dispatch(sellStonk(ticker.ticker, ref.current.value))
+    }
+
     if (!stockDetails) {
         return null
     }
@@ -71,7 +79,7 @@ const StockDetail = () => {
                 <span id='buyprice'>$ {cost}</span>
                 <input placeholder='quantity' onChange={e => setCost((e.target.value * price))} type='number' min='0' ref={ref} />
                 <span id='sellprice'>-$ {cost}</span>
-                <button id='sellbutton'>Sell</button>
+                <button onClick={handleSell} id='sellbutton'>Sell</button>
             </div>
             <div className='graph-title'>
                 <h1 id='title'>{name}</h1>
