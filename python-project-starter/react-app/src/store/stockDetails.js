@@ -19,16 +19,16 @@ export const getStockDetails = (ticker) => async (dispatch) => {
 }
 
 
-const ADD_STONK = 'stock/ADD_STONK'
+const EDIT_STONK = 'stock/EDIT_STONK'
 
-export const addStonk = (stonk) => {
+export const edit = (stonk) => {
     return {
-        type: ADD_STONK,
+        type: EDIT_STONK,
         stonk
     }
 }
 
-export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
+export const editStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     console.log(ticker, 'Store Ticker')
     console.log(quantity)
     console.log(price)
@@ -47,8 +47,8 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     })
     if(res.ok) {
         let data = await res.json()
-        console.log(data)
-        dispatch(addStonk(data))
+        console.log("DATA IN STORE", data)
+        dispatch(edit(data))
     } else {
         console.log("it's your STORE!!!!!!")
     }
@@ -93,14 +93,13 @@ const stockDetailReducer = (state = initialState, action) => {
             newState.stockDetail = action.stockDetails
             return newState
 
-        case ADD_STONK: {
-            return {
+        case EDIT_STONK:
+            newState = {
                 ...state,
-                [action.list.id]: {
-                    ...state[action.list.id],
+                [action.stonk.id]: [action.stonk]
                 }
-            }
-        }
+            
+            return newState
 
         case SELL_STONK: {
             const newState = {...state}

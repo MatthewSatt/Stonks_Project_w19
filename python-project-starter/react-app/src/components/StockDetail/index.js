@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from "react-router";
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { buyStonk, getStockDetails, sellStonk } from '../../store/stockDetails';
+import { editStonk, getStockDetails, sellStonk } from '../../store/stockDetails';
 import StockGraph from "../StockGraph"
 import "./index.css"
 
 const StockDetail = () => {
+    const history = useHistory()
     const dispatch = useDispatch();
     const ticker = useParams()
     const ref = useRef()
@@ -27,17 +29,35 @@ const StockDetail = () => {
     }, [dispatch, ticker])
 
 
-    const handleBuy = async (e) => {
-        // const tickernum = parseInt(ticker.ticker, 10)
-        e.preventDefault()
+
+        const handleBuy = async (e) => {
+            // const tickernum = parseInt(ticker.ticker, 10)
+            e.preventDefault()
         console.log("ticker", ticker)
         console.log("keyed in ticker", ticker.ticker)
         console.log("quantity", ref.current.value)
         console.log("price", price)
         console.log("USERID IN COMPONENT", user.id)
-        // console.log(tickernum)
-        await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
-    }
+
+        let ticker_filter = user.portfolio.filter(item =>{
+            if (item.ticker === ticker.ticker){
+                return item
+            }
+        })
+        console.log("ticker FILTERRRRR", ticker_filter)
+
+        if (ticker_filter){
+            await dispatch(editStonk(ticker_filter, ref.current.value))
+            history.push("/home")
+        }
+
+        // if (!user.portfolio.id["ticker"] === ticker){
+            //     await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
+
+            // }
+        }
+
+
     console.log("USERID OUTSIDE OF FUNC", user.id)
     const handleSell = async (e) => {
         e.preventDefault()

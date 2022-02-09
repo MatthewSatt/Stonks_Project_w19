@@ -13,34 +13,41 @@ def load_portfolio(user_id):
 @portfolio_routes.route("/<string:ticker>", methods=['POST', 'PUT'])
 @login_required
 def add_stonky(**args):
+    object = request.json
+    print("OBJECTTTT", object)
     ticker = request.json["ticker"]
     quantity = request.json['quantity']
-    average_price = request.json['price']
-    user_id = request.json['id']
-    match = Portfolio.query.filter(Portfolio.ticker == ticker).first()
-    user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+    portfolio_id = ticker[0]["id"]
+    price_purchased = ticker[0]["current_price"]
 
-    if match in user_portfolio:
-        # Update
-        stock_info = match
+    match = Portfolio.query.filter(Portfolio.id == portfolio_id).first()
+    match123 = Portfolio.query.get(portfolio_id)
+    stock_info = match
 
-        match.average_price = ((float(match.average_price) * float(match.quantity)) + (float(average_price) * float(quantity))) / (float(match.quantity) + float(quantity))
-        match.quantity = int(match.quantity) + int(quantity)
+    if stock_info:
+        stock_info.average_price = ((float(stock_info.average_price) * float(stock_info.quantity)) + (float(price_purchased) * float(quantity))) / (float(stock_info.quantity) + float(quantity))
+        stock_info.quantity = int(stock_info.quantity) + int(quantity)
 
-        db.session.commit()
-
-    else:
-        # New groot
-        stock_info = Portfolio(
-            ticker = ticker,
-            user_id = user_id,
-            quantity = quantity,
-            average_price = average_price,
-        )
 
     db.session.add(stock_info)
     db.session.commit()
-    return 'Successful Post'
+    return stock_info.to_dict()
+
+        #     stock_info = Portfolio(
+    #         ticker = ticker,
+    #         user_id = user_id,
+    #         quantity = quantity,
+    #         average_price = average_price,
+    #     )
+
+@portfolio_routes.route("/new/<string:ticker>", methods=['POST'])
+@login_required
+def buy_new_stock(**args):
+    new_buy = Portfolio(**request.json)
+
+    db.session.add(new_buy)
+    db.session.commit()
+    return new_buy.to_dict()
 
 
 @portfolio_routes.route("/<string:ticker>", methods=['DELETE'])
@@ -51,9 +58,14 @@ def delete_stonky(**args):
     user_id = request.json['id']
     print("USER_IDDD", user_id)
 
-    match = Portfolio.query.filter(Portfolio.ticker == ticker).all()
-    user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
-    item_to_delete = Portfolio.query.filter(Portfolio)
+    # match = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+    match = Portfolio.query.filter(Portfolio.ticker == ticker).first() and Portfolio.query.filter(Portfolio.user_id == user_id).first()
+    print("MATCHHH", match)
+    db.session.delete(match)
+    db.session.commit()
+    return "delete success"
+    # user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+    # item_to_delete = Portfolio.query.filter(Portfolio)
 
 
     # print("MATCHHHHH", match)
@@ -77,4 +89,4 @@ def delete_stonky(**args):
     #                     db.session.commit()
     #                 else:
     #                     print("Error!")
-    return "successful delete!"
+    # return "successful delete!"
