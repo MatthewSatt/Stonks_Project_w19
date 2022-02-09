@@ -42,17 +42,19 @@ class User(db.Model, UserMixin):
         #sum their stocks' value + cash
         aggregate_value = total_val + self.cash
 
-        port_vals = PortfolioValue.query.all()
-        dates = []
-        for val in port_vals:
-            dates.append(val.to_dict()['date'])
-        # recent_date = max(dates)
-        most_recent_save = max(d for d in dates if isinstance(d, datetime))
-        today = datetime.now()
-        if most_recent_save.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None) < today.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None):
-            port_val_today = PortfolioValue(value=total_val, date=today, user_id=self.id)
-            db.session.add(port_val_today)
-            db.session.commit()
+       #Below commented block was to add the days value to the user.  APScheduler has now taken its' place.
+
+        # port_vals = PortfolioValue.query.all()
+        # dates = []
+        # for val in port_vals:
+        #     dates.append(val.to_dict()['date'])
+
+        # most_recent_save = max(d for d in dates if isinstance(d, datetime))
+        # today = datetime.now()
+        # if most_recent_save.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None) < today.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None):
+        #     port_val_today = PortfolioValue(value=total_val, date=today, user_id=self.id)
+        #     db.session.add(port_val_today)
+        #     db.session.commit()
 
         return {
             'id': self.id,

@@ -15,6 +15,7 @@ from .api.portfolio_routes import portfolio_routes
 from .api.portfolio_value_routes import portfolio_value_routes
 from .api.search_routes import search_routes
 from .seeds import seed_commands
+from app.api.scheduler import scheduler
 
 from .config import Config
 
@@ -42,12 +43,17 @@ app.register_blueprint(watchlist_tickers_routes, url_prefix='/api/watchlist-tick
 app.register_blueprint(portfolio_routes, url_prefix='/api/portfolio')
 app.register_blueprint(portfolio_value_routes, url_prefix='/api/portfolio-values')
 app.register_blueprint(search_routes, url_prefix='/api/search')
+
+#if statement prevents the scheduler from running twice
+if not app.debug or os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+    scheduler.init_app(app)
+    scheduler.start()
+
 db.init_app(app)
 Migrate(app, db)
 
 # Application Security
 CORS(app)
-
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.

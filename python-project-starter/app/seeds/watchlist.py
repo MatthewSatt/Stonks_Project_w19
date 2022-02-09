@@ -3,10 +3,18 @@ from app.models import db, Watchlist
 
 def seed_watchlists():
 
-    user_watchlist = Watchlist(
+    user_watchlist1 = Watchlist(
         name="Great_Stonks", user_id=1)
 
-    db.session.add(user_watchlist)
+    user_watchlist2 = Watchlist(
+        name="Great_Stonks", user_id=2)
+
+    user_watchlist3 = Watchlist(
+        name="I_LOVE_STONKS", user_id=2)
+
+    db.session.add(user_watchlist1)
+    db.session.add(user_watchlist2)
+    db.session.add(user_watchlist3)
     db.session.commit()
 
 def undo_watchlists():
