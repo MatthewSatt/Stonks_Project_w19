@@ -1,8 +1,8 @@
-from app.models import portfolio_value
+from .portfolio_value import PortfolioValue
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
+from datetime import date, datetime
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -29,6 +29,7 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+
     def to_dict(self):
 
         #sum the value of all of their stocks
@@ -40,6 +41,20 @@ class User(db.Model, UserMixin):
 
         #sum their stocks' value + cash
         aggregate_value = total_val + self.cash
+
+       #Below commented block was to add the days value to the user.  APScheduler has now taken its' place.
+
+        # port_vals = PortfolioValue.query.all()
+        # dates = []
+        # for val in port_vals:
+        #     dates.append(val.to_dict()['date'])
+
+        # most_recent_save = max(d for d in dates if isinstance(d, datetime))
+        # today = datetime.now()
+        # if most_recent_save.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None) < today.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None):
+        #     port_val_today = PortfolioValue(value=total_val, date=today, user_id=self.id)
+        #     db.session.add(port_val_today)
+        #     db.session.commit()
 
         return {
             'id': self.id,

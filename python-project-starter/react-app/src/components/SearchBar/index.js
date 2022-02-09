@@ -7,6 +7,10 @@ function SearchBar() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
+    useEffect(() =>{
+        setSearchTerm("")
+    },[])
+
     useEffect(async (e) =>{
         if (searchTerm === ""){
             return setSearchTerm("")
@@ -21,20 +25,19 @@ function SearchBar() {
 
 
     const filteredResult = result.filter(word =>{
-        return word[0].includes(searchTerm)
+        return (word[0].includes(searchTerm.toUpperCase()) || word[1].toUpperCase().includes(searchTerm.toUpperCase()))
     })
-    const filteredData = result[0][1]
+
     const finalResult = filteredResult.slice(0, 5)
     setSearchResults(finalResult)
     }, [searchTerm])
 
 
 
-    console.log("FINAL RESULT", searchResults)
     return (
         <div className='search_container'>
         <div className="search__bar">
-            <input type="text" value={searchTerm} placeholder="Search Stonks.." onChange={(e)=>setSearchTerm(e.target.value.toUpperCase())}></input>
+            <input type="text" value={searchTerm} placeholder="Search Stonks.." onChange={(e)=>setSearchTerm(e.target.value)}></input>
 
         </div>
         <div id="search_results">
@@ -42,7 +45,7 @@ function SearchBar() {
                 <>
                 {searchResults.map((result) => (
                     <>
-                    <Link className="test" to={`/stonk/${result[0]}`}> {result} </Link>
+                    <Link onClick={() => setSearchTerm("")} className="test" to={`/stonk/${result[0]}`}> {result[0]} - {result[1]} </Link>
                     </>
                     ))}
                 </>
