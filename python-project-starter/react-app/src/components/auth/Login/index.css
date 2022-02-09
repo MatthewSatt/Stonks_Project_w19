@@ -1,5 +1,5 @@
 body{
-text-align: center;
+    text-align: center;
 }
 
 .auth-button{
@@ -33,14 +33,71 @@ text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 20%;
+
 }
 
-.loginformmodel input {
-    align-items: center;
-    margin: 5px;
+.signupformmodel {
+    padding-bottom: 10%;
+}
+
+#modal-form input {
+    margin: 10px;
+    height: 30px;
+    border-radius: 12px;
+    text-align: center;
+    border: none;
+}
+
+#modal-form input:focus{
+    border: 2px solid lime;
+    outline: none;
+}
+
+
+#modal-form button {
+    border-radius: 12px;
+    margin-top: 15%;
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 5px;
+    width: 50%;
+}
+
+
+#modal-form button:hover{
+    background: lime;
+    color: black;
+}
+
+#modal-img{
+    height: 100%;
+    width: 60%;
+    margin: 0;
+    padding: 0;
+    margin-right: 8.5%;
+}
+
+#img{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 10px 0px 10px black;
+}
+
+#modal-form{
+    animation: fadeButton 6s;
 }
 
 @keyframes fadeButton {
     from{opacity: 0;}
     to{opacity: 1;}
+}
+
+@keyframes slider {
+    0%{ width: 50%;}
+    100%{ transform: translateX(0%)}
 }

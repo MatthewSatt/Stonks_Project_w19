@@ -42,8 +42,11 @@ return (
     <div className='logo__container'>
       <NavLink to={'/home'}><FaChartLine className='logo'/></NavLink>
     </div>
-    {!user ? null : <div className='user__balance'>
-      <p>Balance: ${user.cash}</p>
+    {!user ? null : <div className=''>
+      <div className='user__balance'>
+        <p>Balance: </p>
+        <p className='my__cash'> ${user.cash}</p>
+      </div>
     </div>}
     {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
       <div className='all__links'>
