@@ -11,6 +11,7 @@
 .all-kpi{
     display: flex;
     justify-content: space-around;
+    font-size: 14pt;
 }
 
 .grid-area-template div {
@@ -34,17 +35,26 @@
 
 .Order66 input {
     text-align: center;
+    font-size: 12pt;
     width: 12%;
 }
 
 
 #buybutton, #sellbutton {
     border-radius: 50px;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    width: 8%;
     border: none;
     outline: none;
     font-size: 24px;
-
 }
+
+#buybutton:hover, #sellbutton:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
 
 #buybutton {
     background-color: green;
