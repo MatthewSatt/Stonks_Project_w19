@@ -18,8 +18,9 @@ def add_stonky(**args):
     average_price = request.json['price']
     user_id = request.json['id']
     match = Portfolio.query.filter(Portfolio.ticker == ticker).first()
+    user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
-    if match:
+    if match in user_portfolio:
         # Update
         stock_info = match
 
@@ -47,17 +48,33 @@ def add_stonky(**args):
 def delete_stonky(**args):
     ticker = request.json["ticker"]
     quantity = request.json['quantity']
+    user_id = request.json['id']
+    print("USER_IDDD", user_id)
 
-    match = Portfolio.query.filter(Portfolio.ticker == ticker).first()
-    print("FLAAAAG 1", quantity)
-    print("FLAAAAG 2", match.quantity)
-    if (int(quantity) == int(match.quantity)):
-        db.session.delete(match)
-        db.session.commit()
-    elif (int(quantity) < int(match.quantity)):
-        match.quantity = int(match.quantity) - int(quantity)
-        db.session.commit()
-    else:
-        print("Error!")
+    match = Portfolio.query.filter(Portfolio.ticker == ticker).all()
+    user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
+    item_to_delete = Portfolio.query.filter(Portfolio)
 
+
+    # print("MATCHHHHH", match)
+    # print("USERRRR", user_portfolio)
+    # print("LOGICCCC", any(list == user_portfolio for list in match))
+    # listArr =[]
+    # listArr.append([single_list for single_list in user_portfolio])
+    # for l in listArr[0]:
+    #     if l in match:
+    #         dict_l = l.to_dict()
+    #         matchArr =[]
+    #         matchArr.append([m.to_dict() for m in match])
+    #         for m1 in matchArr[0]:
+    #             if m1 == dict_l:
+    #                 print("M11111111", m1)
+    #                 if dict_l['quantity'] == m1['quantity']:
+    #                     db.session.delete(m1)
+    #                     db.session.commit()
+    #                 elif dict_l['quantity'] < m1['quantity']:
+    #                     m1['quantity']= m1['quantity'] - dict_l['quantity']
+    #                     db.session.commit()
+    #                 else:
+    #                     print("Error!")
     return "successful delete!"

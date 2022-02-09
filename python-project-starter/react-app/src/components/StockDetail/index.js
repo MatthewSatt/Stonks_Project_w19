@@ -34,17 +34,18 @@ const StockDetail = () => {
         console.log("keyed in ticker", ticker.ticker)
         console.log("quantity", ref.current.value)
         console.log("price", price)
-        console.log(user.id)
+        console.log("USERID IN COMPONENT", user.id)
         // console.log(tickernum)
         await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
     }
-
+    console.log("USERID OUTSIDE OF FUNC", user.id)
     const handleSell = async (e) => {
         e.preventDefault()
+        console.log("USERID IN COMPONENT", user.id)
 
         console.log("this works!")
         console.log("Value", ref.current.value)
-        await dispatch(sellStonk(ticker.ticker, ref.current.value))
+        await dispatch(sellStonk(ticker.ticker, ref.current.value, user.id))
     }
 
     if (!stockDetails) {

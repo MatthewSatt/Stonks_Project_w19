@@ -92,7 +92,7 @@ const Portfolio = () => {
                 My Stonks
             </button>
 
-            {showStonks && <MyStonks />}
+            {showStonks && <MyStonks portfolios={portfolios} />}
 
             {watchlist.map((list, i) => (
 

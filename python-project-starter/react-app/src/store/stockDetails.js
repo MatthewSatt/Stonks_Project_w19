@@ -32,7 +32,7 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     console.log(ticker, 'Store Ticker')
     console.log(quantity)
     console.log(price)
-    console.log(id)
+    console.log("ID IN STORE", id)
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'POST',
         headers: {
@@ -63,8 +63,8 @@ export const sell_action = (stonk) => {
     }
 }
 
-export const sellStonk = (ticker, quantity) => async (dispatch) => {
-
+export const sellStonk = (ticker, quantity, id) => async (dispatch) => {
+    console.log("STOREEEE ID", id)
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'DELETE',
         headers: {
@@ -72,7 +72,8 @@ export const sellStonk = (ticker, quantity) => async (dispatch) => {
         },
         body: JSON.stringify({
             ticker,
-            quantity
+            quantity,
+            id
         })
     })
 
