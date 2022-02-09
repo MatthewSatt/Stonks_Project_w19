@@ -1,14 +1,12 @@
 import React from 'react';
 import './index.css'
-const MyStonks = () => {
+const MyStonks = ({portfolios}) => {
 
 
-    const data = [
-        { ticker: "GOOL", price: 19, quantity: 7 },
-        { ticker: "APPL", price: 19, quantity: 3 },
-        { ticker: "MSFT", price: 25, quantity: 200 },
-    ]
 
+    console.log("PORT", portfolios)
+    let stocksArr = Object.values(portfolios)
+    console.log("PORTttttttttttttt", stocksArr)
     return (
         <div className='my-stonks-table'>
             <table>
@@ -20,11 +18,11 @@ const MyStonks = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((val, key) => (
-                        <tr key={key}>
-                            <td>{val.ticker}</td>
-                            <td> {val.price} </td>
-                            <td> {val.quantity} </td>
+                    {stocksArr.map((stock) => (
+                        <tr key="TEST">
+                            <td>{stock.ticker}</td>
+                            <td> {stock["current_price"]} </td>
+                            <td> {stock.quantity} </td>
                         </tr>
                     ))}
                 </tbody>

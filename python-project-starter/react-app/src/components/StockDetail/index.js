@@ -34,7 +34,7 @@ const StockDetail = () => {
         console.log("keyed in ticker", ticker.ticker)
         console.log("quantity", ref.current.value)
         console.log("price", price)
-        console.log(user.id)
+        console.log("USERID IN COMPONENT", user.id)
         // console.log(tickernum)
         await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
     }

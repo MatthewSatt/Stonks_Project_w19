@@ -18,8 +18,9 @@ def add_stonky(**args):
     average_price = request.json['price']
     user_id = request.json['id']
     match = Portfolio.query.filter(Portfolio.ticker == ticker).first()
+    user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
 
-    if match:
+    if match in user_portfolio:
         # Update
         stock_info = match
 

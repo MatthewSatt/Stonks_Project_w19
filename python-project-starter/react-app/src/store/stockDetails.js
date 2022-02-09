@@ -32,7 +32,7 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     console.log(ticker, 'Store Ticker')
     console.log(quantity)
     console.log(price)
-    console.log(id)
+    console.log("ID IN STORE", id)
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'POST',
         headers: {
