@@ -63,22 +63,23 @@ export const sell_action = (stonk) => {
     }
 }
 
-export const sellStonk = (ticker, quantity, price, id) => async (dispatch) => {
-    console.log("From the dispatch")
-    // console.log(stonk)
+export const sellStonk = (ticker, quantity) => async (dispatch) => {
+
     const res = await fetch(`/api/portfolio/${ticker}`, {
-        method: 'PUT',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             ticker,
-            quantity,
-            price,
-            id
+            quantity
         })
     })
-    console.log(res.body)
+
+    if (res.ok) {
+        const data = await res.json()
+        await dispatch(sell_action(data.ticker))
+    }
 }
 
 const initialState = {};
@@ -98,6 +99,12 @@ const stockDetailReducer = (state = initialState, action) => {
                     ...state[action.list.id],
                 }
             }
+        }
+
+        case SELL_STONK: {
+            const newState = {...state}
+            delete newState[action.ticker]
+            return newState
         }
 
         default:
