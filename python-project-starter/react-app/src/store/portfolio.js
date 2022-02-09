@@ -28,7 +28,7 @@ const portfolioReducer = (state = initialState, action) => {
             action.portfolios.forEach((portfolio) => {
                 newState[portfolio.id] = portfolio
             })
-            return { ...newState, ...state }
+            return { ...newState }
         }
         default:
             return state

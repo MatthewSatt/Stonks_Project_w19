@@ -54,6 +54,38 @@ export const editStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     }
 }
 
+const BUY_STONK = "stock/BUY_STONK"
+
+export const buy = (stonk) => {
+    return {
+        type: BUY_STONK,
+        stonk
+    }
+}
+
+export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
+    console.log("IN STORE DISPATCH", ticker)
+    const res = await fetch(`/api/portfolio/new/${ticker}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ticker,
+            quantity,
+            price,
+            id
+        })
+    })
+    if(res.ok) {
+        let data = await res.json()
+        console.log("DATA IN STORE", data)
+        dispatch(buy(data))
+    } else {
+        console.log("it's your STORE!!!!!!")
+    }
+}
+
 const SELL_STONK = "stock/SELL_STONK"
 
 export const sell_action = (stonk) => {
@@ -80,6 +112,7 @@ export const sellStonk = (ticker, quantity, id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         await dispatch(sell_action(data.ticker))
+        return
     }
 }
 
@@ -93,12 +126,19 @@ const stockDetailReducer = (state = initialState, action) => {
             newState.stockDetail = action.stockDetails
             return newState
 
+        case BUY_STONK:
+            newState = {
+                ...state,
+                [action.stonk.id]: [action.stonk]
+            }
+            return newState
+
         case EDIT_STONK:
             newState = {
                 ...state,
                 [action.stonk.id]: [action.stonk]
                 }
-            
+
             return newState
 
         case SELL_STONK: {

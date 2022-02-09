@@ -43,7 +43,12 @@ def add_stonky(**args):
 @portfolio_routes.route("/new/<string:ticker>", methods=['POST'])
 @login_required
 def buy_new_stock(**args):
-    new_buy = Portfolio(**request.json)
+    ticker = request.json["ticker"]
+    user_id = request.json["id"]
+    quantity = request.json["quantity"]
+    average_price = request.json["price"]
+    # print("OBJECT IN API", object)
+    new_buy = Portfolio(ticker=ticker, user_id=user_id, quantity=quantity, average_price=average_price)
 
     db.session.add(new_buy)
     db.session.commit()
@@ -63,7 +68,7 @@ def delete_stonky(**args):
     print("MATCHHH", match)
     db.session.delete(match)
     db.session.commit()
-    return "delete success"
+    return match.to_dict()
     # user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
     # item_to_delete = Portfolio.query.filter(Portfolio)
 
