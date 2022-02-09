@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -21,12 +21,22 @@ function StockGraph({dates, values}){
         Tooltip,
         Legend
       );
-
+      
+      const [lineColor, setLineColor] = useState("")
       //for the slice make the second number a variable that will change with a useEffect when the user clicks how many days to view.
       const daySlicer = dates.slice(0, 30)
       const valuesSlicer = values.slice(0, 30)
 
-      const lineColor = 'rgb(50, 190, 50)'
+
+      useEffect(() =>{
+        if(valuesSlicer[0] < valuesSlicer[valuesSlicer.length - 1]){
+          setLineColor('rgb(50, 190, 50)')
+        }
+        if(valuesSlicer[0] > valuesSlicer[valuesSlicer.length - 1]) {
+           setLineColor('rgb(255, 0, 0)')
+        }
+      },[values])
+
       const data = {
         labels: daySlicer.reverse(),
         datasets: [
