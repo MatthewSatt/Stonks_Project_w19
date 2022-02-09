@@ -56,7 +56,7 @@ const SignUpForm = () => {
                 ))}
             </div>
             <div>
-                <input
+                <input className='form-inpuut'
                     type='text'
                     name='username'
                     placeholder='User Name'
@@ -65,7 +65,7 @@ const SignUpForm = () => {
                 ></input>
             </div>
             <div>
-                <input
+                <input className='form-inpuut'
                     type='text'
                     name='email'
                     placeholder='Email'
@@ -74,7 +74,7 @@ const SignUpForm = () => {
                 ></input>
             </div>
             <div>
-                <input
+                <input className='form-inpuut'
                     type='password'
                     name='password'
                     placeholder='Password'
@@ -83,7 +83,7 @@ const SignUpForm = () => {
                 ></input>
             </div>
             <div>
-                <input
+                <input className='form-inpuut'
                     type='password'
                     name='repeat_password'
                     placeholder='Confirm Password'
@@ -92,7 +92,7 @@ const SignUpForm = () => {
                     required={true}
                 ></input>
             </div>
-            <button type='submit'>Sign Up</button>
+            <button className='form-button' type='submit'>Sign Up</button>
         </form>
     );
 };

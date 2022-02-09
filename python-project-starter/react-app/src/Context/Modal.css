@@ -9,7 +9,6 @@
     align-items: center;
     margin: auto;
     border-radius: 12px;
-    /* margin-left: 150px; */
     z-index: 9998;
   }
 
@@ -25,10 +24,16 @@
   #modal-content {
     display: flex;
     align-items: center;
-    justify-content: center;
     position: absolute;
-    border-radius: 50px;
-    background-color: rgb(0, 41, 10);
-    height: 40%;
-    width: 60%;
+    border-radius: 15px;
+    background-color: rgb(2, 38, 11);
+    height: 30%;
+    width: 30%;
+    max-width: 700px;
+    animation: slide_out 2s;
   }
+
+   @keyframes slide_out {
+     from{width: 5%;}
+     to{width: 30%;}
+   }
