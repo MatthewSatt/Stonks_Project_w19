@@ -43,7 +43,8 @@ const StockDetail = () => {
         e.preventDefault()
 
         console.log("this works!")
-        await dispatch(sellStonk(ticker.ticker, ref.current.value, price, user.id))
+        console.log("Value", ref.current.value)
+        await dispatch(sellStonk(ticker.ticker, ref.current.value))
     }
 
     if (!stockDetails) {

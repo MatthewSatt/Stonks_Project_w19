@@ -10,7 +10,7 @@ def load_portfolio(user_id):
     return jsonify([portfolio.to_dict() for portfolio in user_portfolios])
 
 # ticker, user_id, quanitity, average_price
-@portfolio_routes.route("/<string:ticker>", methods=['POST'])
+@portfolio_routes.route("/<string:ticker>", methods=['POST', 'PUT'])
 @login_required
 def add_stonky(**args):
     ticker = request.json["ticker"]
@@ -42,19 +42,22 @@ def add_stonky(**args):
     return 'Successful Post'
 
 
-# @portfolio_routes.route("/<string:ticker>", methods=["PUT"])
-# @login_required
-# def sell_stonky(**args):
-#     ticker = request.json["ticker"]
-#     quantity = request.json['quantity']
-#     average_price = request.json['price']
-#     user_id = request.json['id']
+@portfolio_routes.route("/<string:ticker>", methods=['DELETE'])
+@login_required
+def delete_stonky(**args):
+    ticker = request.json["ticker"]
+    quantity = request.json['quantity']
 
-#     match = Portfolio.query.filter(Portfolio.ticker == ticker).all()
-#     print(match)
+    match = Portfolio.query.filter(Portfolio.ticker == ticker).first()
+    print("FLAAAAG 1", quantity)
+    print("FLAAAAG 2", match.quantity)
+    if (int(quantity) == int(match.quantity)):
+        db.session.delete(match)
+        db.session.commit()
+    elif (int(quantity) < int(match.quantity)):
+        match.quantity = int(match.quantity) - int(quantity)
+        db.session.commit()
+    else:
+        print("Error!")
 
-    # print("MATCHED", match[Portfolio.quantity])
-    # if len(match) > 1:
-    #     print("??????????????","True")
-    # else:
-    #     print("??????????????", "False")
+    return "successful delete!"
