@@ -13,6 +13,7 @@ import { Animation } from './components/Animation'
 import { Canvas } from '@react-three/fiber';
 import Portfolio from './components/Portfolio';
 import StockDetail from './components/StockDetail';
+import ProfileDisplay from './components/ProfilePage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,6 +41,10 @@ function App() {
 
         <ProtectedRoute path='/stonk/:ticker' exact={true}>
           <StockDetail />
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/my-profile' exact={true}>
+          <ProfileDisplay />
         </ProtectedRoute>
 
         <Route path='/' exact={true} >

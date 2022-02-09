@@ -16,6 +16,10 @@ body {
 }
 
 .all__links {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
     margin-bottom: 0.5%;
 }
 
@@ -24,6 +28,13 @@ body {
     font-size: 14.5pt;
     font-weight: bold;
     margin-right: 6%;
+    display: flex;
+    flex-direction: row;
+}
+
+.my__cash {
+    padding-left: 5%;
+    color: rgb(0, 221, 0);
 }
 
 .navbar {
@@ -78,16 +89,18 @@ body {
 .menuNav.showMenu1 {
     border: 2px solid rgb(136, 136, 136);
     margin-top: 3%;
-    width: 100%;
+    width: 110%;
     background-color: rgb(87, 87, 87);}
 
 .menuNav.showMenu2 {
     border: 2px solid rgb(136, 136, 136);
     margin-top: 3%;
-    width: 100%;
+    width: 148%;
     background-color: rgb(87, 87, 87);}
 
 #learn__container {
+    position: absolute;
+    top: 125%;
     padding: 0;
     z-index: 1000;
     min-height: 90px;
@@ -96,6 +109,8 @@ body {
 
 #whoweare__container {
     /* margin: 0; */
+    position: absolute;
+    top: 125%;
     padding: 0;
     z-index: 1000;
     min-height: 221px;
@@ -141,7 +156,7 @@ body {
 }
 
 .logo {
-    color: rgb(0, 199, 0);
+    color: rgb(0, 221, 0);
     transform: scale(2.5);
 }
 
