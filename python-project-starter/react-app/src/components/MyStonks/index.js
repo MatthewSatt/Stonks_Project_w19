@@ -4,7 +4,7 @@ const MyStonks = ({portfolios}) => {
 
 
 
-    console.log("PORT", portfolios)
+    // console.log("PORT", portfolios)
     let stocksArr = Object.values(portfolios)
     console.log("PORTttttttttttttt", stocksArr)
     return (

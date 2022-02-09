@@ -19,16 +19,16 @@ export const getStockDetails = (ticker) => async (dispatch) => {
 }
 
 
-const ADD_STONK = 'stock/ADD_STONK'
+const EDIT_STONK = 'stock/EDIT_STONK'
 
-export const addStonk = (stonk) => {
+export const edit = (stonk) => {
     return {
-        type: ADD_STONK,
+        type: EDIT_STONK,
         stonk
     }
 }
 
-export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
+export const editStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     console.log(ticker, 'Store Ticker')
     console.log(quantity)
     console.log(price)
@@ -47,8 +47,40 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     })
     if(res.ok) {
         let data = await res.json()
-        console.log(data)
-        dispatch(addStonk(data))
+        console.log("DATA IN STORE", data)
+        dispatch(edit(data))
+    } else {
+        console.log("it's your STORE!!!!!!")
+    }
+}
+
+const BUY_STONK = "stock/BUY_STONK"
+
+export const buy = (stonk) => {
+    return {
+        type: BUY_STONK,
+        stonk
+    }
+}
+
+export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
+    console.log("IN STORE DISPATCH", ticker)
+    const res = await fetch(`/api/portfolio/new/${ticker}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ticker,
+            quantity,
+            price,
+            id
+        })
+    })
+    if(res.ok) {
+        let data = await res.json()
+        console.log("DATA IN STORE", data)
+        dispatch(buy(data))
     } else {
         console.log("it's your STORE!!!!!!")
     }
@@ -80,6 +112,7 @@ export const sellStonk = (ticker, quantity, id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json()
         await dispatch(sell_action(data.ticker))
+        return
     }
 }
 
@@ -93,14 +126,20 @@ const stockDetailReducer = (state = initialState, action) => {
             newState.stockDetail = action.stockDetails
             return newState
 
-        case ADD_STONK: {
-            return {
+        case BUY_STONK:
+            newState = {
                 ...state,
-                [action.list.id]: {
-                    ...state[action.list.id],
-                }
+                [action.stonk.id]: [action.stonk]
             }
-        }
+            return newState
+
+        case EDIT_STONK:
+            newState = {
+                ...state,
+                [action.stonk.id]: [action.stonk]
+                }
+
+            return newState
 
         case SELL_STONK: {
             const newState = {...state}

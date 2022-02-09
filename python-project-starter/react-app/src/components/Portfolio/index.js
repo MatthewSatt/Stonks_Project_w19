@@ -3,7 +3,7 @@ import MyStonks from '../MyStonks';
 import Watchlist from '../Watchlist';
 import './index.css'
 import { useDispatch, useSelector } from "react-redux";
-import { loadUserPortfolios } from '../../store/portfolio';
+import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
 import PortfolioGraph from "../PortfolioGraph"
 
