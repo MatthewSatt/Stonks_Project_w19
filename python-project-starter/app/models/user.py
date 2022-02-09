@@ -49,7 +49,7 @@ class User(db.Model, UserMixin):
         # recent_date = max(dates)
         most_recent_save = max(d for d in dates if isinstance(d, datetime))
         today = datetime.now()
-        if most_recent_save.replace(tzinfo=None) < today.replace(tzinfo=None):
+        if most_recent_save.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None) < today.replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=None):
             port_val_today = PortfolioValue(value=total_val, date=today, user_id=self.id)
             db.session.add(port_val_today)
             db.session.commit()
