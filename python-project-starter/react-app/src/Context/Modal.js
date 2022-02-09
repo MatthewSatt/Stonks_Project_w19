@@ -30,7 +30,12 @@ export function Modal({ onClose, children }) {
         <div id="modal">
             <div id="modal-background" onClick={onClose} />
             <div id="modal-content">
-                {children}
+                <div id="modal-img">
+                    <img id='img' src='https://firstfinancial.is/wp-content/uploads/2019/10/Design-Investment-Portfolio.jpg' alt='some shit' />
+                </div>
+                <div id='modal-form'>
+                    {children}
+                </div>
             </div>
         </div>,
         modalNode

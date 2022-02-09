@@ -29,7 +29,6 @@ requests = "==2.25.1"
 pandas = "==1.4.0"
 finnhub-python = "==2.4.8"
 flask-apscheduler = "*"
-apscheduler = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
