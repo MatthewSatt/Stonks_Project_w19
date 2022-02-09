@@ -34,7 +34,10 @@ def get_company_stats(ticker):
     except:
         company_stats["employees"] = "N/A"
     company_stats["city"] = object["assetProfile"]["city"]
-    company_stats["state"] = object["assetProfile"]["state"]
+    try:
+        company_stats["state"] = object["assetProfile"]["state"]
+    except:
+        company_stats["state"] = "N/A"
     company_stats["sector"] = object["assetProfile"]["sector"]
     company_stats["volume"] = object["price"]["regularMarketVolume"]["fmt"]
     company_stats["avgvolume"] = object["price"]["averageDailyVolume10Day"]["fmt"]

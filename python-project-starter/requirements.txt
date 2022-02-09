@@ -7,6 +7,7 @@
 
 -i https://pypi.org/simple
 alembic==1.6.5
+apscheduler==3.8.1
 click==7.1.2
 finnhub-python==2.4.8
 flask-cors==3.0.8
