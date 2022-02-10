@@ -38,26 +38,26 @@ const WatchlistTickers = ({list}) => {
 
         return (
             <>
-            <div className='my-stonks-table'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Price</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
-                <tbody>
-            {list.watchlist_tickers.map(ticker => (
-                    <tr key={ticker.id}>
-                            <td>{ticker.ticker}</td>
-                            <td> {ticker.price} </td>
-                            <td> <button className='trash__btn'><FaTrashAlt className='trash__can'/></button> </td>
+            <div className='my-watchlist-table'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Price</th>
+                            <th>Remove</th>
                         </tr>
-                    ))}
-                    </tbody>
-                    </table>
-        </div>
+                    </thead>
+                    <tbody >
+                {list.watchlist_tickers.map(ticker => (
+                        <tr key={ticker.id}>
+                                <td>{ticker.ticker}</td>
+                                <td> {ticker.price} </td>
+                                <td> <button className='trash__btn'><FaTrashAlt className='trash__can'/></button> </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                        </table>
+            </div>
         </>
     )
 }

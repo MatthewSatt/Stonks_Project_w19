@@ -113,19 +113,29 @@ const Portfolio = () => {
                 </div>
             </div>
         <div className='middleside-content'>
-            <div>
-                <h1>Welcome {user.username}</h1>
+            <div >
+                <h1 className='welcome__msg'>Welcome {user.username}</h1>
             </div>
             <div className='middleside'>
                 <h2 id='graphheader'>Balance Over Time</h2>
                 <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+            </div>
+            <div className='new__container'>
+                <h1>News</h1>
+                <div className='news__content'>
+                    <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image'/>
+                    <div className='article__container'>
+                        <p className='news__heading'>This is a heading</p>
+                        <p className='news__article'>This is some story about blah blah blah blah</p>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div className='rightside'>
             <div className='watchlistright'>
                 <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
-                    My Watchlists
+                    <h2>Show My Watchlists</h2>
                 </button>
                 {showWatchlists && (
                     <>

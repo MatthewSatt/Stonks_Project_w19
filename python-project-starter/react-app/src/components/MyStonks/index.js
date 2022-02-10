@@ -15,7 +15,7 @@ const MyStonks = ({portfolios}) => {
                     <tr>
                         <th>TICKR</th>
                         <th>Price</th>
-                        <th>Quanittity</th>
+                        <th>Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
