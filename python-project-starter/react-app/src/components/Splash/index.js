@@ -17,8 +17,13 @@ const Splash = () => {
         history.push('/home')
     }
 
+    const closeMenus = () => {
+
+    }
+
     return (
         <div className='container'>
+            {/* <div className='off__click' onClick={closeMenus}></div> */}
             <div className='content'>
                 <h1> The Stonks </h1>
                 <h3>Investing for everyone</h3>

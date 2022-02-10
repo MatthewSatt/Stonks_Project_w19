@@ -3,11 +3,20 @@
 }
 
 body {
+    height: 100vh;
     margin: 0;
     letter-spacing: normal;
     line-height: 18px;
     -webkit-font-smoothing: antialiased;
 }
+
+/* .off__click {
+    z-index: -99;
+
+    background: transparent;
+    height: 2200px;
+    width: 100%;
+} */
 
 .products__tab, .learn__tab, .whoweare__tab, svg {
     transform: translateY(25%);
@@ -89,14 +98,16 @@ body {
 .menuNav.showMenu1 {
     border: 2px solid rgb(136, 136, 136);
     margin-top: 3%;
-    width: 110%;
-    background-color: rgb(87, 87, 87);}
+    width: 148%;
+    background-color: rgb(87, 87, 87);
+}
 
 .menuNav.showMenu2 {
     border: 2px solid rgb(136, 136, 136);
     margin-top: 3%;
     width: 148%;
-    background-color: rgb(87, 87, 87);}
+    background-color: rgb(87, 87, 87);
+}
 
 #learn__container {
     position: absolute;
@@ -104,11 +115,9 @@ body {
     padding: 0;
     z-index: 1000;
     min-height: 90px;
-    height: 7.1%;
 }
 
 #whoweare__container {
-    /* margin: 0; */
     position: absolute;
     top: 125%;
     padding: 0;
@@ -134,12 +143,9 @@ body {
     text-align: inherit;
     text-decoration: none;
     user-select: auto;
-    -webkit-align-items: center;
     align-items: center;
-    /* background-color: #FFFFFF; */
     border-radius: 21px;
     height: 42px;
-    /* background-color: red; */
 }
 
 .profile-menu:hover {
