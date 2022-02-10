@@ -43,6 +43,7 @@ const WatchlistTickers = ({list}) => {
                     <tr>
                         <th>Ticker</th>
                         <th>Price</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,7 @@ const WatchlistTickers = ({list}) => {
                     <tr key={ticker.id}>
                             <td>{ticker.ticker}</td>
                             <td> {ticker.price} </td>
+                            <td> <button>X</button> </td>
                         </tr>
                     ))}
                     </tbody>
