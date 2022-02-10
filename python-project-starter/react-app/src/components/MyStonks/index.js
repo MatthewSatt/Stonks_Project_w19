@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './index.css'
 const MyStonks = ({portfolios}) => {
 
@@ -20,7 +21,7 @@ const MyStonks = ({portfolios}) => {
                 <tbody>
                     {stocksArr.map((stock) => (
                         <tr key="TEST">
-                            <td>{stock.ticker}</td>
+                            <td><Link id='linktostonk' to={`stonk/${stock.ticker}`}>{stock.ticker}</Link></td>
                             <td> {stock["current_price"]} </td>
                             <td> {stock.quantity} </td>
                         </tr>
