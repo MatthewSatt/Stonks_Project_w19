@@ -78,27 +78,35 @@ const Portfolio = () => {
     //End code needed for the graph
 
     return (
-        <>
-        <div>
-            <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+        <div className='home-page'>
+            <div className='leftside'>
+                <button
+                    onClick={(e) => setStonks(!showStonks)}
+                    className="portfolioleft"
+                >
+                    My Stonks
+                </button>
+
+                {showStonks && <MyStonks portfolios={portfolios} />}
+            </div>
+        <div className='middleside-content'>
+            <div>
+                <h1>Welcome {user.username}</h1>
+            </div>
+            <div className='middleside'>
+                <h2>Balance Over Time</h2>
+                <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+            </div>
         </div>
 
-        <div className='accordion-container'>
+        <div className='rightside'>
 
-            <button
-                onClick={(e) => setStonks(!showStonks)}
-                className={'accordion'}
-            >
-                My Stonks
-            </button>
-
-            {showStonks && <MyStonks portfolios={portfolios} />}
 
             {watchlist.map((list, i) => (
 
                 <button
                     onClick={(e) => setWatchlist(!showWatchlist)}
-                    className="accordion"
+                    className="watchlistright"
                 >
                     {list}
                 </button>
@@ -111,9 +119,11 @@ const Portfolio = () => {
 
         </div >
 
-        </>
+        </div>
         )
 
 };
 
 export default Portfolio;
+
+
