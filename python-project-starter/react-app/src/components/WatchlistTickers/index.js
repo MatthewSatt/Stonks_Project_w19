@@ -6,7 +6,8 @@ import Tickers from './tickers';
 const WatchlistTickers = ({list}) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
-
+    const [stonkTickers, setStonkTickers] = useState("")
+    const [isLoaded, setIsLoaded] = useState(false)
     // const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
 
     // useEffect(() => {
@@ -23,9 +24,30 @@ const WatchlistTickers = ({list}) => {
     // }, [dispatch])
 
 
-    return (
-        <>
-            {list.watchlist_tickers.map(ticker => (
+
+    let tickerArr = list.watchlist_tickers.map(ticker => {
+        return ticker["ticker"]
+    })
+
+    console.log("TICKERARRRRR", tickerArr)
+
+
+    useEffect(() => {
+        async function getValues() {
+          const response = await fetch(`/api/stonk/user/${tickerArr}`);
+          const values = await response.json();
+          setStonkTickers(values)
+          setIsLoaded(true)
+        }
+        getValues()
+      }, [list]);
+
+      console.log("STONK TICKERSSS", stonkTickers)
+
+    if (isLoaded){
+        return (
+            <>
+            {stonkTickers.map(ticker => (
 
             <div className='my-stonks-table'>
             <table>
@@ -37,8 +59,8 @@ const WatchlistTickers = ({list}) => {
                 </thead>
                 <tbody>
                     <tr key={ticker.id}>
-                            <td>{ticker.ticker}</td>
-                            <td> {ticker.price} </td>
+                            <td>{ticker[0]}</td>
+                            <td> {ticker[1]} </td>
                         </tr>
                     </tbody>
                     </table>
@@ -48,6 +70,13 @@ const WatchlistTickers = ({list}) => {
 
         </>
     )
+} else return (
+<>
+<div className='my-stonks-table'>
+Loading...
+</div>
+
+</>)
 }
 
 export default WatchlistTickers

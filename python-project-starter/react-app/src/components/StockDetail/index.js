@@ -42,37 +42,29 @@ const StockDetail = () => {
         const handleBuy = async (e) => {
             // const tickernum = parseInt(ticker.ticker, 10)
             e.preventDefault()
-        console.log("ticker", ticker)
-        console.log("keyed in ticker", ticker.ticker)
-        console.log("quantity", ref.current.value)
-        console.log("price", price)
-        console.log("USERID IN COMPONENT", user.id)
+
         const portfolioValues = Object.values(portfolios)
         let ticker_filter = portfolioValues.filter(item =>{
             if (item.ticker === ticker.ticker){
                 return item
             }
         })
-        console.log("TICKER FILTER", ticker_filter)
         if (ticker_filter.length){
             await dispatch(editStonk(ticker_filter, ref.current.value))
             history.push("/home")
         }
 
         if (!ticker_filter.length){
-            console.log("BEFORE DISPATCH IN COMPONENT")
                 await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
                 history.push("/home")
             }
         }
 
 
-    console.log("USERID OUTSIDE OF FUNC", user.id)
 
     const handleSell = async (e) => {
         e.preventDefault()
         const portfolioValues = Object.values(portfolios)
-        console.log("PORTFOLIO VALUES", portfolioValues)
         let ticker_filter = portfolioValues.filter(item =>{
             if (item.ticker === ticker.ticker){
                 return item

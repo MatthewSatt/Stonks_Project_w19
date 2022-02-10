@@ -20,13 +20,6 @@ const Watchlist = ({list}) => {
 
 
     //Returns the watchlist and the tickers associated with it.
-    console.log("LISSSSSSSST", list)
-
-    const data = [
-        { ticker: "TSLA", price: 19 },
-        { ticker: "NASQ", price: 19 },
-        { ticker: "SNAP", price: 25 }
-    ]
 
     return (
         <>
