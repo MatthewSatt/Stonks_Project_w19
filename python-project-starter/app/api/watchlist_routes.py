@@ -39,9 +39,13 @@ def deleteWatchlist(watchlistId):
 
 
 
-@watchlist_routes.route("/<int:watchlistId>/edit", methods=['PUT'])
+@watchlist_routes.route("/edit/<int:id>", methods=['PUT'])
 @login_required
-def change_watchlist_name(watchlistId):
-    watchlist = Watchlist.query.get(watchlistId)
-    form = EditWatchlist()
-    return 'Incomplete'
+def change_watchlist_name(id):
+    object = request.json
+    watchlist = Watchlist.query.get(id)
+    watchlist.name = object['newName']
+
+    db.session.add(watchlist)
+    db.session.commit()
+    return watchlist.to_dict()

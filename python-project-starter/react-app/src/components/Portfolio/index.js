@@ -123,7 +123,7 @@ const Portfolio = () => {
                 onClick={(e) => setShowWatchlists(!showWatchlists)}
                 className={'accordion'}
             >
-                Watchlist
+                My Watchlists
             </button>
             {showWatchlists && (
                 <>

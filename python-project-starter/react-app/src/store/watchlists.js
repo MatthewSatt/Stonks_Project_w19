@@ -1,6 +1,7 @@
 const LOAD_WATCHLISTS = "watchlist/LOAD_WATCHLISTS"
 const ADD_WATCHLIST = "watchlist/ADD_WATCHLIST"
 const DELETE_WATCHLIST = "watchlist/DELETE_WATCHLIST"
+const EDIT_WATCHLIST = "watchlist/EDIT_WATCHLIST"
 
 const loadWatchlists = (watchlists) => {
     return {
@@ -20,6 +21,29 @@ const delList = (watchlistId) => {
     return {
         type: DELETE_WATCHLIST,
         watchlistId
+    }
+}
+
+const edit = (watchlist) => {
+    return {
+        type: EDIT_WATCHLIST,
+        watchlist
+    }
+}
+
+export const editWatchlist = (id, newName) => async (dispatch) =>{
+    const res = await fetch(`/api/watchlist/edit/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            newName,
+            id
+        })
+    })
+    if (res.ok){
+        const editedWatchlist = await res.json();
+        dispatch(edit(editedWatchlist))
+        return editedWatchlist
     }
 }
 
@@ -82,6 +106,13 @@ const watchlistReducer = (state = initialState, action) => {
                 [action.watchlist.id]: action.watchlist
             }
             return newState;
+        case EDIT_WATCHLIST:
+            newState = {
+                ...state,
+                [action.watchlist.id]: action.watchlist
+            }
+            return newState
+
         case DELETE_WATCHLIST: {
             newState = { ...state };
             delete newState[action.watchlistId];
