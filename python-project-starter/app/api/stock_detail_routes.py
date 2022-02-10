@@ -90,33 +90,33 @@ def get_company_stats(ticker):
 
 #We may no longer need to pull prices since the portfolio model now pulls price.
 
-@stock_detail_routes.route("/user/<tickers>")
-def get_values(tickers):
+# @stock_detail_routes.route("/user/<tickers>")
+# def get_values(tickers):
 
-    ticker_list = tickers.split(",")
-    ticker_array = []
-    [ticker_array.append(i) for i in ticker_list]
+#     ticker_list = tickers.split(",")
+#     ticker_array = []
+#     [ticker_array.append(i) for i in ticker_list]
 
-    company_stats = {}
+#     company_stats = {}
 
-    for x in range(len(ticker_array)):
+#     for x in range(len(ticker_array)):
 
-        url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
+#         url = "https://yh-finance.p.rapidapi.com/stock/v2/get-profile"
 
-        querystring = {"symbol": ticker_array[x].upper(),"region":"US"}
+#         querystring = {"symbol": ticker_array[x].upper(),"region":"US"}
 
-        headers = {
-            'x-rapidapi-host': "yh-finance.p.rapidapi.com",
-            'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
-            }
+#         headers = {
+#             'x-rapidapi-host': "yh-finance.p.rapidapi.com",
+#             'x-rapidapi-key': os.environ.get("RAPID_API_KEY")
+#             }
 
-        response = requests.request("GET", url, headers=headers, params=querystring)
+#         response = requests.request("GET", url, headers=headers, params=querystring)
 
-        object = response.json()
+#         object = response.json()
 
-        company_stats[ticker_array[x]] = object["price"]["regularMarketPrice"]["raw"]
-    print("COMPANYYYYY", company_stats)
-    obj_list = []
-    for key, val in company_stats.items():
-        obj_list.append([key, val])
-    return jsonify(obj_list)
+#         company_stats[ticker_array[x]] = object["price"]["regularMarketPrice"]["raw"]
+#     print("COMPANYYYYY", company_stats)
+#     obj_list = []
+#     for key, val in company_stats.items():
+#         obj_list.append([key, val])
+#     return jsonify(obj_list)
