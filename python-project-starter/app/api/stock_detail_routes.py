@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 import requests
 import os
 import pandas as pd
@@ -115,3 +115,8 @@ def get_company_stats(ticker):
 #         object = response.json()
 
 #         company_stats[ticker_array[x]] = object["price"]["regularMarketPrice"]["raw"]
+#     print("COMPANYYYYY", company_stats)
+#     obj_list = []
+#     for key, val in company_stats.items():
+#         obj_list.append([key, val])
+#     return jsonify(obj_list)

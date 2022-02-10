@@ -18,11 +18,20 @@ def seed_watchlist_tickers():
     disney = WatchlistTicker(
         ticker="DIS", watchlist_id=3)
 
+    dis = WatchlistTicker(
+        ticker="DIS", watchlist_id=4)
+
+    mtdr = WatchlistTicker(
+        ticker="MTDR", watchlist_id=4)
+
+
     db.session.add(apple)
     db.session.add(tesla)
     db.session.add(facebook)
     db.session.add(google)
     db.session.add(disney)
+    db.session.add(dis)
+    db.session.add(mtdr)
     db.session.commit()
 
 def undo_watchlist_tickers():

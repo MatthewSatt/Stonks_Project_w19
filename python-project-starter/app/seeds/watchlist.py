@@ -6,6 +6,9 @@ def seed_watchlists():
     user_watchlist1 = Watchlist(
         name="Great_Stonks", user_id=1)
 
+    user_watchlist4 = Watchlist(
+        name="Yolos", user_id=1)
+
     user_watchlist2 = Watchlist(
         name="Great_Stonks", user_id=2)
 
@@ -15,6 +18,7 @@ def seed_watchlists():
     db.session.add(user_watchlist1)
     db.session.add(user_watchlist2)
     db.session.add(user_watchlist3)
+    db.session.add(user_watchlist4)
     db.session.commit()
 
 def undo_watchlists():

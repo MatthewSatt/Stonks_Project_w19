@@ -61,11 +61,9 @@ def delete_stonky(**args):
     ticker = request.json["ticker"]
     quantity = request.json['quantity']
     user_id = request.json['id']
-    print("USER_IDDD", user_id)
 
     # match = Portfolio.query.filter(Portfolio.user_id == user_id).all()
     match = Portfolio.query.filter(Portfolio.ticker == ticker).first() and Portfolio.query.filter(Portfolio.user_id == user_id).first()
-    print("MATCHHH", match)
     db.session.delete(match)
     db.session.commit()
     return match.to_dict()

@@ -1,4 +1,7 @@
 const LOAD_WATCHLISTS = "watchlist/LOAD_WATCHLISTS"
+const ADD_WATCHLIST = "watchlist/ADD_WATCHLIST"
+const DELETE_WATCHLIST = "watchlist/DELETE_WATCHLIST"
+const EDIT_WATCHLIST = "watchlist/EDIT_WATCHLIST"
 
 const loadWatchlists = (watchlists) => {
     return {
@@ -6,6 +9,63 @@ const loadWatchlists = (watchlists) => {
         watchlists
     }
 }
+
+const add = (watchlist) => {
+    return {
+        type: ADD_WATCHLIST,
+        watchlist
+    }
+}
+
+const delList = (watchlistId) => {
+    return {
+        type: DELETE_WATCHLIST,
+        watchlistId
+    }
+}
+
+const edit = (watchlist) => {
+    return {
+        type: EDIT_WATCHLIST,
+        watchlist
+    }
+}
+
+export const editWatchlist = (id, newName) => async (dispatch) =>{
+    const res = await fetch(`/api/watchlist/edit/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            newName,
+            id
+        })
+    })
+    if (res.ok){
+        const editedWatchlist = await res.json();
+        dispatch(edit(editedWatchlist))
+        return editedWatchlist
+    }
+}
+
+
+export const addWatchlist = (newName, user_id) => async (dispatch) =>{
+    console.log("WATHCLIST NAME IN STORE", newName, user_id)
+    const res = await fetch(`/api/watchlist/new`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            newName,
+            user_id
+        })
+    })
+    if (res.ok){
+        const result = await res.json();
+        console.log("RESULT IN STORE", result)
+        dispatch(add(result))
+        return result
+    }
+}
+
 
 export const loadUserWatchlists = (userId) => async (dispatch) => {
     const res = await fetch(`/api/watchlist/${userId}`, {
@@ -15,6 +75,16 @@ export const loadUserWatchlists = (userId) => async (dispatch) => {
         const watchlists = await res.json();
         dispatch(loadWatchlists(watchlists))
         return watchlists
+    }
+}
+
+export const delWatchlist = (watchlistId) => async (dispatch) => {
+    const res = await fetch(`/api/watchlist/delete/${watchlistId}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+    })
+    if(res.ok){
+        dispatch(delList(watchlistId))
     }
 }
 
@@ -30,6 +100,25 @@ const watchlistReducer = (state = initialState, action) => {
             })
             return { ...newState, ...state }
         }
+        case ADD_WATCHLIST:
+            newState = {
+                ...state,
+                [action.watchlist.id]: action.watchlist
+            }
+            return newState;
+        case EDIT_WATCHLIST:
+            newState = {
+                ...state,
+                [action.watchlist.id]: action.watchlist
+            }
+            return newState
+
+        case DELETE_WATCHLIST: {
+            newState = { ...state };
+            delete newState[action.watchlistId];
+            return newState
+        }
+
         default:
             return state
     }
