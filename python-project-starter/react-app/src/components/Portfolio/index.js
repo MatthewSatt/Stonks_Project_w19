@@ -5,6 +5,8 @@ import './index.css'
 import { useDispatch, useSelector } from "react-redux";
 import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
+import { loadUserWatchlists } from '../../store/watchlists';
+
 import PortfolioGraph from "../PortfolioGraph"
 
 
@@ -12,12 +14,13 @@ const Portfolio = () => {
     const dispatch = useDispatch();
 
     const [showStonks, setStonks] = useState(false)
-    const [showWatchlist, setWatchlist] = useState(false)
+
 
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
     const user = useSelector(state => state.session.user)
     const portfolios = useSelector(state => state.portfolioReducer)
     const portfolioValues = useSelector(state => state.portfolioValuesReducer)
+    const watchlists = useSelector(state => state.watchlistReducer)
 
     useEffect(() => {
         async function getPortfolios() {
@@ -33,12 +36,21 @@ const Portfolio = () => {
         getPortfolioValues()
     }, [setStonks])
 
+    useEffect(() => {
+        async function getWatchlists() {
+            await dispatch(loadUserWatchlists(user.id))
+        }
+        getWatchlists()
+    }, [])
+
 
     const hideTable = {
         display: 'none',
     }
 
     let portfolioTickers = Object.values(portfolios)
+    let watchlistLists = Object.values(watchlists)
+    console.log(watchlistLists)
 
     let tickerArr = portfolioTickers.map(ticker => {
         return ticker["ticker"]
@@ -94,19 +106,17 @@ const Portfolio = () => {
 
             {showStonks && <MyStonks portfolios={portfolios} />}
 
-            {watchlist.map((list, i) => (
+            {watchlistLists.map(list => (
 
-                <button
-                    onClick={(e) => setWatchlist(!showWatchlist)}
-                    className="accordion"
-                >
-                    {list}
-                </button>
+                <div>
+                    <Watchlist list={list}></Watchlist>
+                </div>
+            ))}
 
 
-))}
 
-            {showWatchlist && <Watchlist />}
+
+
 
 
         </div >
