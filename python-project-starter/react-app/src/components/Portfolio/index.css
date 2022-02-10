@@ -24,18 +24,19 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  transform: scale(1.5);
   background-color: black;
 
 }
-
-
 
 .middleside {
   width: 750px;
   border: 1px solid white;
 }
+
 #graphheader{
-  border: solid 1px white;
+  padding-bottom: 20px;
+  border-bottom: solid 1px white;
 }
 
 .middleside-content {
@@ -45,9 +46,143 @@
 }
 
 .rightside {
+  display: flex;
+  flex-direction: column;
   width: 25%;
+  align-items: center;
 }
 
 .watchlistright {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
   margin-top: 30%;
+}
+
+.watchlist__btn__container {
+  border: 1.5px white solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.add__ticker__btn {
+  color: white;
+  border: none;
+  background: none;
+}
+
+.plus__sign {
+  transform: scale(1.3);
+  color: white;
+}
+
+.plus__sign:hover {
+  color: rgb(0, 223, 0);
+}
+
+.edit__watchlist__btn {
+  color: white;
+  border: none;
+  background: none;
+}
+
+.edit__pen {
+  transform: scale(1.3);
+  color: white;
+}
+
+.edit__pen:hover {
+  color: rgb(255, 255, 0);
+}
+
+.trash__btn {
+  color: white;
+  border: none;
+  background: none;
+}
+
+.trash {
+  transform: scale(1.3);
+  color: white;
+}
+
+.trash:hover {
+  color: rgb(233, 29, 29);
+}
+
+.accordion {
+  color: white;
+  border: none;
+  background: none;
+  width: 40%;
+}
+
+.accordion:hover {
+  color: rgb(0, 223, 0);
+}
+
+.trash__can {
+  color: red;
+}
+
+.trash__can:hover {
+  transform: scale(1.02);
+}
+
+.add__new__watchlist {
+  color: rgb(0, 223, 0);
+  transform: scale(2.25);
+}
+
+
+.my__watchlists__btn {
+  font-size: 16pt;
+  border: 1.5px white solid;
+  padding: 20px;
+  color: black;
+  background-color: rgb(0, 199, 0);
+}
+
+.add__watchlist__btn {
+  border: 1.5px white solid;
+  padding: 25px;
+  background: none;
+}
+
+.add__watchlist__input {
+  padding-left: 15px;
+  height: 35px;
+  width: 300px;
+}
+
+.add__list__container {
+  border: 1.5px white solid;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.submit__watchlist__btn {
+  font-size: 12pt;
+  margin-left: 15px;
+  background: none;
+  border: none;
+  color: rgb(0, 199, 0);
+}
+
+.submit__watchlist__btn:hover {
+  color: white;
+}
+
+.edit__watchlist__container {
+  border: 1.5px white solid;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.edit__watchlist__input {
+  padding-left: 15px;
+  height: 35px;
+  width: 300px;
 }

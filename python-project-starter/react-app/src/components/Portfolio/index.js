@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
 import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
+import { FaPlus } from "react-icons/fa";
 
 import PortfolioGraph from "../PortfolioGraph"
 
@@ -122,39 +123,37 @@ const Portfolio = () => {
         </div>
 
         <div className='rightside'>
+            <div className='watchlistright'>
+                <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
+                    My Watchlists
+                </button>
+                {showWatchlists && (
+                    <>
+                    {watchlistLists.map(list => (
 
-            <button
-                onClick={(e) => setShowWatchlists(!showWatchlists)}
-                className='watchlistright'
-            >
-                My Watchlists
-            </button>
-            {showWatchlists && (
-                <>
-                {watchlistLists.map(list => (
-
-                    <div className='eachwatchlist'>
-                    <Watchlist list={list}></Watchlist>
-                </div>
-            ))}
-            </>
-            )}
-            <button onClick={(e) => setShowForm(!showForm)}>Add New Watchlist</button>
-            {showForm && (
-                <form onSubmit={handleWatchListSubmit}>
-                <div>
-                    <input
-                    name="Watchlist"
-                    placeholder='Watchlist Name..'
-                    value={watchlistName}
-                    onChange={e => setWatchlistName(e.target.value)}
-                    >
-                    </input>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-            )}
-
+                        <div className='eachwatchlist'>
+                        <Watchlist list={list}></Watchlist>
+                    </div>
+                ))}
+                </>
+                )}
+                <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist'/></button>
+                {showForm && (
+                    <form onSubmit={handleWatchListSubmit}>
+                    <div className='add__list__container'>
+                        <input
+                        className='add__watchlist__input'
+                        name="Watchlist"
+                        placeholder='Watchlist Name..'
+                        value={watchlistName}
+                        onChange={e => setWatchlistName(e.target.value)}
+                        >
+                        </input>
+                        <button className='submit__watchlist__btn' type="submit">Submit</button>
+                    </div>
+                </form>
+                )}
+            </div>
         </div >
 
         </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { loadWatchlistTickers } from '../../store/watchlistTickers';
 import Tickers from './tickers';
+import { FaTrashAlt } from "react-icons/fa";
 
 const WatchlistTickers = ({list}) => {
     const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const WatchlistTickers = ({list}) => {
                     <tr key={ticker.id}>
                             <td>{ticker.ticker}</td>
                             <td> {ticker.price} </td>
-                            <td> <button>X</button> </td>
+                            <td> <button className='trash__btn'><FaTrashAlt className='trash__can'/></button> </td>
                         </tr>
                     ))}
                     </tbody>
