@@ -14,6 +14,7 @@ const Portfolio = () => {
     const dispatch = useDispatch();
 
     const [showStonks, setStonks] = useState(false)
+    const [showWatchlists, setShowWatchlists] = useState(false)
 
 
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
@@ -105,18 +106,23 @@ const Portfolio = () => {
 
             {showStonks && <MyStonks portfolios={portfolios} />}
 
-            {watchlistLists.map(list => (
+            <button
+                onClick={(e) => setShowWatchlists(!showWatchlists)}
+                className={'accordion'}
+            >
+                Watchlist
+            </button>
+            {showWatchlists && (
+                <>
+                {watchlistLists.map(list => (
 
-                <div>
+                    <div>
                     <Watchlist list={list}></Watchlist>
                 </div>
             ))}
-
-
-
-
-
-
+            </>
+            )}
+            <button>Add New Watchlist</button>
 
         </div >
 
