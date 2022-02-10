@@ -22,7 +22,6 @@ const Watchlist = ({list}) => {
     const handleDelete = (e) => {
         e.preventDefault();
         let watchlistId = list.id
-        console.log("WATCHLISTID IN COMPONENT", watchlistId)
         dispatch(delWatchlist(watchlistId))
     }
 
@@ -30,7 +29,6 @@ const Watchlist = ({list}) => {
         e.preventDefault();
         const id = list.id;
         const newName = newWatchlistName;
-        console.log("IDDDD", id, newName)
         dispatch(editWatchlist(id, newName))
         setShowEditForm(!showEditForm)
     }
