@@ -24,21 +24,14 @@ def new_watchlist():
     db.session.add(newWatchlist)
     db.session.commit()
     return newWatchlist.to_dict()
-    # if form.validate_on_submit():
-    #     watch = Watchlist(
-    #         name = form.name.data()
-    #     ),
-    #     db.session.add(watch)
-        # db.session.commit()
-        # return watch.to_dict()
 
 
 
 
-@watchlist_routes.route("/<int:watchlistId>/delete", methods=['DELETE'])
+@watchlist_routes.route("/delete/<int:watchlistId>", methods=['DELETE'])
 @login_required
 def deleteWatchlist(watchlistId):
-    watchlist = Watchlist.query.filter_by(id=watchlistId).first()
+    watchlist = Watchlist.query.get(watchlistId)
 
     db.session.delete(watchlist)
     db.session.commit()

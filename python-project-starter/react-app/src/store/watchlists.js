@@ -1,5 +1,6 @@
 const LOAD_WATCHLISTS = "watchlist/LOAD_WATCHLISTS"
 const ADD_WATCHLIST = "watchlist/ADD_WATCHLIST"
+const DELETE_WATCHLIST = "watchlist/DELETE_WATCHLIST"
 
 const loadWatchlists = (watchlists) => {
     return {
@@ -14,6 +15,14 @@ const add = (watchlist) => {
         watchlist
     }
 }
+
+const delList = (watchlistId) => {
+    return {
+        type: DELETE_WATCHLIST,
+        watchlistId
+    }
+}
+
 
 export const addWatchlist = (newName, user_id) => async (dispatch) =>{
     console.log("WATHCLIST NAME IN STORE", newName, user_id)
@@ -45,6 +54,16 @@ export const loadUserWatchlists = (userId) => async (dispatch) => {
     }
 }
 
+export const delWatchlist = (watchlistId) => async (dispatch) => {
+    const res = await fetch(`/api/watchlist/delete/${watchlistId}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+    })
+    if(res.ok){
+        dispatch(delList(watchlistId))
+    }
+}
+
 const initialState = {};
 
 const watchlistReducer = (state = initialState, action) => {
@@ -63,6 +82,11 @@ const watchlistReducer = (state = initialState, action) => {
                 [action.watchlist.id]: action.watchlist
             }
             return newState;
+        case DELETE_WATCHLIST: {
+            newState = { ...state };
+            delete newState[action.watchlistId];
+            return newState
+        }
 
         default:
             return state

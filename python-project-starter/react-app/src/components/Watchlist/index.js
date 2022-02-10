@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../MyStonks/index.css'
 import { useDispatch, useSelector } from "react-redux";
-import { loadUserWatchlists } from '../../store/watchlists';
+import { loadUserWatchlists, delWatchlist } from '../../store/watchlists';
 import WatchlistTickers from '../WatchlistTickers';
 
 
@@ -17,7 +17,12 @@ const Watchlist = ({list}) => {
     //     }
     //     getWatchlists()
     // }, [])
-
+    const handleDelete = (e) =>{
+        e.preventDefault();
+        let watchlistId = list.id
+        console.log("WATCHLISTID IN COMPONENT", watchlistId)
+        dispatch(delWatchlist(watchlistId))
+    }
 
     //Returns the watchlist and the tickers associated with it.
 
@@ -38,7 +43,7 @@ const Watchlist = ({list}) => {
         <button>Add New Ticker to {list.name}</button>
         </div>
         <div>
-        <button>Delete {list.name}</button>
+        <button onClick={handleDelete}>Delete {list.name}</button>
         </div>
 
         </>

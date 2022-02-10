@@ -16,6 +16,7 @@ const Portfolio = () => {
     const [showStonks, setStonks] = useState(false)
     const [showWatchlists, setShowWatchlists] = useState(false)
     const [watchlistName, setWatchlistName] = useState("")
+    const [showForm, setShowForm] = useState(false)
 
 
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
@@ -52,6 +53,8 @@ const Portfolio = () => {
         console.log("NEW NAMEEEE", newName)
         console.log("USERIDDDD", user_id)
         dispatch(addWatchlist(newName, user_id))
+        setWatchlistName("")
+        setShowForm(!showForm)
     }
 
 
@@ -132,7 +135,9 @@ const Portfolio = () => {
             ))}
             </>
             )}
-            <form onSubmit={handleWatchListSubmit}>
+            <button onClick={(e) => setShowForm(!showForm)}>Add New Watchlist</button>
+            {showForm && (
+                <form onSubmit={handleWatchListSubmit}>
                 <div>
                     <input
                     name="Watchlist"
@@ -141,9 +146,10 @@ const Portfolio = () => {
                     onChange={e => setWatchlistName(e.target.value)}
                     >
                     </input>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
-            {/* <button onClick={handleSubmit}>Add New Watchlist</button> */}
+            )}
 
         </div >
 
