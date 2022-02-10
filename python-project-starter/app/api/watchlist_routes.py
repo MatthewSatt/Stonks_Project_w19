@@ -17,15 +17,21 @@ def load_user_watchlist(user_id):
 @watchlist_routes.route('/new', methods=['POST'])
 @login_required
 def new_watchlist():
-    form = New_Watchlist()
-    if form.validate_on_submit():
-        watch = Watchlist(
-            name = form.name.data()
-        ),
-        db.session.add(watch)
-        db.session.commit()
-        return watch.to_dict()
-    return 'Unable to post New Watchlist'
+    object = request.json
+    name = object['newName']
+    user_id = object['user_id']
+    newWatchlist = Watchlist(name=name, user_id=user_id)
+    db.session.add(newWatchlist)
+    db.session.commit()
+    return newWatchlist.to_dict()
+    # if form.validate_on_submit():
+    #     watch = Watchlist(
+    #         name = form.name.data()
+    #     ),
+    #     db.session.add(watch)
+        # db.session.commit()
+        # return watch.to_dict()
+
 
 
 

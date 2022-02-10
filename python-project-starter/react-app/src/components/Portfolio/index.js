@@ -5,7 +5,7 @@ import './index.css'
 import { useDispatch, useSelector } from "react-redux";
 import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
-import { loadUserWatchlists } from '../../store/watchlists';
+import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
 
 import PortfolioGraph from "../PortfolioGraph"
 
@@ -15,6 +15,7 @@ const Portfolio = () => {
 
     const [showStonks, setStonks] = useState(false)
     const [showWatchlists, setShowWatchlists] = useState(false)
+    const [watchlistName, setWatchlistName] = useState("")
 
 
     const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
@@ -43,6 +44,15 @@ const Portfolio = () => {
         }
         getWatchlists()
     }, [])
+
+    const handleWatchListSubmit = (e) =>{
+        e.preventDefault();
+        const newName = watchlistName
+        let user_id = user.id
+        console.log("NEW NAMEEEE", newName)
+        console.log("USERIDDDD", user_id)
+        dispatch(addWatchlist(newName, user_id))
+    }
 
 
     const hideTable = {
@@ -122,7 +132,18 @@ const Portfolio = () => {
             ))}
             </>
             )}
-            <button>Add New Watchlist</button>
+            <form onSubmit={handleWatchListSubmit}>
+                <div>
+                    <input
+                    name="Watchlist"
+                    placeholder='Watchlist Name..'
+                    value={watchlistName}
+                    onChange={e => setWatchlistName(e.target.value)}
+                    >
+                    </input>
+                </div>
+            </form>
+            {/* <button onClick={handleSubmit}>Add New Watchlist</button> */}
 
         </div >
 
