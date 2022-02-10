@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Watchlist, db
+from app.models import Watchlist, db, WatchlistTicker
 from app.forms import New_Watchlist
 from app.forms import EditWatchlist
 
@@ -17,32 +17,38 @@ def load_user_watchlist(user_id):
 @watchlist_routes.route('/new', methods=['POST'])
 @login_required
 def new_watchlist():
-    form = New_Watchlist()
-    if form.validate_on_submit():
-        watch = Watchlist(
-            name = form.name.data()
-        ),
-        db.session.add(watch)
-        db.session.commit()
-        return watch.to_dict()
-    return 'Unable to post New Watchlist'
+    object = request.json
+    name = object['newName']
+    user_id = object['user_id']
+    newWatchlist = Watchlist(name=name, user_id=user_id)
+    db.session.add(newWatchlist)
+    db.session.commit()
+    return newWatchlist.to_dict()
 
 
 
-@watchlist_routes.route("/<int:watchlistId>/delete", methods=['DELETE'])
+
+@watchlist_routes.route("/delete/<int:watchlistId>", methods=['DELETE'])
 @login_required
 def deleteWatchlist(watchlistId):
-    watchlist = Watchlist.query.filter_by(id=watchlistId).first()
-
+    watchlist = Watchlist.query.get(watchlistId)
+    tickers = WatchlistTicker.query.filter(WatchlistTicker.watchlist_id == watchlistId).all()
+    for ticker in tickers:
+        db.session.delete(ticker)
+        db.session.commit()
     db.session.delete(watchlist)
     db.session.commit()
     return watchlist.to_dict()
 
 
 
-@watchlist_routes.route("/<int:watchlistId>/edit", methods=['PUT'])
+@watchlist_routes.route("/edit/<int:id>", methods=['PUT'])
 @login_required
-def change_watchlist_name(watchlistId):
-    watchlist = Watchlist.query.get(watchlistId)
-    form = EditWatchlist()
-    return 'Incomplete'
+def change_watchlist_name(id):
+    object = request.json
+    watchlist = Watchlist.query.get(id)
+    watchlist.name = object['newName']
+
+    db.session.add(watchlist)
+    db.session.commit()
+    return watchlist.to_dict()
