@@ -47,7 +47,6 @@ const WatchlistTickers = ({list}) => {
     if (isLoaded){
         return (
             <>
-            {stonkTickers.map(ticker => (
 
             <div className='my-stonks-table'>
             <table>
@@ -58,14 +57,15 @@ const WatchlistTickers = ({list}) => {
                     </tr>
                 </thead>
                 <tbody>
+            {stonkTickers.map(ticker => (
                     <tr key={ticker.id}>
                             <td>{ticker[0]}</td>
                             <td> {ticker[1]} </td>
                         </tr>
+                    ))}
                     </tbody>
                     </table>
         </div>
-            ))}
          {/* <Tickers watchlistTickers={watchlistTickers} /> */}
 
         </>
