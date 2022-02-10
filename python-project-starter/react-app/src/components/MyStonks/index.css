@@ -21,3 +21,11 @@ td{
 th{
     background-color: green;
 }
+
+.tablestonks {
+    display: flex;
+    flex-direction: column;
+    transition: ease-in-out;
+    gap: 10px;
+    background-color: black;
+}
