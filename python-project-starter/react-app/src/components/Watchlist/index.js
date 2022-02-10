@@ -34,6 +34,12 @@ const Watchlist = ({list}) => {
                 <WatchlistTickers list={list} />
             )}
         </div>
+        <div>
+        <button>Add New Ticker to {list.name}</button>
+        </div>
+        <div>
+        <button>Delete {list.name}</button>
+        </div>
 
         </>
         )
