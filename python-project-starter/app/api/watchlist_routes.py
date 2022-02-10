@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Watchlist, db
+from app.models import Watchlist, db, WatchlistTicker
 from app.forms import New_Watchlist
 from app.forms import EditWatchlist
 
@@ -32,7 +32,10 @@ def new_watchlist():
 @login_required
 def deleteWatchlist(watchlistId):
     watchlist = Watchlist.query.get(watchlistId)
-
+    tickers = WatchlistTicker.query.filter(WatchlistTicker.watchlist_id == watchlistId).all()
+    for ticker in tickers:
+        db.session.delete(ticker)
+        db.session.commit()
     db.session.delete(watchlist)
     db.session.commit()
     return watchlist.to_dict()
