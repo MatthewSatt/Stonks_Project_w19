@@ -21,3 +21,21 @@ td{
 th{
     background-color: green;
 }
+
+.tablestonks {
+    display: flex;
+    flex-direction: column;
+    transition: ease-in-out;
+    gap: 10px;
+    background-color: black;
+}
+
+#linktostonk {
+    color: white;
+    text-decoration: none;
+}
+
+#linktostonk:hover {
+    color: rgb(66, 227, 34);
+    text-decoration: underline;
+}
