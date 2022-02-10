@@ -4,20 +4,17 @@ import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistT
 
 
 
-const Tickers = ({ticker, list}) => {
+const Tickers = ({ticker, list, handleDeleteTicker}) => {
     const dispatch = useDispatch();
-    // const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
-    const user = useSelector(state => state.session.user)
+    const [showTicker, setShowTicker] = useState(true)
 
-    console.log(list)
-
-    const handleDeleteTicker = (e, id) => {
-        e.preventDefault()
-        console.log("NEW TICKER IN COMPONENT", id)
-        let tickerId = id
-        dispatch(delWatchlistTicker(tickerId))
-        // dispatch(loadWatchlistTickers(list.id))
-    }
+    // const handleDeleteTicker = (e, id) => {
+    //     e.preventDefault()
+    //     console.log("NEW TICKER IN COMPONENT", id)
+    //     let tickerId = id
+    //     dispatch(delWatchlistTicker(tickerId))
+    //     // dispatch(loadWatchlistTickers(list.id))
+    // }
     // useEffect(() => {
     //     async function getTickers() {
     //         await dispatch(loadWatchlistTickers(list.id))
@@ -25,15 +22,20 @@ const Tickers = ({ticker, list}) => {
     //     getTickers()
 
     // }, [])
+
+
     let tickerArr = Object.values(list)
     console.log("TICKER ARR", tickerArr)
     return (
         <>
+                {showTicker && (
+
                     <tr key={ticker.id}>
                             <td>{ticker.ticker}</td>
                             <td> {ticker.price} </td>
-                            <td> <button onClick={(e) => handleDeleteTicker(e, ticker.id)}>X</button> </td>
+                           <td><button onClick={(e) => [handleDeleteTicker(e, ticker.id), setShowTicker(!showTicker)]}>X</button></td>
                         </tr>
+                        )}
         </>
     )
 }
