@@ -19,7 +19,6 @@ const Portfolio = () => {
     const [showForm, setShowForm] = useState(false)
 
 
-    const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
     const user = useSelector(state => state.session.user)
     const portfolios = useSelector(state => state.portfolioReducer)
     const portfolioValues = useSelector(state => state.portfolioValuesReducer)
@@ -50,8 +49,6 @@ const Portfolio = () => {
         e.preventDefault();
         const newName = watchlistName
         let user_id = user.id
-        console.log("NEW NAMEEEE", newName)
-        console.log("USERIDDDD", user_id)
         dispatch(addWatchlist(newName, user_id))
         setWatchlistName("")
         setShowForm(!showForm)

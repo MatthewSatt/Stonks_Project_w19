@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { editStonk, getStockDetails, sellStonk, buyStonk } from '../../store/stockDetails';
 import { loadUserPortfolios } from '../../store/portfolio';
+import { addWatchlistTicker } from '../../store/watchlistTickers';
 import StockGraph from "../StockGraph"
 import "./index.css"
 
@@ -12,9 +13,11 @@ const StockDetail = () => {
     const dispatch = useDispatch();
     const ticker = useParams()
     const ref = useRef()
-
+    const thisTicker = useParams()
     const user = useSelector(state => state.session.user)
     const portfolios = useSelector(state => state.portfolioReducer)
+    const [showAddButton, setShowAddButton] = useState(true)
+
 
     const [cost, setCost] = useState(0)
 
@@ -89,8 +92,24 @@ const StockDetail = () => {
         return null
     }
 
+    const handleAddToWatchlist = async (e) =>{
+        e.preventDefault();
+        const ticker = thisTicker.ticker
+        let watchlistId = 1
+        await dispatch(addWatchlistTicker(ticker, watchlistId))
+        setShowAddButton(!showAddButton)
 
-    console.log(stockDetails)
+    }
+
+
+    const tickerArr = []
+    let forEach = user.watchlists.forEach(list =>{
+         tickerArr.push(...list.watchlist_tickers)
+    })
+
+    let containsTicker = tickerArr.filter(tick =>{
+        return tick.ticker === thisTicker.ticker
+    })
 
     let dates = stockDetails["dates"]
     let values = stockDetails["values"]
@@ -126,7 +145,9 @@ const StockDetail = () => {
                 </div>
             </div>
             <h2>Key Stats</h2>
-            <button className='notabutton'>Add To Watchlist</button>
+            {!containsTicker.length && showAddButton && (
+                <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button>
+            )}
             <div className='all-kpi'>
                 <div className='kpi'><p>Name:</p> {name}</div>
                 <div className='kpi'><p>Price:</p> {price}</div>
