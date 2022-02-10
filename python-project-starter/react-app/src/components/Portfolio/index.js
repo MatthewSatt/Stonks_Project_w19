@@ -103,25 +103,29 @@ const Portfolio = () => {
     //End code needed for the graph
 
     return (
-        <>
-        <div>
-            <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+        <div className='home-page'>
+            <div className='leftside'>
+                <div className='mystonksport'>
+                <h2 id='portheader'>Portfolio</h2>
+                    {<MyStonks portfolios={portfolios} />}
+
+                </div>
+            </div>
+        <div className='middleside-content'>
+            <div>
+                <h1>Welcome {user.username}</h1>
+            </div>
+            <div className='middleside'>
+                <h2 id='graphheader'>Balance Over Time</h2>
+                <PortfolioGraph dates={dateFormatArr} values={valueArr} />
+            </div>
         </div>
 
-        <div className='accordion-container'>
-
-            <button
-                onClick={(e) => setStonks(!showStonks)}
-                className={'accordion'}
-            >
-                My Stonks
-            </button>
-
-            {showStonks && <MyStonks portfolios={portfolios} />}
+        <div className='rightside'>
 
             <button
                 onClick={(e) => setShowWatchlists(!showWatchlists)}
-                className={'accordion'}
+                className='watchlistright'
             >
                 My Watchlists
             </button>
@@ -129,7 +133,7 @@ const Portfolio = () => {
                 <>
                 {watchlistLists.map(list => (
 
-                    <div>
+                    <div className='eachwatchlist'>
                     <Watchlist list={list}></Watchlist>
                 </div>
             ))}
@@ -153,7 +157,7 @@ const Portfolio = () => {
 
         </div >
 
-        </>
+        </div>
         )
 
 };
