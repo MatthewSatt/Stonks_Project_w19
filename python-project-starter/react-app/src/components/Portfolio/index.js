@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
 import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
-
+import { setUser } from '../../store/session'
 import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 
 import { FaPlus } from "react-icons/fa";
@@ -30,6 +30,15 @@ const Portfolio = () => {
     const watchlists = useSelector(state => state.watchlistReducer)
 
     useEffect(() => {
+        async function getUserUpdates()  {
+          const response = await fetch(`/api/users/${user.id}`);
+          const updatedUser = await response.json();
+          await dispatch(setUser(updatedUser))
+      }
+      getUserUpdates()
+    }, [setStonks]);
+
+    useEffect(() => {
         async function getPortfolios() {
             await dispatch(loadUserPortfolios(user.id))
         }
@@ -49,6 +58,9 @@ const Portfolio = () => {
         }
         getWatchlists()
     }, [])
+
+
+
 
 
 
@@ -147,7 +159,7 @@ const Portfolio = () => {
 
 
 
- 
+
 
 
 

@@ -14,18 +14,23 @@ def load_portfolio(user_id):
 @login_required
 def add_stonky(**args):
     object = request.json
-    print("OBJECTTTT", object)
     ticker = request.json["ticker"]
     quantity = request.json['quantity']
     portfolio_id = ticker[0]["id"]
     price_purchased = ticker[0]["current_price"]
+
+
     user_id = ticker[0]['user_id']
-    print("QUANTTTTTTT", quantity)
-    print("PRICE PURCHASSEEEE", price_purchased)
-    cost = float(price_purchased) * quantity
+    cost = float(price_purchased) * int(float(quantity))
+    print("COST", cost)
     user = User.query.get(user_id)
-    print("USERRRRRR", user.cash)
-    print("COSSSST", cost)
+    updated_user_cash = cost * -1
+    print("UPDATED USER CASH", updated_user_cash)
+    current_cash = user.cash
+    new_cash_amount = user.cash + updated_user_cash
+    print("NEWWWWWWCASH", new_cash_amount)
+    user.cash = new_cash_amount
+
     match = Portfolio.query.filter(Portfolio.id == portfolio_id).first()
     match123 = Portfolio.query.get(portfolio_id)
     stock_info = match
@@ -33,11 +38,12 @@ def add_stonky(**args):
     if stock_info:
         stock_info.average_price = ((float(stock_info.average_price) * float(stock_info.quantity)) + (float(price_purchased) * float(quantity))) / (float(stock_info.quantity) + float(quantity))
         stock_info.quantity = int(stock_info.quantity) + int(quantity)
-
-
+    print("USER", user)
+    db.session.add(user)
     db.session.add(stock_info)
     db.session.commit()
-    return stock_info.to_dict()
+    return {"user": user.to_dict(), "stock": stock_info.to_dict()}
+
 
         #     stock_info = Portfolio(
     #         ticker = ticker,

@@ -1,3 +1,4 @@
+import { updateUser } from "./session"
 
 const SET_STOCK_DETAIL = 'stock/setStockDetail'
 
@@ -80,7 +81,8 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     if(res.ok) {
         let data = await res.json()
         console.log("DATA IN STORE", data)
-        dispatch(buy(data))
+        await dispatch(buy(data.stock))
+        await dispatch(updateUser(data.user))
     } else {
         console.log("it's your STORE!!!!!!")
     }
