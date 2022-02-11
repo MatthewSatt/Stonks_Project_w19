@@ -19,7 +19,7 @@ class Portfolio(db.Model):
     def to_dict(self):
 
         #Code to pull the price for the ticker in the portfolio
-        finnhub_client = finnhub.Client(os.environ.get("FINNHUB_API_KEY"))
+        finnhub_client = finnhub.Client(os.environ.get("FINNHUB_API_KEY2"))
 
         price = finnhub_client.quote(self.ticker.upper())
 

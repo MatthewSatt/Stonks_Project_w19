@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Portfolio, db
+from app.models import Portfolio, User, db
 
 portfolio_routes = Blueprint("portfolio", __name__)
 
@@ -19,7 +19,13 @@ def add_stonky(**args):
     quantity = request.json['quantity']
     portfolio_id = ticker[0]["id"]
     price_purchased = ticker[0]["current_price"]
-
+    user_id = ticker[0]['user_id']
+    print("QUANTTTTTTT", quantity)
+    print("PRICE PURCHASSEEEE", price_purchased)
+    cost = float(price_purchased) * quantity
+    user = User.query.get(user_id)
+    print("USERRRRRR", user.cash)
+    print("COSSSST", cost)
     match = Portfolio.query.filter(Portfolio.id == portfolio_id).first()
     match123 = Portfolio.query.get(portfolio_id)
     stock_info = match

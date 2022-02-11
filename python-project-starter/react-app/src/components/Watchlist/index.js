@@ -3,16 +3,24 @@ import '../MyStonks/index.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserWatchlists, delWatchlist, editWatchlist } from '../../store/watchlists';
 import WatchlistTickers from '../WatchlistTickers';
+
+import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
+
+
+const Watchlist = ({list, handleDeleteTicker}) => {
+
 import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 
 const Watchlist = ({ list }) => {
+
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const [showWatchlist, setWatchlist] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
     const [newWatchlistName, setNewWatchlistName] = useState(list.name)
     // const watchlists = useSelector(state => state.watchlistReducer)
+    const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
 
     // useEffect(() => {
     //     async function getWatchlists() {
@@ -34,10 +42,31 @@ const Watchlist = ({ list }) => {
         setShowEditForm(!showEditForm)
     }
 
+
+    // useEffect(() => {
+    //     async function getTickers() {
+    //         await dispatch(loadWatchlistTickers(list.id))
+    //     }
+    //     getTickers()
+
+    // }, [])
+
+
+
+
+
     //Returns the watchlist and the tickers associated with it.
 
     return (
         <>
+
+
+
+
+    
+  
+
+
             <div>
                 <div className='watchlist__btn__container'>
                 <button
@@ -55,6 +84,7 @@ const Watchlist = ({ list }) => {
                     <div>
                         <button className='trash__btn' onClick={handleDelete}><FaTrashAlt className='trash'/> Delete</button>
                     </div>
+
                 </div>
                 {showEditForm && (
                     <form onSubmit={handleEdit}>
@@ -72,7 +102,7 @@ const Watchlist = ({ list }) => {
                     </form>
                 )}
                 {showWatchlist && (
-                    <WatchlistTickers list={list} />
+                    <WatchlistTickers handleDeleteTicker={handleDeleteTicker} list={list} />
                 )}
             </div>
 
