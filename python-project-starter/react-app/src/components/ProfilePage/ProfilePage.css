@@ -14,7 +14,7 @@ body {
     align-items: center;
     width: 40%;
     flex-direction: column;
-    margin-top: 4%;
+    margin-top: 6%;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -112,6 +112,7 @@ body {
 }
 
 .industry__category {
+    margin-left: 5.5%;
     margin-top: 2%;
 }
 
@@ -129,16 +130,19 @@ body {
 }
 
 .edit__profile__btn {
+    background: none;
+    color: white;
+    border: 1px solid white;
     width: 50%;
-    padding-left: 25px;
-    padding-right: 25px;
-    border: none;
+    padding: 10px;
+    /* border: none; */
     border-radius: 35px;
 }
 
 .edit__profile__btn:hover {
     transform: scale(0.97);
     background-color: rgba(255, 255, 255, 0.788);
+    color: black;
 }
 
 .industry__category button:hover {
@@ -152,7 +156,14 @@ body {
 }
 
 .lower__container {
-    margin-top: 20%;
+    margin-top: 17%;
+    margin-left: 6%;
     text-align: left;
     width: 100%;
+}
+
+.showMoreLessbtn {
+    background: none;
+    border: none;
+    color: rgb(20, 122, 255);
 }
