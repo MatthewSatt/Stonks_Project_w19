@@ -56,8 +56,11 @@ const StockDetail = () => {
             }
         })
 
+
         console.log("TICKER FILTER", ticker_filter)
-        if (ticker_filter.length) {
+
+        if (ticker_filter.length){
+
             await dispatch(editStonk(ticker_filter, ref.current.value))
             history.push("/home")
         }
@@ -85,7 +88,12 @@ const StockDetail = () => {
             // history.push("/home")
         }
 
-        if (currentQuantity - ref.current.value === 0) {
+
+
+        if(currentQuantity - ref.current.value === 0){
+
+            console.log("TICKER FILTER", ticker_filter)
+
             await dispatch(sellStonk(ticker_filter, (ref.current.value * -1)))
             // history.push("/home")
         }
@@ -101,7 +109,9 @@ const StockDetail = () => {
         e.preventDefault();
         const ticker = thisTicker.ticker
         let watchlistId = 1
-        await dispatch(addWatchlistTicker(ticker, watchlistId))
+        let id = user.id
+        console.log("IDDDDD", id)
+        await dispatch(addWatchlistTicker(ticker, watchlistId, id))
         setShowAddButton(!showAddButton)
 
     }

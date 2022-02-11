@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Modal } from '../../Context/Modal';
 import EditForm from './EditForm';
 
+
+
 function EditProfile({ prop = false }) {
     const [showModal, setShowModal] = useState(prop);
+
 
     const hideButtonStyle = {
         display: 'none',

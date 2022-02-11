@@ -38,6 +38,7 @@ const Portfolio = () => {
         getUserUpdates()
     }, [dispatch]);
 
+
     // useEffect(() => {
     //     async function getPortfolios() {
     //         await dispatch(loadUserPortfolios(user.id))
@@ -81,7 +82,7 @@ const Portfolio = () => {
     }
 
     // let portfolioTickers = Object.values(user.portfolio)
-    let watchlistLists = Object.values(watchlists)
+    let watchlistLists = Object.values(user.watchlists)
 
     // let tickerArr = portfolioTickers.map(ticker => {
     //     return ticker["ticker"]
@@ -204,7 +205,42 @@ const Portfolio = () => {
                     )}
                 </div>
 
+
             </div >
+            <div className='watchlistright'>
+                <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
+                    <h2>Show My Watchlists</h2>
+                </button>
+                {showWatchlists && (
+                    <>
+                    {watchlistLists.map(list => (
+
+                        <div className='eachwatchlist'>
+                        <Watchlist key={list.id} handleDeleteTicker={handleDeleteTicker} list={list}></Watchlist>
+                    </div>
+                ))}
+                </>
+                )}
+                <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist'/></button>
+                {showForm && (
+                    <form onSubmit={handleWatchListSubmit}>
+                    <div className='add__list__container'>
+                        <input
+                        className='add__watchlist__input'
+                        name="Watchlist"
+                        placeholder='Watchlist Name..'
+                        value={watchlistName}
+                        onChange={e => setWatchlistName(e.target.value)}
+                        >
+                        </input>
+                        <button className='submit__watchlist__btn' type="submit">Submit</button>
+                    </div>
+                </form>
+                )}
+            </div>
+
+        </div >
+
 
         </div>
     )

@@ -2,8 +2,9 @@ const LOAD_WATCHLISTS = "watchlist/LOAD_WATCHLISTS"
 const ADD_WATCHLIST = "watchlist/ADD_WATCHLIST"
 const DELETE_WATCHLIST = "watchlist/DELETE_WATCHLIST"
 const EDIT_WATCHLIST = "watchlist/EDIT_WATCHLIST"
+const ADD_TICKER = "watchlist/ADD_TICKER"
 
-const loadWatchlists = (watchlists) => {
+export const loadWatchlists = (watchlists) => {
     return {
         type: LOAD_WATCHLISTS,
         watchlists
@@ -27,6 +28,14 @@ const delList = (watchlistId) => {
 const edit = (watchlist) => {
     return {
         type: EDIT_WATCHLIST,
+        watchlist
+    }
+}
+
+export const addTickerToWatchlist = (newTicker, watchlist) =>{
+    return {
+        type: ADD_TICKER,
+        newTicker,
         watchlist
     }
 }
@@ -118,6 +127,10 @@ const watchlistReducer = (state = initialState, action) => {
             delete newState[action.watchlistId];
             return newState
         }
+        case ADD_TICKER:
+            newState = { ...state }
+            newState.action.watchlist.watchlist_tickers = {...action.watchlist.watchlist_tickers}
+            return newState
 
         default:
             return state

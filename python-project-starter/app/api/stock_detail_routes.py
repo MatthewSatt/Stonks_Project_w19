@@ -42,7 +42,10 @@ def get_company_stats(ticker):
     company_stats["volume"] = object["price"]["regularMarketVolume"]["fmt"]
     company_stats["avgvolume"] = object["price"]["averageDailyVolume10Day"]["fmt"]
     company_stats["marketcap"] = object["price"]["marketCap"]["fmt"]
-    company_stats["peratio"] = object["summaryDetail"]["forwardPE"]["fmt"]
+    try:
+        company_stats["peratio"] = object["summaryDetail"]["forwardPE"]["fmt"]
+    except:
+        company_stats["peratio"] = "N/A"
     try:
         company_stats["divyield"] = object["summaryDetail"]["dividendYield"]["fmt"]
     except:

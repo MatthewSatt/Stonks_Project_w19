@@ -78,30 +78,30 @@ def buy_new_stock(**args):
     return {"user": user.to_dict(), "stock": new_buy.to_dict()}
 
 
-@portfolio_routes.route("/<string:ticker>", methods=['DELETE'])
+@portfolio_routes.route("/<ticker>", methods=['DELETE'])
 @login_required
 def delete_stonky(**args):
-    print("IN THE ROUTEEEEEEEEEEEEEEEEAPIIIIII")
-    print("REQUESTTTTT", request.json)
     obj = request.json["ticker"][0]
     quantity = obj['quantity']
-    ticker = obj['ticker']
-    user_id = obj['user_id']
+    tick = obj['ticker']
+    id = obj['user_id']
+    port_id = obj["id"]
     price = obj["current_price"]
 
     cost = float(price) * int(float(quantity))
     print("COST", cost)
-    user = User.query.get(user_id)
+    user = User.query.get(id)
     new_cash_amount = user.cash + cost
-    print("NEWWWWWWCASH", new_cash_amount)
+
     user.cash = new_cash_amount
     print("USER", user)
-    # match = Portfolio.query.filter(Portfolio.user_id == user_id).all()
-    match = Portfolio.query.filter(Portfolio.ticker == ticker).first() and Portfolio.query.filter(Portfolio.user_id == user_id).first()
+
+    match = Portfolio.query.filter(Portfolio.id == port_id).first()
+
     db.session.add(user)
     db.session.delete(match)
     db.session.commit()
-    print("MATCHHHH TO DICTTT", match.to_dict())
+
     return {"stock": match.to_dict(), "user": user.to_dict()}
     # user_portfolio = Portfolio.query.filter(Portfolio.user_id == user_id).all()
     # item_to_delete = Portfolio.query.filter(Portfolio)
