@@ -52,7 +52,6 @@ const StockDetail = () => {
             let containsTicker = tickerArr.filter(tick => {
                 return tick.ticker === thisTicker.ticker
             })
-            console.log("CONTAINS TICKER", containsTicker.length)
             await setTickerExists(containsTicker.length === 0)
 
             // if (containsTicker.length === 0){
@@ -83,7 +82,6 @@ const StockDetail = () => {
         })
 
 
-        console.log("TICKER FILTER", ticker_filter)
 
         if (ticker_filter.length){
 
@@ -118,7 +116,6 @@ const StockDetail = () => {
 
         if(currentQuantity - ref.current.value === 0){
 
-            console.log("TICKER FILTER", ticker_filter)
 
             await dispatch(sellStonk(ticker_filter, (ref.current.value * -1)))
             // history.push("/home")
@@ -151,8 +148,6 @@ const StockDetail = () => {
 
     let watchlistLists = Object.values(watchlists)
 
-    console.log("WATCHLISTS IN STOCK", watchlistLists)
-    console.log("WATCHLISTS IN USER", user.watchlists)
     const tickerArr = []
 
     let forEach = watchlistLists.forEach(list => {

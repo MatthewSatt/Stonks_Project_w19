@@ -20,7 +20,6 @@ const add = (ticker) => {
 }
 
 export const addWatchlistTicker = (ticker, watchlistId, id) => async (dispatch) =>{
-    console.log("USER ID IN STORE", id)
     const res = await fetch(`/api/watchlist-tickers/new`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -32,7 +31,6 @@ export const addWatchlistTicker = (ticker, watchlistId, id) => async (dispatch) 
     })
     if (res.ok){
         const result = await res.json();
-        console.log("RESULT IN STORE", result)
         dispatch(add(result.newTicker))
 
         // dispatch(loadWatchlists(result.watchlist))

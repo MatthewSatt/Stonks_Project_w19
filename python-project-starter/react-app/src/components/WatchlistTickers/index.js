@@ -35,7 +35,6 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
     //     }
     //     getValues()
     //   }, [list]);
-    console.log("LISTTTT", list)
 
         return (
             <>

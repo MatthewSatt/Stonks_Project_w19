@@ -85,7 +85,6 @@ const Portfolio = () => {
     // let watchlistLists = Object.values(user.watchlists)
     let watchlistLists = Object.values(watchlists)
     // console.log("WATCHLISTSSS", watchlistLists)
-    console.log("WATCHLISTSSS", watchlists)
     // let tickerArr = portfolioTickers.map(ticker => {
     //     return ticker["ticker"]
     // })
