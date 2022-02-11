@@ -1,3 +1,4 @@
+import { updateUser } from "./session"
 
 const SET_STOCK_DETAIL = 'stock/setStockDetail'
 
@@ -29,10 +30,7 @@ export const edit = (stonk) => {
 }
 
 export const editStonk = (ticker, quantity, price, id) => async (dispatch) =>{
-    console.log(ticker, 'Store Ticker')
-    console.log(quantity)
-    console.log(price)
-    console.log("ID IN STORE", id)
+
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'POST',
         headers: {
@@ -48,9 +46,8 @@ export const editStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     if(res.ok) {
         let data = await res.json()
         console.log("DATA IN STORE", data)
-        dispatch(edit(data))
-    } else {
-        console.log("it's your STORE!!!!!!")
+        dispatch(edit(data.stock))
+        await dispatch(updateUser(data.user))
     }
 }
 
@@ -64,7 +61,7 @@ export const buy = (stonk) => {
 }
 
 export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
-    console.log("IN STORE DISPATCH", ticker)
+    console.log("IDDDD", id)
     const res = await fetch(`/api/portfolio/new/${ticker}`, {
         method: 'POST',
         headers: {
@@ -79,10 +76,10 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     })
     if(res.ok) {
         let data = await res.json()
-        console.log("DATA IN STORE", data)
-        dispatch(buy(data))
-    } else {
-        console.log("it's your STORE!!!!!!")
+        console.log("DATA STOCKKKK", data.stock)
+        await dispatch(buy(data.stock))
+        await dispatch(updateUser(data.user))
+
     }
 }
 
@@ -95,8 +92,8 @@ export const sell_action = (stonk) => {
     }
 }
 
-export const sellStonk = (ticker, quantity, id) => async (dispatch) => {
-    console.log("STOREEEE ID", id)
+export const sellStonk = (ticker, quantity, price, id) => async (dispatch) => {
+
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'DELETE',
         headers: {
@@ -105,14 +102,16 @@ export const sellStonk = (ticker, quantity, id) => async (dispatch) => {
         body: JSON.stringify({
             ticker,
             quantity,
+            price,
             id
         })
     })
 
     if (res.ok) {
         const data = await res.json()
-        await dispatch(sell_action(data.ticker))
-        return
+        console.log("DAATA STOCK IN STORE", data.stock)
+        await dispatch(sell_action(data.stock))
+        await dispatch(updateUser(data.user))
     }
 }
 

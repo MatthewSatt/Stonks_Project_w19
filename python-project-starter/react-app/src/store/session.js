@@ -2,10 +2,16 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 const EDIT_USER = 'session/EDIT_USER'
+const UPDATE_USER = 'session/UPDATE_USER'
 
+export const updateUser = user => {
+  return {
+    type: UPDATE_USER,
+    user
+  }
+}
 
-
-const setUser = (user) => ({
+export const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
@@ -126,16 +132,21 @@ export const handleEdit = (username, id) => async (dispatch) => {
 }
 
 export default function reducer(state = initialState, action) {
+ let newState;
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
     case EDIT_USER:
-      return {
-        ...state,
-        [action.value.id]: action.value
+      newState = {
+        user: action.value
       }
+      return newState
+    case UPDATE_USER:
+        newState = { ...state }
+        newState.user = action.user
+        return newState
     default:
       return state;
   }
