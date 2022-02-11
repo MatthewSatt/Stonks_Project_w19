@@ -7,6 +7,7 @@ import { loadUserPortfolios } from '../../store/portfolio';
 import { addWatchlistTicker } from '../../store/watchlistTickers';
 import StockGraph from "../StockGraph"
 import "./index.css"
+import AddToWatchlist from './addToWatchlist'
 
 const StockDetail = () => {
     const history = useHistory()
@@ -17,6 +18,7 @@ const StockDetail = () => {
     const user = useSelector(state => state.session.user)
     // const portfolios = useSelector(state => state.portfolioReducer)
     const [showAddButton, setShowAddButton] = useState(true)
+    const [tickerExists, setTickerExists] = useState(true)
 
 
     const [cost, setCost] = useState(0)
@@ -28,6 +30,22 @@ const StockDetail = () => {
     useEffect(() => {
         async function getDetails() {
             await dispatch(getStockDetails(ticker.ticker))
+            const tickerArr = []
+
+            let forEach = user.watchlists.forEach(list => {
+                tickerArr.push(...list.watchlist_tickers)
+
+            })
+
+            let containsTicker = tickerArr.filter(tick => {
+                return tick.ticker === thisTicker.ticker
+            })
+            console.log("CONTAINS TICKER", containsTicker.length)
+            await setTickerExists(containsTicker.length === 0)
+
+            if (containsTicker.length === 0){
+                await setShowAddButton(!showAddButton)
+            }
         }
         getDetails()
 
@@ -39,7 +57,6 @@ const StockDetail = () => {
         }
         getPortfolios()
     }, [dispatch])
-
 
 
     const handleBuy = async (e) => {
@@ -100,23 +117,32 @@ const StockDetail = () => {
         const ticker = thisTicker.ticker
         let watchlistId = 1
         let id = user.id
-        console.log("IDDDDD", id)
         await dispatch(addWatchlistTicker(ticker, watchlistId, id))
         setShowAddButton(!showAddButton)
 
     }
 
 
-    const tickerArr = []
 
-    let forEach = user.watchlists.forEach(list => {
-        tickerArr.push(...list.watchlist_tickers)
 
-    })
 
-    let containsTicker = tickerArr.filter(tick => {
-        return tick.ticker === thisTicker.ticker
-    })
+//     useEffect(() =>{
+
+//         let validator = []
+//         user.watchlists.forEach(list => {
+//             let filter = list.watchlist_tickers.filter(tick =>{
+//             return tick.ticker === ticker
+//         })
+//         validator.push(filter.length)
+//     })
+//     console.log("TICKERARRR", validator)
+//     let result = validator.every(function (e) {
+//         return e === 0
+//     }
+//     )
+//     console.log("RESULT", result)
+// }, [handleAddToWatchlist])
+
 
     let dates = stockDetails["dates"]
     let values = stockDetails["values"]
@@ -135,7 +161,8 @@ const StockDetail = () => {
     let divYield = stockDetails["divyield"]
     let yearHigh = stockDetails["52high"]
     let yearLow = stockDetails["52low"]
-
+    console.log("SHOW ADD", showAddButton)
+    console.log("tickerECISTS", tickerExists)
     return (
         <div className='container'>
             <div className='graph-title'>
@@ -155,9 +182,10 @@ const StockDetail = () => {
                 <div className='kpi'><p>52-week Low</p> {yearLow}</div>
                 <div className='kpi'><p>Sector:</p> {sector}</div>
             </div>
-            {!containsTicker.length && showAddButton && (
-                <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button>
-            )}
+                <>
+                <AddToWatchlist tickerExists={tickerExists} handleAddToWatchlist={handleAddToWatchlist} />
+                {/* <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button> */}
+                </>
             <div className='Order66'>
                 <button  onClick={handleBuy} class="button-82-pushable2" role="button">
                     <span class="button-82-shadow2"></span>

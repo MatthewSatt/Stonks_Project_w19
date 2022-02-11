@@ -19,13 +19,22 @@ class Portfolio(db.Model):
     def to_dict(self):
 
         #Code to pull the price for the ticker in the portfolio
-        finnhub_client = finnhub.Client(os.environ.get("FINNHUB_API_KEY2"))
+        try:
+            finnhub_client = finnhub.Client(os.environ.get("FINNHUB_API_KEY2"))
 
-        price = finnhub_client.quote(self.ticker.upper())
+            price = finnhub_client.quote(self.ticker.upper())
 
-        #Calculate value and gain/loss
-        value = price["c"] * self.quantity
-        gain_loss = value - (self.quantity * self.average_price)
+            #Calculate value and gain/loss
+            value = price["c"] * self.quantity
+            gain_loss = value - (self.quantity * self.average_price)
+        except:
+            finnhub_client = finnhub.Client(os.environ.get("FINNHUB_API_KEY3"))
+
+            price = finnhub_client.quote(self.ticker.upper())
+
+            #Calculate value and gain/loss
+            value = price["c"] * self.quantity
+            gain_loss = value - (self.quantity * self.average_price)
 
         return {
             "id": self.id,
