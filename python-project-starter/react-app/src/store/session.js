@@ -126,16 +126,17 @@ export const handleEdit = (username, id) => async (dispatch) => {
 }
 
 export default function reducer(state = initialState, action) {
+ let newState;
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
     case EDIT_USER:
-      return {
-        ...state,
-        [action.value.id]: action.value
+      newState = {
+        user: action.value
       }
+      return newState
     default:
       return state;
   }
