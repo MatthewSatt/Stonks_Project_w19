@@ -316,10 +316,10 @@
 .button-82-pushable2:focus:not(:focus-visible) {
     outline: none;
   }
-  
-@media screen and (min-width: 900px) {
+
+/* @media screen and (min-width: 900px) {
     .stock__detail__graph{
         max-width: 100px;
         max-height: 800px;
     }
-}
+} */
