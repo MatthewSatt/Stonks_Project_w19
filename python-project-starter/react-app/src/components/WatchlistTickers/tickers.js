@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
-import { useDispatch, useSelector } from "react-redux";
-import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
+// import { useDispatch } from "react-redux";
+// import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 
 
 
 const Tickers = ({ticker, list, handleDeleteTicker}) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [showTicker, setShowTicker] = useState(true)
 
     // const handleDeleteTicker = (e, id) => {

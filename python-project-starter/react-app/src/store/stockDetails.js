@@ -121,7 +121,7 @@ const stockDetailReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_STOCK_DETAIL:
-            newState = { ... state }
+            newState = { ...state }
             newState.stockDetail = action.stockDetails
             return newState
 

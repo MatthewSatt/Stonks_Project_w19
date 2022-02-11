@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
+import React from 'react';
+// import { useDispatch } from "react-redux";
+// import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 import Tickers from './tickers';
-import { FaTrashAlt } from "react-icons/fa";
+// import { FaTrashAlt } from "react-icons/fa";
 
 const WatchlistTickers = ({list, handleDeleteTicker}) => {
-    const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
-    const [newTickerId, setNewTickerId] = useState("")
+    // const dispatch = useDispatch();
+    // const user = useSelector(state => state.session.user)
+    // const [newTickerId, setNewTickerId] = useState("")
     // const [stonkTickers, setStonkTickers] = useState("")
     // const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
 
@@ -37,7 +37,6 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
     //   }, [list]);
         return (
             <>
-
             <div className='my-stonks-table'>
             <table>
                 <thead>
@@ -49,7 +48,7 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
                 </thead>
                 <tbody>
             {list.watchlist_tickers.map(ticker => (
-                    <Tickers ticker={ticker} handleDeleteTicker={handleDeleteTicker} list={list} />            
+                    <Tickers ticker={ticker} handleDeleteTicker={handleDeleteTicker} list={list} />
                     ))}
                     </tbody>
                     </table>

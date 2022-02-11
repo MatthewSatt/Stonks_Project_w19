@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../MyStonks/index.css'
-import { useDispatch, useSelector } from "react-redux";
-import { loadUserWatchlists, delWatchlist, editWatchlist } from '../../store/watchlists';
+import { useDispatch } from "react-redux";
+import { delWatchlist, editWatchlist } from '../../store/watchlists';
 import WatchlistTickers from '../WatchlistTickers';
-import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
+// import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 
@@ -11,12 +11,12 @@ import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 const Watchlist = ({ list, handleDeleteTicker }) => {
 
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
     const [showWatchlist, setWatchlist] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
     const [newWatchlistName, setNewWatchlistName] = useState(list.name)
     // const watchlists = useSelector(state => state.watchlistReducer)
-    const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
+    // const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
 
     // useEffect(() => {
     //     async function getWatchlists() {
@@ -55,14 +55,6 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
 
     return (
         <>
-
-
-
-
-
-
-
-
             <div>
                 <div className='watchlist__btn__container'>
                 <button

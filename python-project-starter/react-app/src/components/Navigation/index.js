@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { FaAngleDown, FaAngleUp, FaChartLine, FaGithub } from 'react-icons/fa';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import { useState } from "react"
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 function Navbar({ isLoaded }) {
 const user = useSelector(state => state.session.user)
-const ref = useRef()
+// const ref = useRef()
 const [navbarOpen, setNavbarOpen] = useState(false)
 const [navbarOpen2, setNavbarOpen2] = useState(false)
 // const [isMenuOpen, setIsMenuOpen] = useState(false)

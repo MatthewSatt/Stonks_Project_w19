@@ -3,11 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Navbar from './components/Navigation';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
+// import UsersList from './components/UsersList';
+// import User from './components/User';
 import { authenticate } from './store/session';
-import LoginFormModal from './components/auth/Login';
-import SignUpFormModal from './components/auth/SignUp';
+// import LoginFormModal from './components/auth/Login';
+// import SignUpFormModal from './components/auth/SignUp';
 import Splash from './components/Splash'
 import { Animation } from './components/Animation'
 import { Canvas } from '@react-three/fiber';

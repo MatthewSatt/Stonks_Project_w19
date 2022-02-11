@@ -2,10 +2,10 @@
 import GetStartedModal from '../auth/SignUp';
 import LoginFormModal from '../auth/Login';
 import * as sessionActions from "../../store/session"
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './index.css'
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 const Splash = () => {
     const user = useSelector(state => state.session.user);
@@ -17,9 +17,9 @@ const Splash = () => {
         history.push('/home')
     }
 
-    const closeMenus = () => {
+    // const closeMenus = () => {
 
-    }
+    // }
 
     return (
         <div className='container'>
