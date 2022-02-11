@@ -27,7 +27,7 @@ const Portfolio = () => {
     const user = useSelector(state => state.session.user)
     // const portfolios = useSelector(state => state.portfolioReducer)
     // const portfolioValues = useSelector(state => state.portfolioValuesReducer)
-    // const watchlists = useSelector(state => state.watchlistReducer)
+    const watchlists = useSelector(state => state.watchlistReducer)
 
     useEffect(() => {
         async function getUserUpdates() {
