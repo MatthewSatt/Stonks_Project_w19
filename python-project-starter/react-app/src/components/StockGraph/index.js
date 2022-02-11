@@ -27,12 +27,8 @@ function StockGraph({dates, values}){
       const daySlicer = dates.slice(0, 30)
       const valuesSlicer = values.slice(0, 30)
 
-      console.log("VALUE SLICER", valuesSlicer[0])
-      console.log(valuesSlicer[valuesSlicer.length - 1])
-      console.log(valuesSlicer[0] < valuesSlicer[valuesSlicer.length - 1])
       useEffect(() =>{
         if(valuesSlicer[0] < valuesSlicer[valuesSlicer.length - 1]){
-          console.log("IN FUNCTION")
           setLineColor('rgb(50, 190, 50)')
         }
         if(valuesSlicer[0] > valuesSlicer[valuesSlicer.length - 1]) {
