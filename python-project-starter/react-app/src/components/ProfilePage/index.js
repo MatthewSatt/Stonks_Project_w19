@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { FaBusinessTime, FaHouseUser, FaLightbulb, FaMicrochip, FaPlusCircle, FaSmile, FaStethoscope } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import ProfileEditModal from './ProfileEditModal'
 import './ProfilePage.css';
 
 
@@ -19,14 +20,14 @@ function ProfileDisplay () {
                 </div>
                 <div className='user__info__display'>
                     <div className='username__display'>
-                        <h3>Welcome, {user.username}</h3>
+                        <h3 onChange={e => (e.target.value)}>Welcome, {user.username}</h3>
                     </div>
                     <div className='email__display'>
                         <p>{user.email}</p>
                     </div>
                 </div>
                 <div className='edit__profile__container'>
-                    <button className='edit__profile__btn'><p>Edit Profile</p></button>
+                    <ProfileEditModal />
                 </div>
             </div>
             <div className='mid__container'>
@@ -85,3 +86,37 @@ function ProfileDisplay () {
 }
 
 export default ProfileDisplay;
+
+
+
+// import React, { useState } from 'react';
+// import { Modal } from '../../../Context/Modal';
+// import LoginForm from './LoginForm';
+// import './index.css'
+
+// function LoginFormModal({ prop = false }) {
+//     const [showModal, setShowModal] = useState(prop);
+
+//     const hideButtonStyle = {
+//         display: 'none',
+//     }
+
+//     return (
+//         <>
+//             <button
+//                 className='auth-button'
+//                 onClick={() => setShowModal(true)}
+//                 style={prop ? hideButtonStyle : null}
+//             >
+//                 Sign In
+//             </button>
+//             {showModal && (
+//                 <Modal onClose={() => setShowModal(false)}>
+//                     <LoginForm />
+//                 </Modal>
+//             )}
+//         </>
+//     );
+// }
+
+// export default LoginFormModal;
