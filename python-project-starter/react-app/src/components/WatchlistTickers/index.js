@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 import Tickers from './tickers';
+import { FaTrashAlt } from "react-icons/fa";
 
 const WatchlistTickers = ({list, handleDeleteTicker}) => {
     const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
     //   }, [list]);
         return (
             <>
+
             <div className='my-stonks-table'>
             <table>
                 <thead>
@@ -47,11 +49,12 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
                 </thead>
                 <tbody>
             {list.watchlist_tickers.map(ticker => (
-                    <Tickers ticker={ticker} handleDeleteTicker={handleDeleteTicker} list={list} />
+                    <Tickers ticker={ticker} handleDeleteTicker={handleDeleteTicker} list={list} />            
                     ))}
                     </tbody>
                     </table>
         </div>
+
         </>
     )
 }
