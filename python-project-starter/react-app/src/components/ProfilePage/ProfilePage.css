@@ -40,7 +40,7 @@ body {
 .change__profile__pic {
     background-color: black;
     border-radius: 35px;
-    color: rgb(0, 209, 0);
+    color: rgb(0, 207, 0);
     transform: scale(1.5);
     margin-left: 15%;
 }
@@ -49,8 +49,7 @@ body {
 
 .change__profile__pic:hover {
     cursor: pointer;
-    color: rgb(0, 167, 0);
-    transform: scale(1.65);
+    color: rgb(0, 255, 0);
 }
 
 .user__info__display {
@@ -67,6 +66,7 @@ body {
 .mid__container p {
     text-align: center;
     /* margin-left: 12%; */
+    font-size: 14pt;
     margin-top: 10%;
 }
 
@@ -96,10 +96,11 @@ body {
 }
 
 .owned__stock__percentage button {
+    text-align: center;
+    margin-top: 5%;
     font-size: 12pt;
     height: 100px;
     width: 100px;
-    margin: 0;
     border-radius: 50%;
     border: none;
 }
@@ -107,16 +108,15 @@ body {
 .owned__stock__percentage button:hover {
     color: white;
     border: none;
-    transform: scale(0.95);
     background-color: rgb(0, 167, 0);
 }
 
 .industry__category {
     margin-top: 2%;
-    /* margin-left: 7%; */
 }
 
 .industry__category button {
+    background-color: white;
     padding: 15px;
     transform: scale(1.1);
     margin-right: 3.5%;
@@ -129,23 +129,21 @@ body {
 }
 
 .edit__profile__btn {
-    /* padding: 10px; */
     width: 50%;
     padding-left: 25px;
     padding-right: 25px;
-    /* transform: scale(1.1); */
-    /* margin-right: 1%; */
     border: none;
     border-radius: 35px;
 }
 
 .edit__profile__btn:hover {
     transform: scale(0.97);
+    background-color: rgba(255, 255, 255, 0.788);
 }
 
 .industry__category button:hover {
     transform: scale(1.05);
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: rgba(255, 255, 255, 0.788);
 }
 
 .industry__category img {

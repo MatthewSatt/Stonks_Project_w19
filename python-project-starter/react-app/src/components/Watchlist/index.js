@@ -3,9 +3,10 @@ import '../MyStonks/index.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserWatchlists, delWatchlist, editWatchlist } from '../../store/watchlists';
 import WatchlistTickers from '../WatchlistTickers';
+import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 
-const Watchlist = ({list}) => {
+const Watchlist = ({ list }) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
     const [showWatchlist, setWatchlist] = useState(false)
@@ -37,43 +38,46 @@ const Watchlist = ({list}) => {
 
     return (
         <>
-        <div>
-        <button
-        onClick={(e) => setWatchlist(!showWatchlist)}
-        className="accordion"
-        >
-            {list.name}
-        </button>
-            {showWatchlist && (
-                <WatchlistTickers list={list} />
-            )}
-        </div>
-        <div>
-        <button>Add New Ticker to {list.name}</button>
-        </div>
-        <div>
-        <button onClick={handleDelete}>Delete {list.name}</button>
-        </div>
-        <div>
-        <button onClick={(e) => setShowEditForm(!showEditForm)}>Edit {list.name}</button>
-            {showEditForm && (
-                <form onSubmit={handleEdit}>
-                <div>
-                    <input
-                    name="Watchlist"
-                    placeholder='Watchlist Name..'
-                    value={newWatchlistName}
-                    onChange={e => setNewWatchlistName(e.target.value)}
-                    >
-                    </input>
-                    <button type="submit">Submit</button>
+            <div>
+                <div className='watchlist__btn__container'>
+                <button
+                    onClick={(e) => setWatchlist(!showWatchlist)}
+                    className="accordion"
+                >
+                    <h2>{list.name}</h2>
+                </button>
+                    <div>
+                        <button className='add__ticker__btn'><FaPlus className='plus__sign'/> New Ticker</button>
+                    </div>
+                    <div>
+                        <button className='edit__watchlist__btn' onClick={(e) => setShowEditForm(!showEditForm)}><FaPen className='edit__pen'/> Edit</button>
+                    </div>
+                    <div>
+                        <button className='trash__btn' onClick={handleDelete}><FaTrashAlt className='trash'/> Delete</button>
+                    </div>
                 </div>
-            </form>
-            )}
-        </div>
+                {showEditForm && (
+                    <form onSubmit={handleEdit}>
+                        <div className='edit__watchlist__container'>
+                            <input
+                                className='edit__watchlist__input'
+                                name="Watchlist"
+                                placeholder='Watchlist Name..'
+                                value={newWatchlistName}
+                                onChange={e => setNewWatchlistName(e.target.value)}
+                                >
+                            </input>
+                            <button className='submit__watchlist__btn' type="submit">Submit</button>
+                        </div>
+                    </form>
+                )}
+                {showWatchlist && (
+                    <WatchlistTickers list={list} />
+                )}
+            </div>
 
         </>
-        )
+    )
 };
 
 export default Watchlist;

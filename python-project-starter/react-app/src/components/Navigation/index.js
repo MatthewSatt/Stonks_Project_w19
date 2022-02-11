@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 function Navbar({ isLoaded }) {
 const user = useSelector(state => state.session.user)
-// const ref = useRef()
+const ref = useRef()
 const [navbarOpen, setNavbarOpen] = useState(false)
 const [navbarOpen2, setNavbarOpen2] = useState(false)
 // const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -22,6 +22,8 @@ const [navbarOpen2, setNavbarOpen2] = useState(false)
 //     // If the menu is open and the clicked target is not within the menu,
 //     // then close the menu
 //     if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+//       setNavbarOpen(false)
+//       setNavbarOpen2(false)
 //       setIsMenuOpen(false)
 //     }
 //   }
@@ -31,14 +33,26 @@ const [navbarOpen2, setNavbarOpen2] = useState(false)
 //     document.removeEventListener("mousedown", checkIfClickedOutside)
 //   }
 // }, [isMenuOpen])
+
+// const handleClick = () => {
+//   setNavbarOpen(false)
+//   setNavbarOpen2(false)
+// }
+
 const handleToggle = () => {
+  setNavbarOpen2(false)
   setNavbarOpen(prev => !prev)
 }
+
 const handleToggle2 = () => {
+  setNavbarOpen(false)
   setNavbarOpen2(prev => !prev)
 }
+
+
 return (
   <nav className='navbar'>
+    {/* <div className='off__click' onClick={handleClick}></div> */}
     <div className='logo__container'>
       <NavLink to={'/home'}><FaChartLine className='logo'/></NavLink>
     </div>
@@ -83,6 +97,7 @@ return (
           {/* )} */}
         </span>
       </div>
+      {/* </div> */}
         {!user ? null : <SearchBar />}
       <nav>
         <div className='right-nav'>
