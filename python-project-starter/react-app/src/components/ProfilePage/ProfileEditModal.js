@@ -12,7 +12,7 @@ function EditProfile({ prop = false }) {
     return (
         <>
             <button
-                className='edit-profile-model'
+                className='edit__profile__btn'
                 onClick={() => setShowModal(true)}
                 style={prop ? hideButtonStyle : null}
             >Edit Profile

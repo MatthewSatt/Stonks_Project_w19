@@ -67,10 +67,10 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
                         <button className='add__ticker__btn'><FaPlus className='plus__sign'/> New Ticker</button>
                     </div>
                     <div>
-                        <button className='edit__watchlist__btn' onClick={(e) => setShowEditForm(!showEditForm)}><FaPen className='edit__pen'/> Edit</button>
+                        <button className='edit__watchlist__btn' onClick={(e) => setShowEditForm(!showEditForm)}><FaPen className='edit__pen'/></button>
                     </div>
                     <div>
-                        <button className='trash__btn' onClick={handleDelete}><FaTrashAlt className='trash'/> Delete</button>
+                        <button className='trash__btn' onClick={handleDelete}><FaTrashAlt className='trash'/></button>
                     </div>
 
                 </div>
