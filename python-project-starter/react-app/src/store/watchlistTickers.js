@@ -1,9 +1,7 @@
 //THIS MAY NOT BE NEEDED NOW THAT WATCHLIST INCLUDES TICKERS
-import { addTickerToWatchlist } from './watchlists'
 import { loadWatchlists } from './watchlists'
 
 const LOAD_WATCHLIST_TICKERS = "watchlistTickers/LOAD_WATCHLISTS_TICKERS"
-const ADD_WATCHLIST_TICKERS = "watchlistTickers/ADD_WATCHLISTS_TICKERS"
 const DELETE_WATCHLIST_TICKERS = "watchlistTickers/DELETE_WATCHLISTS_TICKERS"
 
 const loadTickers = (watchlistTickers) => {
@@ -13,12 +11,6 @@ const loadTickers = (watchlistTickers) => {
     }
 }
 
-const add = (ticker) => {
-    return {
-        type: ADD_WATCHLIST_TICKERS,
-        ticker
-    }
-}
 
 export const addWatchlistTicker = (ticker, watchlistId, id) => async (dispatch) =>{
     console.log("USER ID IN STORE", id)

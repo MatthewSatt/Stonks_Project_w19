@@ -13,15 +13,12 @@ def load_watchlist_tickers(watchlist_id):
 @login_required
 def create_new_ticker():
     object = request.json
-    print("OBJECTTTT", object)
     ticker = object['ticker']
     watchlist_id = object['watchlistId']
     id = object['id']
     newTicker = WatchlistTicker(ticker=ticker, watchlist_id=watchlist_id)
     # watchlist = Watchlist.query.get(watchlist_id)
     user_watchlists = Watchlist.query.filter(Watchlist.user_id == id).all()
-
-
 
     # print("USERRR", watchlist)
     db.session.add(newTicker)

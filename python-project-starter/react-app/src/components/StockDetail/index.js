@@ -43,9 +43,9 @@ const StockDetail = () => {
             console.log("CONTAINS TICKER", containsTicker.length)
             await setTickerExists(containsTicker.length === 0)
 
-            if (containsTicker.length === 0){
-                await setShowAddButton(!showAddButton)
-            }
+            // if (containsTicker.length === 0){
+            //     await setShowAddButton(!showAddButton)
+            // }
         }
         getDetails()
 
@@ -116,7 +116,6 @@ const StockDetail = () => {
         e.preventDefault();
         const ticker = thisTicker.ticker
         let watchlistId = listId
-        console.log("WACHLISTID", watchlistId)
         let id = user.id
         await dispatch(addWatchlistTicker(ticker, watchlistId, id))
         setShowAddButton(!showAddButton)
@@ -135,7 +134,7 @@ const StockDetail = () => {
         tickerArr.push(list)
 
     })
-    console.log("TICKER ARR", tickerArr)
+
 
 
 //     useEffect(() =>{
@@ -173,8 +172,6 @@ const StockDetail = () => {
     let divYield = stockDetails["divyield"]
     let yearHigh = stockDetails["52high"]
     let yearLow = stockDetails["52low"]
-    console.log("SHOW ADD", showAddButton)
-    console.log("tickerECISTS", tickerExists)
     return (
         <div className='container'>
             <div className='graph-title'>

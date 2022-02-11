@@ -5,7 +5,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 
 
 
-const Tickers = ({ticker, list, handleDeleteTicker}) => {
+const Tickers = ({ticker, handleDeleteTicker}) => {
     // const dispatch = useDispatch();
     const [showTicker, setShowTicker] = useState(true)
 
@@ -25,7 +25,7 @@ const Tickers = ({ticker, list, handleDeleteTicker}) => {
     // }, [])
 
 
-    let tickerArr = Object.values(list)
+
     return (
         <>
                 {showTicker && (
