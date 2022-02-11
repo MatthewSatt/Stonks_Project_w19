@@ -1,6 +1,9 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const EDIT_USER = 'session/EDIT_USER'
+
+
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -10,6 +13,12 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 })
+
+const edit = (value) => ({
+  type: EDIT_USER,
+  value
+})
+
 
 const initialState = { user: null };
 
@@ -97,12 +106,36 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
+export const handleEdit = (username, id) => async (dispatch) => {
+  console.log('store')
+  console.log(username)
+  console.log(id)
+  const response = await fetch(`/api/users/edit/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      username,
+      id
+    }),
+    headers: {'Content-Type': 'application/json'},
+  })
+  if(response.ok) {
+    const data = await response.json()
+    dispatch(edit(data))
+    return data
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case EDIT_USER:
+      return {
+        ...state,
+        [action.value.id]: action.value
+      }
     default:
       return state;
   }

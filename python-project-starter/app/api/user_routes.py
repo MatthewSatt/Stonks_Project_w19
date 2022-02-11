@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User
+from app.models import db, User
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,17 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/edit/<int:id>', methods=['PATCH'])
+@login_required
+def changeCred(id):
+   obj = request.json
+   username = obj["username"]
+   user = User.query.get(id)
+   print(user)
+   user.username = username
+   print(user.username)
+   db.session.add(user)
+   db.session.commit()
+   return user.to_dict()
