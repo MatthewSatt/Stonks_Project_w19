@@ -42,45 +42,45 @@ const StockDetail = () => {
 
 
 
-        const handleBuy = async (e) => {
-            // const tickernum = parseInt(ticker.ticker, 10)
-            e.preventDefault()
+    const handleBuy = async (e) => {
+        // const tickernum = parseInt(ticker.ticker, 10)
+        e.preventDefault()
 
         const portfolioValues = Object.values(portfolios)
-        let ticker_filter = portfolioValues.filter(item =>{
-            if (item.ticker === ticker.ticker){
+        let ticker_filter = portfolioValues.filter(item => {
+            if (item.ticker === ticker.ticker) {
                 return item
             }
         })
-        if (ticker_filter.length){
+        if (ticker_filter.length) {
             await dispatch(editStonk(ticker_filter, ref.current.value))
             history.push("/home")
         }
 
-        if (!ticker_filter.length){
-                await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
-                history.push("/home")
-            }
+        if (!ticker_filter.length) {
+            await dispatch(buyStonk(ticker.ticker, ref.current.value, price, user.id))
+            history.push("/home")
         }
+    }
 
 
 
     const handleSell = async (e) => {
         e.preventDefault()
         const portfolioValues = Object.values(portfolios)
-        let ticker_filter = portfolioValues.filter(item =>{
-            if (item.ticker === ticker.ticker){
+        let ticker_filter = portfolioValues.filter(item => {
+            if (item.ticker === ticker.ticker) {
                 return item
             }
         })
         let currentQuantity = ticker_filter[0]['quantity']
 
-        if(!(currentQuantity - ref.current.value === 0)){
+        if (!(currentQuantity - ref.current.value === 0)) {
             await dispatch(editStonk(ticker_filter, (ref.current.value * -1)))
             // history.push("/home")
         }
 
-        if(currentQuantity - ref.current.value === 0){
+        if (currentQuantity - ref.current.value === 0) {
             await dispatch(sellStonk(ticker.ticker, ref.current.value, user.id))
             // history.push("/home")
         }
@@ -92,7 +92,7 @@ const StockDetail = () => {
         return null
     }
 
-    const handleAddToWatchlist = async (e) =>{
+    const handleAddToWatchlist = async (e) => {
         e.preventDefault();
         const ticker = thisTicker.ticker
         let watchlistId = 1
@@ -103,11 +103,11 @@ const StockDetail = () => {
 
 
     const tickerArr = []
-    let forEach = user.watchlists.forEach(list =>{
-         tickerArr.push(...list.watchlist_tickers)
+    let forEach = user.watchlists.forEach(list => {
+        tickerArr.push(...list.watchlist_tickers)
     })
 
-    let containsTicker = tickerArr.filter(tick =>{
+    let containsTicker = tickerArr.filter(tick => {
         return tick.ticker === thisTicker.ticker
     })
 
@@ -131,23 +131,13 @@ const StockDetail = () => {
 
     return (
         <div className='container'>
-            <div className='Order66'>
-                <button id='buybutton' onClick={handleBuy}>Buy</button>
-                <span id='buyprice'>$ {cost}</span>
-                <input placeholder='quantity' onChange={e => setCost((e.target.value * price))} type='number' min='0' ref={ref} />
-                <span id='sellprice'>-$ {cost}</span>
-                <button onClick={handleSell} id='sellbutton'>Sell</button>
-            </div>
             <div className='graph-title'>
                 <h1 id='title'>{name}</h1>
                 <div className="stock__detail__graph">
-                    <StockGraph dates={dates} values={values}/>
+                    <StockGraph dates={dates} values={values} />
                 </div>
             </div>
             <h2>Key Stats</h2>
-            {!containsTicker.length && showAddButton && (
-                <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button>
-            )}
             <div className='all-kpi'>
                 <div className='kpi'><p>Name:</p> {name}</div>
                 <div className='kpi'><p>Price:</p> {price}</div>
@@ -157,6 +147,30 @@ const StockDetail = () => {
                 <div className='kpi'><p>52-week High:</p> {yearHigh}</div>
                 <div className='kpi'><p>52-week Low</p> {yearLow}</div>
                 <div className='kpi'><p>Sector:</p> {sector}</div>
+            </div>
+            {!containsTicker.length && showAddButton && (
+                <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button>
+            )}
+            <div className='Order66'>
+                <button  onClick={handleBuy} class="button-82-pushable2" role="button">
+                    <span class="button-82-shadow2"></span>
+                    <span class="button-82-edge2"></span>
+                    <span class="button-82-front2 text">
+                        Buy
+                    </span>
+                </button>
+                {/* <button id='buybutton' onClick={handleBuy}>Buy</button> */}
+                <span id='buyprice'>$ {cost}</span>
+                <input placeholder='quantity' onChange={e => setCost((e.target.value * price))} type='number' min='0' ref={ref} />
+                <span id='sellprice'>-$ {cost}</span>
+                {/* <button onClick={handleSell} id='sellbutton'>Sell</button> */}
+                <button onClick={handleSell} class="button-82-pushable" role="button">
+                    <span class="button-82-shadow"></span>
+                    <span class="button-82-edge"></span>
+                    <span class="button-82-front text">
+                        Sell
+                    </span>
+                </button>
             </div>
         </div>
     )
