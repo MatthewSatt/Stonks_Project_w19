@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
 import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 
@@ -33,7 +34,7 @@ const Tickers = ({ticker, list, handleDeleteTicker}) => {
                     <tr key={ticker.id}>
                             <td>{ticker.ticker}</td>
                             <td> {ticker.price} </td>
-                           <td><button onClick={(e) => [handleDeleteTicker(e, ticker.id), setShowTicker(!showTicker)]}>X</button></td>
+                           <td><button className='trash__btn' onClick={(e) => [handleDeleteTicker(e, ticker.id), setShowTicker(!showTicker)]}><FaTrashAlt className='trash'/></button></td>
                         </tr>
                         )}
         </>
