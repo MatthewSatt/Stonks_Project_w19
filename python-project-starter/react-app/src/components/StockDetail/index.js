@@ -8,6 +8,8 @@ import { addWatchlistTicker } from '../../store/watchlistTickers';
 import StockGraph from "../StockGraph"
 import "./index.css"
 import AddToWatchlist from './addToWatchlist'
+import { loadUserWatchlists } from '../../store/watchlists';
+
 
 const StockDetail = () => {
     const history = useHistory()
@@ -19,7 +21,14 @@ const StockDetail = () => {
     // const portfolios = useSelector(state => state.portfolioReducer)
     const [showAddButton, setShowAddButton] = useState(false)
     const [tickerExists, setTickerExists] = useState(true)
+    const watchlists = useSelector(state => state.watchlistReducer)
 
+    useEffect(() => {
+        async function getWatchlists() {
+            await dispatch(loadUserWatchlists(user.id))
+        }
+        getWatchlists()
+    }, [dispatch])
 
     const [cost, setCost] = useState(0)
 
@@ -138,12 +147,23 @@ const StockDetail = () => {
 
     }
 
+
+
+    let watchlistLists = Object.values(watchlists)
+
+    console.log("WATCHLISTS IN STOCK", watchlistLists)
+    console.log("WATCHLISTS IN USER", user.watchlists)
     const tickerArr = []
 
-    let forEach = user.watchlists.forEach(list => {
+    let forEach = watchlistLists.forEach(list => {
         tickerArr.push(list)
 
     })
+
+    // let forEach = watchlists.forEach(list => {
+    //     tickerArr.push(list)
+
+    // })
 
     let containsTicker = tickerArr.filter(tick => {
         return tick.ticker === thisTicker.ticker
@@ -235,7 +255,7 @@ const StockDetail = () => {
                     )}
 
         </div>
-      
+
     )
 };
 
