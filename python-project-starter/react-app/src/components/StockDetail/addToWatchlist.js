@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from "react-router";
 import { useHistory } from 'react-router-dom'
@@ -8,16 +9,20 @@ import { addWatchlistTicker } from '../../store/watchlistTickers';
 import StockGraph from "../StockGraph"
 import "./index.css"
 
-const AddToWatchlist = ({handleAddToWatchlist, tickerExists}) => {
+const AddToWatchlist = ({handleAddToWatchlist, userWatchlists, tickerArr}) => {
 
 
-
+    console.log("USERWATHC", userWatchlists)
     return (
         <>
-        {tickerExists && (
 
-            <button className='notabutton' onClick={handleAddToWatchlist} >Add To Watchlist</button>
-            )}
+            {tickerArr.map(list =>(
+
+                    <>
+
+            <button className='notabutton' onClick={e => handleAddToWatchlist(e, list.id)} >Add To {list.name}</button>
+                    </>
+            ))}
 
         </>
     )

@@ -17,7 +17,7 @@ const StockDetail = () => {
     const thisTicker = useParams()
     const user = useSelector(state => state.session.user)
     // const portfolios = useSelector(state => state.portfolioReducer)
-    const [showAddButton, setShowAddButton] = useState(true)
+    const [showAddButton, setShowAddButton] = useState(false)
     const [tickerExists, setTickerExists] = useState(true)
 
 
@@ -112,18 +112,30 @@ const StockDetail = () => {
         return null
     }
 
-    const handleAddToWatchlist = async (e) => {
+    const handleAddToWatchlist = async (e, listId) => {
         e.preventDefault();
         const ticker = thisTicker.ticker
-        let watchlistId = 1
+        let watchlistId = listId
+        console.log("WACHLISTID", watchlistId)
         let id = user.id
         await dispatch(addWatchlistTicker(ticker, watchlistId, id))
         setShowAddButton(!showAddButton)
 
     }
 
+    const showUsersWatchlists = async (e) => {
+        e.preventDefault();
+        setShowAddButton(!showAddButton)
 
+    }
 
+    const tickerArr = []
+
+    let forEach = user.watchlists.forEach(list => {
+        tickerArr.push(list)
+
+    })
+    console.log("TICKER ARR", tickerArr)
 
 
 //     useEffect(() =>{
@@ -183,8 +195,10 @@ const StockDetail = () => {
                 <div className='kpi'><p>Sector:</p> {sector}</div>
             </div>
                 <>
-                <AddToWatchlist tickerExists={tickerExists} handleAddToWatchlist={handleAddToWatchlist} />
-                {/* <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button> */}
+                <button className='notabutton' onClick={showUsersWatchlists}>Show Watchlists</button>
+                {showAddButton && (
+                    <AddToWatchlist tickerArr={tickerArr} tickerExists={tickerExists} handleAddToWatchlist={handleAddToWatchlist} />
+                )}
                 </>
             <div className='Order66'>
                 <button  onClick={handleBuy} class="button-82-pushable2" role="button">
