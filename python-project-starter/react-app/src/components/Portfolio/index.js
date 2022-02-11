@@ -30,12 +30,12 @@ const Portfolio = () => {
     const watchlists = useSelector(state => state.watchlistReducer)
 
     useEffect(() => {
-        async function getUserUpdates()  {
-          const response = await fetch(`/api/users/${user.id}`);
-          const updatedUser = await response.json();
-          await dispatch(setUser(updatedUser))
-      }
-      getUserUpdates()
+        async function getUserUpdates() {
+            const response = await fetch(`/api/users/${user.id}`);
+            const updatedUser = await response.json();
+            await dispatch(setUser(updatedUser))
+        }
+        getUserUpdates()
     }, [dispatch]);
 
     // useEffect(() => {
@@ -64,7 +64,7 @@ const Portfolio = () => {
 
 
 
-    const handleWatchListSubmit = (e) =>{
+    const handleWatchListSubmit = (e) => {
         e.preventDefault();
         const newName = watchlistName
         let user_id = user.id
@@ -88,9 +88,9 @@ const Portfolio = () => {
     // })
 
 
-//THIS PULLS FROM THE API TO GET THE TICKERS AND CURRENT VALUE FOR THEIR TICKERS
-//WE MAY NOT NEED THIS USE EFFECT...POSSIBLY DELETE --comment by Will
-// useEffect(() => {
+    //THIS PULLS FROM THE API TO GET THE TICKERS AND CURRENT VALUE FOR THEIR TICKERS
+    //WE MAY NOT NEED THIS USE EFFECT...POSSIBLY DELETE --comment by Will
+    // useEffect(() => {
     //     async function getValues() {
     //       const response = await fetch(`/api/stonk/user/${tickerArr}`);
     //       const values = await response.json();
@@ -107,6 +107,13 @@ const Portfolio = () => {
         // dispatch(loadWatchlistTickers(list.id))
     }
 
+    const GraphStyle = {
+        width: '100%'
+    }
+
+    const watchlistStyle = {
+        width: '80%'
+    }
 
     //The Below Code gets the days and values for the graph to render
     let valuesArr = Object.values(user.portfolio_value)
@@ -119,7 +126,7 @@ const Portfolio = () => {
         return value["date"]
     })
 
-    let dateFormatArr = dateArr.map(date =>{
+    let dateFormatArr = dateArr.map(date => {
         let dstr = new Date(date).toLocaleDateString()
         return dstr
     })
@@ -127,79 +134,80 @@ const Portfolio = () => {
     // console.log(user.watchlists)
     return (
         <div className='home-page'>
-            <div className='leftside'>
-                <div className='mystonksport'>
-                <h2 id='portheader'>Portfolio</h2>
-                    {<MyStonks portfolios={user.portfolio} />}
+            <div className='left-container'>
+                <div className='left-content'>
+                    <h2 id='portheader'>Portfolio</h2>
+                    {<MyStonks portfolios={user.portfolio} style={watchlistStyle}/>}
 
                 </div>
             </div>
-        <div className='middleside-content'>
-            <div >
-                <h1 className='welcome__msg'>Welcome {user.username}</h1>
-            </div>
-            <div className='middleside'>
-                <h2 id='graphheader'>Balance Over Time</h2>
-                <PortfolioGraph dates={dateFormatArr} values={valueArr} />
-            </div>
-            <div className='new__container'>
-                <h1>News</h1>
-                <div className='news__content'>
-                    <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image'/>
-                    <div className='article__container'>
-                        <p className='news__heading'>This is a heading</p>
-                        <p className='news__article'>This is some story about blah blah blah blah</p>
+            <div className='middle-container'>
+                <div >
+                    <h1 className='welcome__msg'>Welcome {user.username}</h1>
+                </div>
+                <div className='middle-content'>
+                    <h2 id='graphheader'>Balance Over Time</h2>
+                    <PortfolioGraph dates={dateFormatArr} values={valueArr} style={GraphStyle} />
+                    <div className='news__container'>
+                        <h1>News</h1>
+                        <div className='news__content'>
+                            <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image' />
+                            <div className='article__container'>
+                                <p className='news__heading'>BEST NEW STOCK APP</p>
+                                <p className='news__article'>The Stonks has been voted best ivestment training app EVER</p>
+                            </div>
+
+
+                        </div>
+                        <div className='news__content'>
+                            <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image' />
+                            <div className='article__container'>
+                                <p className='news__heading'>What should you invest in?</p>
+                                <p className='news__article'>Practice on The Stonks to see the numbers</p>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
-        </div>
 
-        <div className='rightside'>
+            <div className='right-container'>
+                <div className='right-content'>
+                    <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
+                        <h2>Watchlists</h2>
+                    </button>
+                    {showWatchlists && (
+                        <>
+                            {watchlistLists.map(list => (
 
+                                <div className='indv-watch'>
+                                    <Watchlist handleDeleteTicker={handleDeleteTicker} list={list} style={watchlistStyle}></Watchlist>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                    <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist' /></button>
+                    {showForm && (
+                        <form onSubmit={handleWatchListSubmit}>
+                            <div className='add__list__container'>
+                                <input
+                                    className='add__watchlist__input'
+                                    name="Watchlist"
+                                    placeholder='Watchlist Name..'
+                                    value={watchlistName}
+                                    onChange={e => setWatchlistName(e.target.value)}
+                                >
+                                </input>
+                                <button className='submit__watchlist__btn' type="submit">Submit</button>
+                            </div>
+                        </form>
+                    )}
+                </div>
 
-
-
-
-
-
-
-
-            <div className='watchlistright'>
-                <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
-                    <h2>Show My Watchlists</h2>
-                </button>
-                {showWatchlists && (
-                    <>
-                    {watchlistLists.map(list => (
-
-                        <div className='eachwatchlist'>
-                        <Watchlist handleDeleteTicker={handleDeleteTicker} list={list}></Watchlist>
-                    </div>
-                ))}
-                </>
-                )}
-                <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist'/></button>
-                {showForm && (
-                    <form onSubmit={handleWatchListSubmit}>
-                    <div className='add__list__container'>
-                        <input
-                        className='add__watchlist__input'
-                        name="Watchlist"
-                        placeholder='Watchlist Name..'
-                        value={watchlistName}
-                        onChange={e => setWatchlistName(e.target.value)}
-                        >
-                        </input>
-                        <button className='submit__watchlist__btn' type="submit">Submit</button>
-                    </div>
-                </form>
-                )}
-            </div>
-
-        </div >
+            </div >
 
         </div>
-        )
+    )
 
 };
 

@@ -1,78 +1,81 @@
-.home-page::-webkit-scrollbar {
+body{
+  padding: 0;
+  margin: 0;
+  height: 200%;
+  overflow: auto;
+
+}
+
+/* .home-page::-webkit-scrollbar {
   display: none;
-}
+} */
 
-.home-page {
-  overflow-y: scroll;
+.home-page{
   display: flex;
-  margin-top: 80px;
-  width: 100%;
-  height: 100%;
+  justify-content: space-between;
+  margin-top: 10%;
 }
 
-.leftside {
+.left-container{
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   width: 25%;
 }
 
-#portheader {
+.left-content{
+ width: 80%;
+ margin-top: 20%;
+}
+
+.middle-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.middle-content{
+  width: 100%;
+}
+
+.stock-graph-container{
+  border: 1px solid white;
+}
+
+.right-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+.right-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   margin-top: 30%;
+
 }
 
-.welcome__msg {
-  font-size: 74px;
+.accordian{
+  text-align: left;
 }
 
-.mystonksport {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: -20%;
-  width: 100%;
-  transform: scale(2);
-}
-
-.middleside {
-  width: 750px;
-  border: 1px solid rgba(255, 255, 255, 0.589);
-}
-
-#graphheader{
-  padding-bottom: 20px;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.589);
-}
-
-.middleside-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.rightside {
-  display: flex;
-  /* align-items: flex-start; */
-  flex-direction: column;
-  width: 25%;
-  align-items: center;
-  transform: scale(1.25);
-  margin-left: -5%;
-}
-
-.watchlistright {
-  display: flex;
-  flex-direction: column;
-  width: 58%;
-  margin-top: 41%;
+.indv-watch{
+  width: 80%
 }
 
 .watchlist__btn__container {
-  border: 1.5px white solid;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  border: 1.5px white solid;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .add__ticker__btn {
@@ -124,7 +127,6 @@
   color: white;
   border: none;
   background: none;
-  width: 40%;
 }
 
 .accordion:hover {
@@ -149,20 +151,25 @@
 }
 
 .my__watchlists__btn {
-  font-size: 16pt;
   border: 1.5px white solid;
   color: white;
   background-color: green;
+  width: 80%;
 }
 
 .my__watchlists__btn:hover {
   background-color: rgba(0, 128, 0, 0.664);
 }
 
+#icons{
+  display: flex;
+}
+
 .add__watchlist__btn {
   border: 1.5px white solid;
   padding: 25px;
   background: none;
+  width: 80%;
 }
 
 .add__watchlist__btn:hover {
