@@ -93,7 +93,6 @@ export const sell_action = (stonk) => {
 }
 
 export const sellStonk = (ticker, quantity, price, id) => async (dispatch) => {
-
     const res = await fetch(`/api/portfolio/${ticker}`, {
         method: 'DELETE',
         headers: {
@@ -109,7 +108,6 @@ export const sellStonk = (ticker, quantity, price, id) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json()
-        console.log("DAATA STOCK IN STORE", data.stock)
         await dispatch(sell_action(data.stock))
         await dispatch(updateUser(data.user))
     }

@@ -48,7 +48,7 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
                 </thead>
                 <tbody>
             {list.watchlist_tickers.map(ticker => (
-                    <Tickers ticker={ticker} handleDeleteTicker={handleDeleteTicker} list={list} />
+                    <Tickers key={ticker.id} ticker={ticker} handleDeleteTicker={handleDeleteTicker} list={list} />
                     ))}
                     </tbody>
                     </table>

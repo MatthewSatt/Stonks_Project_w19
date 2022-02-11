@@ -26,7 +26,6 @@ const Tickers = ({ticker, list, handleDeleteTicker}) => {
 
 
     let tickerArr = Object.values(list)
-    console.log("TICKER ARR", tickerArr)
     return (
         <>
                 {showTicker && (
