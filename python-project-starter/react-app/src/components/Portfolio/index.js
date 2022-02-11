@@ -25,8 +25,8 @@ const Portfolio = () => {
 
 
     const user = useSelector(state => state.session.user)
-    const portfolios = useSelector(state => state.portfolioReducer)
-    const portfolioValues = useSelector(state => state.portfolioValuesReducer)
+    // const portfolios = useSelector(state => state.portfolioReducer)
+    // const portfolioValues = useSelector(state => state.portfolioValuesReducer)
     const watchlists = useSelector(state => state.watchlistReducer)
 
     useEffect(() => {
@@ -38,19 +38,19 @@ const Portfolio = () => {
       getUserUpdates()
     }, [setStonks]);
 
-    useEffect(() => {
-        async function getPortfolios() {
-            await dispatch(loadUserPortfolios(user.id))
-        }
-        getPortfolios()
-    }, [setStonks])
+    // useEffect(() => {
+    //     async function getPortfolios() {
+    //         await dispatch(loadUserPortfolios(user.id))
+    //     }
+    //     getPortfolios()
+    // }, [setStonks])
 
-    useEffect(() => {
-        async function getPortfolioValues() {
-            await dispatch(loadUserPortfolioValues(user.id))
-        }
-        getPortfolioValues()
-    }, [setStonks])
+    // useEffect(() => {
+    //     async function getPortfolioValues() {
+    //         await dispatch(loadUserPortfolioValues(user.id))
+    //     }
+    //     getPortfolioValues()
+    // }, [setStonks])
 
     useEffect(() => {
         async function getWatchlists() {
@@ -80,12 +80,12 @@ const Portfolio = () => {
         display: 'none',
     }
 
-    let portfolioTickers = Object.values(portfolios)
+    let portfolioTickers = Object.values(user.portfolio)
     let watchlistLists = Object.values(watchlists)
 
-    let tickerArr = portfolioTickers.map(ticker => {
-        return ticker["ticker"]
-    })
+    // let tickerArr = portfolioTickers.map(ticker => {
+    //     return ticker["ticker"]
+    // })
 
 
 //THIS PULLS FROM THE API TO GET THE TICKERS AND CURRENT VALUE FOR THEIR TICKERS
@@ -110,7 +110,7 @@ const Portfolio = () => {
 
 
     //The Below Code gets the days and values for the graph to render
-    let valuesArr = Object.values(portfolioValues)
+    let valuesArr = Object.values(user.portfolio_value)
 
     let valueArr = valuesArr.map(value => {
         return value["value"]
@@ -131,7 +131,7 @@ const Portfolio = () => {
             <div className='leftside'>
                 <div className='mystonksport'>
                 <h2 id='portheader'>Portfolio</h2>
-                    {<MyStonks portfolios={portfolios} />}
+                    {<MyStonks portfolios={user.portfolio} />}
 
                 </div>
             </div>

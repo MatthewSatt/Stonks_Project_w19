@@ -46,12 +46,14 @@ const StockDetail = () => {
             // const tickernum = parseInt(ticker.ticker, 10)
             e.preventDefault()
 
-        const portfolioValues = Object.values(portfolios)
+        const portfolioValues = Object.values(user.portfolio)
         let ticker_filter = portfolioValues.filter(item =>{
             if (item.ticker === ticker.ticker){
                 return item
             }
         })
+
+        console.log("TICKER FILTER", ticker_filter)
         if (ticker_filter.length){
             await dispatch(editStonk(ticker_filter, ref.current.value))
             history.push("/home")
@@ -67,7 +69,7 @@ const StockDetail = () => {
 
     const handleSell = async (e) => {
         e.preventDefault()
-        const portfolioValues = Object.values(portfolios)
+        const portfolioValues = Object.values(user.portfolio)
         let ticker_filter = portfolioValues.filter(item =>{
             if (item.ticker === ticker.ticker){
                 return item

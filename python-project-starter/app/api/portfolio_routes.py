@@ -26,7 +26,6 @@ def add_stonky(**args):
     user = User.query.get(user_id)
     updated_user_cash = cost * -1
     print("UPDATED USER CASH", updated_user_cash)
-    current_cash = user.cash
     new_cash_amount = user.cash + updated_user_cash
     print("NEWWWWWWCASH", new_cash_amount)
     user.cash = new_cash_amount
@@ -55,21 +54,34 @@ def add_stonky(**args):
 @portfolio_routes.route("/new/<string:ticker>", methods=['POST'])
 @login_required
 def buy_new_stock(**args):
+    print("IN ROUTEEEEEE")
     ticker = request.json["ticker"]
     user_id = request.json["id"]
     quantity = request.json["quantity"]
     average_price = request.json["price"]
     # print("OBJECT IN API", object)
     new_buy = Portfolio(ticker=ticker, user_id=user_id, quantity=quantity, average_price=average_price)
+    print("NEWWWWW BUYYY", new_buy)
+    cost = float(average_price) * int(float(quantity))
+    print("COST", cost)
+    user = User.query.get(user_id)
+    updated_user_cash = cost * -1
+    print("UPDATED USER CASH", updated_user_cash)
+    new_cash_amount = user.cash + updated_user_cash
+    print("NEWWWWWWCASH", new_cash_amount)
+    user.cash = new_cash_amount
 
+    print("USER", user)
+    db.session.add(user)
     db.session.add(new_buy)
     db.session.commit()
-    return new_buy.to_dict()
+    return {"user": user.to_dict(), "stock": new_buy.to_dict()}
 
 
 @portfolio_routes.route("/<string:ticker>", methods=['DELETE'])
 @login_required
 def delete_stonky(**args):
+
     ticker = request.json["ticker"]
     quantity = request.json['quantity']
     user_id = request.json['id']
