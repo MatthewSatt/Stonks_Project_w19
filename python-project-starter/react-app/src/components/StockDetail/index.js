@@ -99,7 +99,9 @@ const StockDetail = () => {
         e.preventDefault();
         const ticker = thisTicker.ticker
         let watchlistId = 1
-        await dispatch(addWatchlistTicker(ticker, watchlistId))
+        let id = user.id
+        console.log("IDDDDD", id)
+        await dispatch(addWatchlistTicker(ticker, watchlistId, id))
         setShowAddButton(!showAddButton)
 
     }

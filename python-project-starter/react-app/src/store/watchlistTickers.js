@@ -1,4 +1,6 @@
 //THIS MAY NOT BE NEEDED NOW THAT WATCHLIST INCLUDES TICKERS
+import { addTickerToWatchlist } from './watchlists'
+import { loadWatchlists } from './watchlists'
 
 const LOAD_WATCHLIST_TICKERS = "watchlistTickers/LOAD_WATCHLISTS_TICKERS"
 const ADD_WATCHLIST_TICKERS = "watchlistTickers/ADD_WATCHLISTS_TICKERS"
@@ -18,19 +20,23 @@ const add = (ticker) => {
     }
 }
 
-export const addWatchlistTicker = (ticker, watchlistId) => async (dispatch) =>{
+export const addWatchlistTicker = (ticker, watchlistId, id) => async (dispatch) =>{
+    console.log("USER ID IN STORE", id)
     const res = await fetch(`/api/watchlist-tickers/new`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             ticker,
-            watchlistId
+            watchlistId,
+            id
         })
     })
     if (res.ok){
         const result = await res.json();
         console.log("RESULT IN STORE", result)
-        dispatch(add(result))
+        // dispatch(add(result.newTicker))
+
+        dispatch(loadWatchlists(result.watchlist))
         return result
     }
 }
@@ -76,12 +82,12 @@ const watchlistTickerReducer = (state = initialState, action) => {
             })
             return { ...newState, ...state}
             }
-        case ADD_WATCHLIST_TICKERS:
-            newState = {
-                ...state,
-                [action.ticker.id]: action.ticker
-            }
-            return newState;
+        // case ADD_WATCHLIST_TICKERS:
+        //     newState = {
+        //         ...state,
+        //         [action.ticker.id]: action.ticker
+        //     }
+        //     return newState;
 
         case DELETE_WATCHLIST_TICKERS: {
             newState = { ...state };

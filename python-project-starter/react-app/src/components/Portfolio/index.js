@@ -81,7 +81,7 @@ const Portfolio = () => {
     }
 
     // let portfolioTickers = Object.values(user.portfolio)
-    let watchlistLists = Object.values(watchlists)
+    let watchlistLists = Object.values(user.watchlists)
 
     // let tickerArr = portfolioTickers.map(ticker => {
     //     return ticker["ticker"]
@@ -173,7 +173,7 @@ const Portfolio = () => {
                     {watchlistLists.map(list => (
 
                         <div className='eachwatchlist'>
-                        <Watchlist handleDeleteTicker={handleDeleteTicker} list={list}></Watchlist>
+                        <Watchlist key={list.id} handleDeleteTicker={handleDeleteTicker} list={list}></Watchlist>
                     </div>
                 ))}
                 </>
