@@ -3,11 +3,11 @@ import MyStonks from '../MyStonks';
 import Watchlist from '../Watchlist';
 import './index.css'
 import { useDispatch, useSelector } from "react-redux";
-import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
-import { loadUserPortfolioValues } from '../../store/portfolioValues';
+// import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
+// import { loadUserPortfolioValues } from '../../store/portfolioValues';
 import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
 import { setUser } from '../../store/session'
-import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
+import { delWatchlistTicker } from '../../store/watchlistTickers';
 
 import { FaPlus } from "react-icons/fa";
 
@@ -18,7 +18,7 @@ import PortfolioGraph from "../PortfolioGraph"
 const Portfolio = () => {
     const dispatch = useDispatch();
 
-    const [showStonks, setStonks] = useState(false)
+    // const [showStonks, setStonks] = useState(false)
     const [showWatchlists, setShowWatchlists] = useState(false)
     const [watchlistName, setWatchlistName] = useState("")
     const [showForm, setShowForm] = useState(false)
@@ -36,7 +36,7 @@ const Portfolio = () => {
           await dispatch(setUser(updatedUser))
       }
       getUserUpdates()
-    }, [setStonks]);
+    }, [dispatch]);
 
     // useEffect(() => {
     //     async function getPortfolios() {
@@ -57,7 +57,7 @@ const Portfolio = () => {
             await dispatch(loadUserWatchlists(user.id))
         }
         getWatchlists()
-    }, [])
+    }, [dispatch])
 
 
 
@@ -80,7 +80,7 @@ const Portfolio = () => {
         display: 'none',
     }
 
-    let portfolioTickers = Object.values(user.portfolio)
+    // let portfolioTickers = Object.values(user.portfolio)
     let watchlistLists = Object.values(watchlists)
 
     // let tickerArr = portfolioTickers.map(ticker => {
@@ -102,7 +102,6 @@ const Portfolio = () => {
     //   console.log("USER TICKER", userTickersAndValues)
     const handleDeleteTicker = async (e, id) => {
         e.preventDefault()
-        console.log("NEW TICKER IN COMPONENT", id)
         let tickerId = id
         await dispatch(delWatchlistTicker(tickerId))
         // dispatch(loadWatchlistTickers(list.id))

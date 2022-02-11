@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { handleEdit } from '../../store/session';
-import * as sessionActions from "../../store/session"
+// import * as sessionActions from "../../store/session"
 
 const EditForm = () => {
     const dispatch = useDispatch()

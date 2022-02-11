@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session"
 import LoginFormModal from './Login';
 import SignUpFormModal from './SignUp';
 import "./protectedRoute.css"
-import handleClick from '../Splash';
+// import handleClick from '../Splash';
 
 const ProtectedRoute = props => {
   const user = useSelector(state => state.session.user)

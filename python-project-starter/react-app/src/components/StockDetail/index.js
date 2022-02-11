@@ -15,7 +15,7 @@ const StockDetail = () => {
     const ref = useRef()
     const thisTicker = useParams()
     const user = useSelector(state => state.session.user)
-    const portfolios = useSelector(state => state.portfolioReducer)
+    // const portfolios = useSelector(state => state.portfolioReducer)
     const [showAddButton, setShowAddButton] = useState(true)
 
 
@@ -105,8 +105,10 @@ const StockDetail = () => {
 
 
     const tickerArr = []
+
     let forEach = user.watchlists.forEach(list => {
         tickerArr.push(...list.watchlist_tickers)
+
     })
 
     let containsTicker = tickerArr.filter(tick => {
@@ -118,13 +120,13 @@ const StockDetail = () => {
 
     let price = stockDetails["price"]
     let name = stockDetails["name"]
-    let about = stockDetails["about"]
-    let employees = stockDetails["employees"]
-    let city = stockDetails["city"]
-    let state = stockDetails["state"]
+    // let about = stockDetails["about"]
+    // let employees = stockDetails["employees"]
+    // let city = stockDetails["city"]
+    // let state = stockDetails["state"]
     let sector = stockDetails["sector"]
-    let volume = stockDetails["volume"]
-    let avgVolume = stockDetails["avgvolume"]
+    // let volume = stockDetails["volume"]
+    // let avgVolume = stockDetails["avgvolume"]
     let marketcap = stockDetails["marketcap"]
     let peRatio = stockDetails["peratio"]
     let divYield = stockDetails["divyield"]
