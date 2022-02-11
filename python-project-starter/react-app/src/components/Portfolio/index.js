@@ -6,7 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import portfolioReducer, { loadUserPortfolios } from '../../store/portfolio';
 import { loadUserPortfolioValues } from '../../store/portfolioValues';
 import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
+
+import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
+
 import { FaPlus } from "react-icons/fa";
+
 
 import PortfolioGraph from "../PortfolioGraph"
 
@@ -20,7 +24,6 @@ const Portfolio = () => {
     const [showForm, setShowForm] = useState(false)
 
 
-    const watchlist = ['Watchlist 1', 'Watchlist 2', 'Watchlist 3']
     const user = useSelector(state => state.session.user)
     const portfolios = useSelector(state => state.portfolioReducer)
     const portfolioValues = useSelector(state => state.portfolioValuesReducer)
@@ -47,15 +50,17 @@ const Portfolio = () => {
         getWatchlists()
     }, [])
 
+
+
     const handleWatchListSubmit = (e) =>{
         e.preventDefault();
         const newName = watchlistName
         let user_id = user.id
-        console.log("NEW NAMEEEE", newName)
-        console.log("USERIDDDD", user_id)
         dispatch(addWatchlist(newName, user_id))
         setWatchlistName("")
         setShowForm(!showForm)
+        // dispatch(loadWatchlistTickers(list.id))
+        // dispatch(loadUserWatchlists(user.id))
     }
 
 
@@ -83,7 +88,13 @@ const Portfolio = () => {
     //   }, [stonkticker]);
 
     //   console.log("USER TICKER", userTickersAndValues)
-
+    const handleDeleteTicker = async (e, id) => {
+        e.preventDefault()
+        console.log("NEW TICKER IN COMPONENT", id)
+        let tickerId = id
+        await dispatch(delWatchlistTicker(tickerId))
+        // dispatch(loadWatchlistTickers(list.id))
+    }
 
 
     //The Below Code gets the days and values for the graph to render
@@ -102,7 +113,7 @@ const Portfolio = () => {
         return dstr
     })
     //End code needed for the graph
-
+    // console.log(user.watchlists)
     return (
         <div className='home-page'>
             <div className='leftside'>
@@ -133,6 +144,15 @@ const Portfolio = () => {
         </div>
 
         <div className='rightside'>
+
+
+
+ 
+
+
+
+
+
             <div className='watchlistright'>
                 <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
                     <h2>Show My Watchlists</h2>
@@ -142,7 +162,7 @@ const Portfolio = () => {
                     {watchlistLists.map(list => (
 
                         <div className='eachwatchlist'>
-                        <Watchlist list={list}></Watchlist>
+                        <Watchlist handleDeleteTicker={handleDeleteTicker} list={list}></Watchlist>
                     </div>
                 ))}
                 </>
@@ -164,6 +184,7 @@ const Portfolio = () => {
                 </form>
                 )}
             </div>
+
         </div >
 
         </div>
