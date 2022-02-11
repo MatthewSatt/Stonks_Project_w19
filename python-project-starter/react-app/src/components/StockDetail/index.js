@@ -83,7 +83,7 @@ const StockDetail = () => {
         }
 
         if(currentQuantity - ref.current.value === 0){
-            await dispatch(sellStonk(ticker.ticker, ref.current.value, user.id))
+            await dispatch(sellStonk(ticker_filter, (ref.current.value * -1)))
             // history.push("/home")
         }
         history.push("/home")
