@@ -21,6 +21,9 @@ const StockDetail = () => {
 
     const [cost, setCost] = useState(0)
 
+    const Graph2Style = {
+        width: '80%'
+    }
 
     //Stock Details is an object with all of the information we need for the detail page
     const stockDetails = useSelector(state => state.stockDetailReducer.stockDetail);
@@ -47,13 +50,17 @@ const StockDetail = () => {
         e.preventDefault()
 
         const portfolioValues = Object.values(user.portfolio)
-        let ticker_filter = portfolioValues.filter(item =>{
-            if (item.ticker === ticker.ticker){
+        let ticker_filter = portfolioValues.filter(item => {
+            if (item.ticker === ticker.ticker) {
                 return item
             }
         })
 
+
+        console.log("TICKER FILTER", ticker_filter)
+
         if (ticker_filter.length){
+
             await dispatch(editStonk(ticker_filter, ref.current.value))
             history.push("/home")
         }
@@ -69,8 +76,8 @@ const StockDetail = () => {
     const handleSell = async (e) => {
         e.preventDefault()
         const portfolioValues = Object.values(user.portfolio)
-        let ticker_filter = portfolioValues.filter(item =>{
-            if (item.ticker === ticker.ticker){
+        let ticker_filter = portfolioValues.filter(item => {
+            if (item.ticker === ticker.ticker) {
                 return item
             }
         })
@@ -81,9 +88,12 @@ const StockDetail = () => {
             // history.push("/home")
         }
 
+
+
         if(currentQuantity - ref.current.value === 0){
 
             console.log("TICKER FILTER", ticker_filter)
+
             await dispatch(sellStonk(ticker_filter, (ref.current.value * -1)))
             // history.push("/home")
         }
@@ -137,29 +147,10 @@ const StockDetail = () => {
     let yearLow = stockDetails["52low"]
 
     return (
-        <div className='container'>
-            <div className='graph-title'>
-                <h1 id='title'>{name}</h1>
-                <div className="stock__detail__graph">
-                    <StockGraph dates={dates} values={values} />
-                </div>
-            </div>
-            <h2>Key Stats</h2>
-            <div className='all-kpi'>
-                <div className='kpi'><p>Name:</p> {name}</div>
-                <div className='kpi'><p>Price:</p> {price}</div>
-                <div className='kpi'><p>Market Cap:</p> {marketcap}</div>
-                <div className='kpi'><p>P/E Ratio</p> {peRatio}</div>
-                <div className='kpi'><p>Dividend Yield:</p> {divYield}</div>
-                <div className='kpi'><p>52-week High:</p> {yearHigh}</div>
-                <div className='kpi'><p>52-week Low</p> {yearLow}</div>
-                <div className='kpi'><p>Sector:</p> {sector}</div>
-            </div>
-            {!containsTicker.length && showAddButton && (
-                <button className='notabutton' onClick={handleAddToWatchlist}>Add To Watchlist</button>
-            )}
+        <div className='stock-detail-container'>
+            <h1 id='title'>{name}</h1>
             <div className='Order66'>
-                <button  onClick={handleBuy} class="button-82-pushable2" role="button">
+                <button onClick={handleBuy} class="button-82-pushable2" role="button">
                     <span class="button-82-shadow2"></span>
                     <span class="button-82-edge2"></span>
                     <span class="button-82-front2 text">
@@ -179,6 +170,28 @@ const StockDetail = () => {
                     </span>
                 </button>
             </div>
+
+            <div className='graph-title'>
+                <div className="stock__detail__graph">
+                    <StockGraph dates={dates} values={values} style={Graph2Style} />
+                </div>
+            </div>
+
+            <h2>Key Stats</h2>
+            <div className='all-kpi'>
+                <div className='kpi'><p>Name:</p> {name}</div>
+                <div className='kpi'><p>Price:</p> {price}</div>
+                <div className='kpi'><p>Market Cap:</p> {marketcap}</div>
+                <div className='kpi'><p>P/E Ratio</p> {peRatio}</div>
+                <div className='kpi'><p>Dividend Yield:</p> {divYield}</div>
+                <div className='kpi'><p>52-week High:</p> {yearHigh}</div>
+                <div className='kpi'><p>52-week Low</p> {yearLow}</div>
+                <div className='kpi'><p>Sector:</p> {sector}</div>
+            </div>
+            {!containsTicker.length && showAddButton && (
+                <button className='add-to-list' onClick={handleAddToWatchlist}>Add To Watchlist</button>
+            )}
+
         </div>
     )
 };
