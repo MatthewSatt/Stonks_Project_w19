@@ -57,22 +57,20 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
         <>
             <div>
                 <div className='watchlist__btn__container'>
-                <button
-                    onClick={(e) => setWatchlist(!showWatchlist)}
-                    className="accordion"
-                >
-                    <h2>{list.name}</h2>
-                </button>
+                    <button
+                        onClick={(e) => setWatchlist(!showWatchlist)}
+                        className="accordion"
+                    >
+                        <h2>{list.name}</h2>
+                    </button>
+                    <div id='icons'>
                     <div>
-                        <button className='add__ticker__btn'><FaPlus className='plus__sign'/> New Ticker</button>
+                        <button className='edit__watchlist__btn' onClick={(e) => setShowEditForm(!showEditForm)}><FaPen className='edit__pen' /></button>
                     </div>
                     <div>
-                        <button className='edit__watchlist__btn' onClick={(e) => setShowEditForm(!showEditForm)}><FaPen className='edit__pen'/></button>
+                        <button className='trash__btn' onClick={handleDelete}><FaTrashAlt className='trash' /></button>
                     </div>
-                    <div>
-                        <button className='trash__btn' onClick={handleDelete}><FaTrashAlt className='trash'/></button>
                     </div>
-
                 </div>
                 {showEditForm && (
                     <form onSubmit={handleEdit}>
@@ -83,7 +81,7 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
                                 placeholder='Watchlist Name..'
                                 value={newWatchlistName}
                                 onChange={e => setNewWatchlistName(e.target.value)}
-                                >
+                            >
                             </input>
                             <button className='submit__watchlist__btn' type="submit">Submit</button>
                         </div>

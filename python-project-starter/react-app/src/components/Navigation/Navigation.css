@@ -10,13 +10,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.off__click {
+/* .off__click {
     z-index: -99;
-
     background: transparent;
     height: 3000px;
     width: 100%;
-}
+} */
 
 .products__tab, .learn__tab, .whoweare__tab, svg {
     transform: translateY(25%);
@@ -50,6 +49,7 @@ body {
     z-index: 99;
     position: fixed;
     top: 0;
+    background-color: black;
     width: 100%;
     display: flex;
     justify-content: space-between;

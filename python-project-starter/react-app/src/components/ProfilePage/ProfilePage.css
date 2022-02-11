@@ -167,3 +167,95 @@ body {
     border: none;
     color: rgb(20, 122, 255);
 }
+
+
+
+/* Edit form modal */
+
+.form__container {
+    margin-right: 15%;
+}
+
+#change__theme__container {
+    text-decoration: underline;
+}
+
+.color__palette {
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 2%; */
+    justify-content: space-around;
+    align-items: center;
+}
+.color1__container {
+    padding: 25px;
+}
+
+.color2__container {
+    padding: 25px;
+}
+
+.color3__container {
+    padding: 25px;
+}
+
+.color4__container {
+    padding: 25px;
+}
+
+.color5__container {
+    padding: 25px;
+}
+
+.color1, .color2, .color3, .color4, .color5 {
+    transform: scale(4.5);
+}
+
+#change__theme__container #theme__color__btn1 {
+    background-color: rgb(30, 30, 218);
+}
+
+#change__theme__container #theme__color__btn2 {
+    background-color: rgb(0, 167, 0);
+}
+
+#change__theme__container #theme__color__btn3 {
+    background-color: rgb(223, 22, 206);
+}
+
+#change__theme__container #theme__color__btn4 {
+    background-color: rgb(235, 16, 16);
+}
+
+#change__theme__container #theme__color__btn5 {
+    background-color: rgb(251, 255, 0);
+}
+
+
+
+/* HOVER EFFECTS COLOR BUTTONS */
+
+#change__theme__container #theme__color__btn1:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn2:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn3:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn4:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}
+
+#change__theme__container #theme__color__btn5:hover {
+    transform: scale(5.0);
+    box-shadow: 0.5px 1px 1.5px rgba(0, 0, 0, 0.74);
+}

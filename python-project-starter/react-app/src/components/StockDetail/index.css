@@ -1,33 +1,36 @@
-.stock__detail__graph canvas {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.274);
-    margin-bottom: 1%;
+body{
+  height: 100%;
+}
+
+.stock-detail-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8%;
 }
 
 #title{
-    margin-top: 8%;
+  margin-bottom: 2%;
 }
 
-.stock__detail__graph {
-    width: 1280px;
+.graph-title{
+  width: 60%;
 }
 
 .all-kpi{
-    /* margin-top: 2%; */
-    border: 1px solid rgba(255, 255, 255, 0.274);
-    display: flex;
-    padding-bottom: 15px;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 14pt;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
 }
 
 .grid-area-template div {
     font-size: 50;
 }
 
+
+
 .kpi p {
     color: rgb(20, 242, 0);
-
 }
 
 #watchlistbutton{
@@ -35,11 +38,12 @@
 }
 
 .Order66 {
-    padding-top: 2%;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
+    width: 100%;
     margin-bottom: 2%;
-}
+  }
 
 .Order66 input {
     background-color : #d1d1d142;
@@ -77,7 +81,7 @@
     color: white;
 }
 
-.notabutton {
+.add-to-list {
     background-color: rgb(255, 255, 7);
     font-size: 16px;
     width: 14%;
@@ -316,10 +320,10 @@
 .button-82-pushable2:focus:not(:focus-visible) {
     outline: none;
   }
-  
-@media screen and (min-width: 900px) {
+
+/* @media screen and (min-width: 900px) {
     .stock__detail__graph{
         max-width: 100px;
         max-height: 800px;
     }
-}
+} */
