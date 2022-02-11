@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { loadWatchlistTickers } from '../../store/watchlistTickers';
+import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 import Tickers from './tickers';
 import { FaTrashAlt } from "react-icons/fa";
 
 const WatchlistTickers = ({list}) => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
+    const [newTickerId, setNewTickerId] = useState("")
     // const [stonkTickers, setStonkTickers] = useState("")
-    // const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
+    const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
 
-    // useEffect(() => {
-    //     async function getTickers() {
-    //         await dispatch(loadWatchlistTickers(individualWatchlist.id))
-    //     }
-    //     getTickers()
+    useEffect(() => {
+        async function getTickers() {
+            await dispatch(loadWatchlistTickers(list.id))
+        }
+        getTickers()
 
-    // }, [individualWatchlist])
+    }, [list])
+    console.log("WATCHLIST", watchlistTickers)
 
     // useEffect(() => {
     //     let watchlistTickersArr = Object.values(watchlistTickers)
@@ -33,6 +35,7 @@ const WatchlistTickers = ({list}) => {
     //     }
     //     getValues()
     //   }, [list]);
+
 
 
 
