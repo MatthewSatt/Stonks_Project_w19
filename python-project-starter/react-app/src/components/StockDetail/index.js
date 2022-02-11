@@ -53,7 +53,6 @@ const StockDetail = () => {
             }
         })
 
-        console.log("TICKER FILTER", ticker_filter)
         if (ticker_filter.length){
             await dispatch(editStonk(ticker_filter, ref.current.value))
             history.push("/home")
@@ -83,6 +82,8 @@ const StockDetail = () => {
         }
 
         if(currentQuantity - ref.current.value === 0){
+
+            console.log("TICKER FILTER", ticker_filter)
             await dispatch(sellStonk(ticker_filter, (ref.current.value * -1)))
             // history.push("/home")
         }

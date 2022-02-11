@@ -36,7 +36,7 @@ const Portfolio = () => {
           await dispatch(setUser(updatedUser))
       }
       getUserUpdates()
-    }, [dispatch]);
+    }, []);
 
     // useEffect(() => {
     //     async function getPortfolios() {
