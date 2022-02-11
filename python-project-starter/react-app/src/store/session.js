@@ -2,10 +2,16 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 const EDIT_USER = 'session/EDIT_USER'
+const UPDATE_USER = 'session/UPDATE_USER'
 
+export const updateUser = user => {
+  return {
+    type: UPDATE_USER,
+    user
+  }
+}
 
-
-const setUser = (user) => ({
+export const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
@@ -137,6 +143,10 @@ export default function reducer(state = initialState, action) {
         user: action.value
       }
       return newState
+    case UPDATE_USER:
+        newState = { ...state }
+        newState.user = action.user
+        return newState
     default:
       return state;
   }
