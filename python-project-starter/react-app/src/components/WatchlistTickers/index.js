@@ -35,6 +35,8 @@ const WatchlistTickers = ({list, handleDeleteTicker}) => {
     //     }
     //     getValues()
     //   }, [list]);
+    console.log("LISTTTT", list)
+
         return (
             <>
             <div className='my-stonks-table'>

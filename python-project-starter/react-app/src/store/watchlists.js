@@ -107,7 +107,7 @@ const watchlistReducer = (state = initialState, action) => {
             action.watchlists.forEach((watchlist) => {
                 newState[watchlist.id] = watchlist
             })
-            return { ...newState, ...state }
+            return { ...newState }
         }
         case ADD_WATCHLIST:
             newState = {
