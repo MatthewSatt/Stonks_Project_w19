@@ -150,7 +150,7 @@ const Portfolio = () => {
                     <h2 id='graphheader'>Balance Over Time</h2>
                     <PortfolioGraph dates={dateFormatArr} values={valueArr} style={GraphStyle} />
                     <div className='news__container'>
-                        <h1>News</h1>
+                        <div className='news__title'><h1>News</h1></div>
                         <div className='news__content'>
                             <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image' />
                             <div className='article__container'>
@@ -204,45 +204,8 @@ const Portfolio = () => {
                         </form>
                     )}
                 </div>
-
-
             </div >
-            <div className='watchlistright'>
-                <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
-                    <h2>Show My Watchlists</h2>
-                </button>
-                {showWatchlists && (
-                    <>
-                    {watchlistLists.map(list => (
-
-                        <div className='eachwatchlist'>
-                        <Watchlist key={list.id} handleDeleteTicker={handleDeleteTicker} list={list}></Watchlist>
-                    </div>
-                ))}
-                </>
-                )}
-                <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist'/></button>
-                {showForm && (
-                    <form onSubmit={handleWatchListSubmit}>
-                    <div className='add__list__container'>
-                        <input
-                        className='add__watchlist__input'
-                        name="Watchlist"
-                        placeholder='Watchlist Name..'
-                        value={watchlistName}
-                        onChange={e => setWatchlistName(e.target.value)}
-                        >
-                        </input>
-                        <button className='submit__watchlist__btn' type="submit">Submit</button>
-                    </div>
-                </form>
-                )}
-            </div>
-
         </div >
-
-
-        </div>
     )
 
 };

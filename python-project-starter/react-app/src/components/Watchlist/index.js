@@ -65,9 +65,6 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
                     </button>
                     <div id='icons'>
                     <div>
-                        <button className='add__ticker__btn'><FaPlus className='plus__sign' /></button>
-                    </div>
-                    <div>
                         <button className='edit__watchlist__btn' onClick={(e) => setShowEditForm(!showEditForm)}><FaPen className='edit__pen' /></button>
                     </div>
                     <div>
