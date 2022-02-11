@@ -140,8 +140,8 @@ const StockDetail = () => {
             </div>
             <div className='graph-title'>
                 <h1 id='title'>{name}</h1>
-                <div>
-                    <StockGraph dates={dates} values={values} />
+                <div className="stock__detail__graph">
+                    <StockGraph dates={dates} values={values}/>
                 </div>
             </div>
             <h2>Key Stats</h2>
