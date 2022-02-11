@@ -3,16 +3,12 @@ import '../MyStonks/index.css'
 import { useDispatch, useSelector } from "react-redux";
 import { loadUserWatchlists, delWatchlist, editWatchlist } from '../../store/watchlists';
 import WatchlistTickers from '../WatchlistTickers';
-
 import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
-
-
-const Watchlist = ({list, handleDeleteTicker}) => {
-
 import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 
 
-const Watchlist = ({ list }) => {
+
+const Watchlist = ({ list, handleDeleteTicker }) => {
 
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
@@ -63,8 +59,8 @@ const Watchlist = ({ list }) => {
 
 
 
-    
-  
+
+
 
 
             <div>
