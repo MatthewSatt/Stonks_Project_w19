@@ -20,7 +20,7 @@ const MyStonks = ({portfolios}) => {
                 </thead>
                 <tbody>
                     {stocksArr.map((stock) => (
-                        <tr key="TEST">
+                        <tr key={stock.id}>
                             <td><Link id='linktostonk' to={`stonk/${stock.ticker}`}>{stock.ticker}</Link></td>
                             <td> {stock["current_price"]} </td>
                             <td> {stock.quantity} </td>
