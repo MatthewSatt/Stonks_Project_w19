@@ -39,6 +39,12 @@ body{
   width: 100%;
 }
 
+.news__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .stock-graph-container{
   border: 1px solid white;
 }
