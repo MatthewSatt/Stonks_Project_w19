@@ -23,6 +23,18 @@ function PortfolioGraph({dates, values}){
         Legend
       );
 
+      let date1 = new Date(new Date().setDate(new Date().getDate() - 1))
+      let date2 = new Date(new Date().setDate(new Date().getDate() - 2))
+      let date3 = new Date(new Date().setDate(new Date().getDate() - 3))
+      let date4 = new Date(new Date().setDate(new Date().getDate() - 4))
+      let date5 = new Date(new Date().setDate(new Date().getDate() - 5))
+
+      if (values.length === 0){
+        values = [4000.35, 4600.67, 3400.22, 4700.50, 5600.39]
+        dates = [date5.toLocaleDateString("en-US"), date4.toLocaleDateString("en-US"), date3.toLocaleDateString("en-US"), date2.toLocaleDateString("en-US"), date1.toLocaleDateString("en-US")]
+      }
+
+      console.log(values)
       const [lineColor, setLineColor] = useState("")
       //for the slice make the second number a variable that will change with a useEffect when the user clicks how many days to view.
       const daySlicer = dates.slice(0, 30)

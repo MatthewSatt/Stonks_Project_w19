@@ -128,9 +128,9 @@ body {
 
 .profile-menu {
     appearance: none;
-    background: transparent;
-    border: 1px solid #DDDDDD;
-    color: #222222;
+    /* background: transparent; */
+    /* border: 1px solid #DDDDDD; */
+    /* color: #222222; */
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
@@ -139,14 +139,22 @@ body {
     margin: 0px;
     outline: none;
     overflow: visible;
-    padding: 5px 5px 5px 12px;
+    /* padding: 5px 5px 5px 12px; */
     text-align: inherit;
     text-decoration: none;
     user-select: auto;
     align-items: center;
-    border-radius: 21px;
-    height: 42px;
+    border-radius: 30px;
+    /* height: 42px; */
 }
+
+.profile-picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+    
+    /* margin-right: 10px; */
+  }
 
 .profile-menu:hover {
     transform: scale(1.04);

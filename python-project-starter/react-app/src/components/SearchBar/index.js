@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import "./searchBar.css"
+import { finalResultData } from './data'
 
 function SearchBar() {
 
@@ -15,16 +16,16 @@ function SearchBar() {
         if (searchTerm === ""){
             return setSearchTerm("")
         }
-        const res = await fetch(`/api/search`, {
-	"method": "GET",
-	"headers": {
-		"Content-Type": "application/json"
-	}
-})
-    const result = await res.json()
+//         const res = await fetch(`/api/search`, {
+// 	"method": "GET",
+// 	"headers": {
+// 		"Content-Type": "application/json"
+// 	}
+// })
+    // const result = await res.json()
 
-
-    const filteredResult = result.filter(word =>{
+        console.log(finalResultData)
+    const filteredResult = finalResultData.filter(word =>{
         return (word[0].includes(searchTerm.toUpperCase()) || word[1].toUpperCase().includes(searchTerm.toUpperCase()))
     })
 

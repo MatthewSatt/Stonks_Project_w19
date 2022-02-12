@@ -8,7 +8,7 @@ const AddToWatchlist = ({handleAddToWatchlist, tickerArr}) => {
         <>
             {tickerArr.map(list =>(
                     <>
-            <button key={list.id} className='notabutton' onClick={e => handleAddToWatchlist(e, list.id)} >Add To {list.name}</button>
+            <button key={list.id} className='add-to-list-ticker' onClick={e => handleAddToWatchlist(e, list.id)} >Add To {list.name}</button>
                     </>
             ))}
         </>

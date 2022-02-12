@@ -1,11 +1,5 @@
-from flask import Blueprint, jsonify
 
-
-search_routes = Blueprint("search", __name__)
-
-@search_routes.route("/")
-def load_search():
-    tickers = ['A',
+const tickerList = ['A',
 'AA',
 'AAC',
 'AACG',
@@ -8346,7 +8340,7 @@ def load_search():
 'ZYNE',
 'ZYXI'
 ]
-    names = ['Agilent Technologies Inc. Common Stock',
+const companyNames = ['Agilent Technologies Inc. Common Stock',
 'Alcoa Corporation Common Stock ',
 'Ares Acquisition Corporation Class A Ordinary Shares',
 'ATA Creativity Global American Depositary Shares',
@@ -16689,7 +16683,23 @@ def load_search():
 ]
 
 
+const zip = (...arr) => {
+    const zipped = [];
+    arr.forEach((element, ind) => {
+       element.forEach((el, index) => {
+          if(!zipped[index]){
+             zipped[index] = [];
+          };
+          if(!zipped[index][ind]){
+             zipped[index][ind] = [];
+          }
+          zipped[index][ind] = el || '';
+       })
+    });
+    return zipped;
+ };
 
-    zipped = zip(tickers, names)
-    # print("ZIPPED IN API", list(zipped))
-    return jsonify(list(zipped))
+export const finalResultData = zip(tickerList, companyNames);
+// export const finalResultData
+// console.log(finalResult)
+// let finalListInfo = tickers

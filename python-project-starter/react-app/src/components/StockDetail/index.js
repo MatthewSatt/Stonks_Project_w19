@@ -43,7 +43,9 @@ const StockDetail = () => {
         async function getDetails() {
             await dispatch(getStockDetails(ticker.ticker))
             const tickerArr = []
-
+            if(user.watchlists.length === 0) {
+                return
+            }
             let forEach = user.watchlists.forEach(list => {
                 tickerArr.push(...list.watchlist_tickers)
 
@@ -147,13 +149,13 @@ const StockDetail = () => {
         const ticker = thisTicker.ticker
 
         let lists = Object.values(user.watchlists)
-        console.log("TICKERS", lists)
+
         let tickerArr = []
         lists.forEach(list =>{
             tickerArr.push(list.watchlist_tickers)
         })
 
-        console.log("TICKER ARR", tickerArr)
+
         // tickerArr.forEach(tick =>{
         //     if (tick.ticker === ticker){
         //     window.alert(`This watchlist already has ${tick.ticker}`)
