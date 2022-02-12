@@ -145,6 +145,22 @@ const StockDetail = () => {
     const handleAddToWatchlist = async (e, listId) => {
         e.preventDefault();
         const ticker = thisTicker.ticker
+
+        let lists = Object.values(user.watchlists)
+        console.log("TICKERS", lists)
+        let tickerArr = []
+        lists.forEach(list =>{
+            tickerArr.push(list.watchlist_tickers)
+        })
+
+        console.log("TICKER ARR", tickerArr)
+        // tickerArr.forEach(tick =>{
+        //     if (tick.ticker === ticker){
+        //     window.alert(`This watchlist already has ${tick.ticker}`)
+        //         return
+        //     }
+        // })
+
         let watchlistId = listId
         let id = user.id
         await dispatch(addWatchlistTicker(ticker, watchlistId, id))
