@@ -82,7 +82,7 @@ const StockDetail = () => {
         })
 
         const costToBuy = (ref.current.value * price)
-   
+
         if(user.cash < costToBuy){
             window.alert("You need more cash in your balance to complete this buy.")
             return
@@ -110,6 +110,15 @@ const StockDetail = () => {
                 return item
             }
         })
+        if(ticker_filter.length === 0){
+            window.alert("You can't sell a stock you do not own")
+            return
+        }
+        // console.log("TICKERRR", ticker_filter[0][])
+        if(ticker_filter[0]["quantity"] < ref.current.value){
+            window.alert("You can't sell more shares than you own")
+            return
+        }
         let currentQuantity = ticker_filter[0]['quantity']
 
         if (!(currentQuantity - ref.current.value === 0)) {
