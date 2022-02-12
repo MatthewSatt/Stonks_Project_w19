@@ -5,16 +5,19 @@ import { delWatchlist, editWatchlist } from '../../store/watchlists';
 import WatchlistTickers from '../WatchlistTickers';
 // import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
-
+import { useSelector } from "react-redux";
+import { loadUserWatchlists } from '../../store/watchlists';
 
 
 const Watchlist = ({ list, handleDeleteTicker }) => {
 
     const dispatch = useDispatch();
-    // const user = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user)
     const [showWatchlist, setWatchlist] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
     const [newWatchlistName, setNewWatchlistName] = useState(list.name)
+    const [user1, setUser] = useState({});
+
     // const watchlists = useSelector(state => state.watchlistReducer)
     // const watchlistTickers = useSelector(state => state.watchlistTickersReducer)
 
@@ -28,6 +31,7 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
         e.preventDefault();
         let watchlistId = list.id
         dispatch(delWatchlist(watchlistId))
+        // dispatch(loadUserWatchlists(user.id))
     }
 
     const handleEdit = (e) => {
@@ -88,7 +92,7 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
                     </form>
                 )}
                 {showWatchlist && (
-                    <WatchlistTickers handleDeleteTicker={handleDeleteTicker} list={list} />
+                    <WatchlistTickers userWatchlists={user.watchlists} handleDeleteTicker={handleDeleteTicker} list={list} />
                 )}
             </div>
 
