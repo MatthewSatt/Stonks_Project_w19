@@ -5,7 +5,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import "./Navigation.css"
-
+// import "../../public/profile-pic.jpeg"
 
 function ProfileButton() {
   const user = useSelector(state => state.session.user)
@@ -39,8 +39,9 @@ function ProfileButton() {
   return (
     <>
       {!user ? null : <button className="profile-menu" onClick={openMenu}>
-        <i className="fas fa-bars" />
-        <i className="fas fa-user-circle" />
+        {/* <i className="fas fa-bars" />
+        <i className="fas fa-user-circle" /> */}
+        <img className="profile-picture" src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img>
       </button>}
       {showMenu && (
         <ul className="profile-dropdown">

@@ -94,6 +94,19 @@ body{
     border: none;
 }
 
+.add-to-list-ticker {
+  background-color: rgb(72, 197, 48);
+  font-size: 16px;
+  width: 14%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+  color: black;
+  border: none;
+}
+
 .notabutton:hover {
     background-color: rgba(255, 255, 7, 0.842);
     transform: scale(0.98);
