@@ -81,7 +81,12 @@ const StockDetail = () => {
             }
         })
 
-
+        const costToBuy = (ref.current.value * price)
+   
+        if(user.cash < costToBuy){
+            window.alert("You need more cash in your balance to complete this buy.")
+            return
+        }
 
         if (ticker_filter.length){
 
