@@ -34,7 +34,6 @@ function PortfolioGraph({dates, values}){
         dates = [date5.toLocaleDateString("en-US"), date4.toLocaleDateString("en-US"), date3.toLocaleDateString("en-US"), date2.toLocaleDateString("en-US"), date1.toLocaleDateString("en-US")]
       }
 
-      console.log(values)
       const [lineColor, setLineColor] = useState("")
       //for the slice make the second number a variable that will change with a useEffect when the user clicks how many days to view.
       const daySlicer = dates.slice(0, 30)

@@ -18,7 +18,7 @@ const StockDetail = () => {
     const ref = useRef()
     const thisTicker = useParams()
     const user = useSelector(state => state.session.user)
-    // const portfolios = useSelector(state => state.portfolioReducer)
+    // const tickerReducer = useSelector(state => state.watchlistTickerReducer)
     const [showAddButton, setShowAddButton] = useState(false)
     const [tickerExists, setTickerExists] = useState(true)
     const watchlists = useSelector(state => state.watchlistReducer)
@@ -152,19 +152,42 @@ const StockDetail = () => {
 
         let tickerArr = []
         lists.forEach(list =>{
-            tickerArr.push(list.watchlist_tickers)
+            tickerArr.push(...list.watchlist_tickers)
         })
 
-
+        console.log("TICKER ARR", tickerArr)
         // tickerArr.forEach(tick =>{
         //     if (tick.ticker === ticker){
         //     window.alert(`This watchlist already has ${tick.ticker}`)
         //         return
         //     }
         // })
-
         let watchlistId = listId
+        let tickFilter = tickerArr.filter(tick =>{
+            if (tick.watchlist_id === watchlistId  && tick.ticker === ticker){
+               return (tick.watchlistId, tick.ticker)
+            }
+        })
+        console.log("tickFIlTERR", tickFilter)
+
+        if (tickFilter.length){
+            return window.alert(`This watchlist already contains ${ticker}`)
+        }
+
+        // let validatorTicker = Object.values(tickerReducer)
+        // let validatorFilter = validatorTicker.filter(tick =>{
+        //     if (tick.watchlist_id === watchlistId  && tick.ticker === ticker){
+        //        return (tick.watchlistId, tick.ticker)
+        //     }
+        // })
+
+        // console.log("TICKER REDUCE", Object.values(validatorTicker))
+
+        // if (validatorFilter.length){
+        //     return window.alert(`This watchlist already contains ${ticker}`)
+        // }
         let id = user.id
+        console.log("IN TICKER", watchlistId, ticker, id)
         await dispatch(addWatchlistTicker(ticker, watchlistId, id))
         setShowAddButton(!showAddButton)
 
