@@ -22,12 +22,12 @@ const StockDetail = () => {
     const [tickerExists, setTickerExists] = useState(true)
     const watchlists = useSelector(state => state.watchlistReducer)
 
-    // useEffect(() => {
-    //     async function getWatchlists() {
-    //         await dispatch(loadUserWatchlists(user.id))
-    //     }
-    //     getWatchlists()
-    // }, [dispatch])
+    useEffect(() => {
+        async function getWatchlists() {
+            await dispatch(loadUserWatchlists(user.id))
+        }
+        getWatchlists()
+    }, [dispatch])
 
     const [cost, setCost] = useState(0)
 
