@@ -89,6 +89,11 @@ body{
     color: white;
 }
 
+#addToWatchlist-btn {
+  background-color: yellow;
+  color: black;
+}
+
 .add-to-list {
     background-color: rgb(255, 255, 7);
     font-size: 16px;
@@ -102,17 +107,33 @@ body{
     border: none;
 }
 
+.add-to-list-container{
+  display: flex;
+  flex-direction: row;
+  /* margin-right: 20%; */
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 55px;
+  width: 45%;
+}
+
 .add-to-list-ticker {
-  background-color: rgb(72, 197, 48);
+  /* margin-left: 10%; */
+  background-color: rgb(38, 223, 1);
   font-size: 16px;
   width: 14%;
   padding: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 50px;
   color: black;
   border: none;
+}
+
+.add-to-list-container button {
+  margin-left: 1%;
 }
 
 .notabutton:hover {
@@ -161,6 +182,34 @@ body{
     touch-action: manipulation;
   }
 
+  .button-82-pushable3 {
+    margin-top: 2%;
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-82-pushable4 {
+    margin-top: 2%;
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
 .button-82-shadow {
   position: absolute;
   top: 0;
@@ -178,6 +227,38 @@ body{
 }
 
 .button-82-shadow2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .7, .4, 1);
+  }
+
+  .button-82-shadow3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .7, .4, 1);
+  }
+
+  .button-82-shadow4 {
     position: absolute;
     top: 0;
     left: 0;
@@ -225,6 +306,38 @@ body{
     );
   }
 
+  .button-82-edge3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(
+      to left,
+      rgb(222, 226, 0) 0%,
+      rgba(163, 152, 0, 0.788) 8%,
+      rgb(129, 127, 0) 92%,
+      rgb(81, 82, 0) 100%
+    );
+  }
+
+  .button-82-edge4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(
+      to left,
+      rgb(0, 226, 0) 0%,
+      rgba(0, 163, 41, 0.815) 8%,
+      rgb(0, 129, 6) 92%,
+      rgb(3, 82, 0) 100%
+    );
+  }
+
 .button-82-front {
   display: block;
   position: relative;
@@ -242,6 +355,38 @@ body{
 }
 
 .button-82-front2 {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: white;
+    background: rgb(20, 168, 0);
+    will-change: transform;
+    transform: translateY(-3px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .8, .4, 1);
+  }
+
+  .button-82-front3 {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: white;
+    background: rgb(20, 168, 0);
+    will-change: transform;
+    transform: translateY(-3px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .8, .4, 1);
+  }
+
+  .button-82-front4 {
     display: block;
     position: relative;
     padding: 12px 27px;
@@ -280,6 +425,14 @@ body{
     filter: brightness(110%);
   }
 
+  .button-82-pushable3:hover {
+    filter: brightness(110%);
+  }
+
+  .button-82-pushable4:hover {
+    filter: brightness(110%);
+  }
+
 .button-82-pushable:hover .button-82-front {
   transform: translateY(-6px);
   transition:
@@ -296,12 +449,38 @@ body{
       cubic-bezier(.3, .7, .4, 1.5);
   }
 
+  .button-82-pushable3:hover .button-82-front3 {
+    transform: translateY(-6px);
+    transition:
+      transform
+      250ms
+      cubic-bezier(.3, .7, .4, 1.5);
+  }
+
+  .button-82-pushable4:hover .button-82-front4 {
+    transform: translateY(-6px);
+    transition:
+      transform
+      250ms
+      cubic-bezier(.3, .7, .4, 1.5);
+  }
+
 .button-82-pushable:active .button-82-front {
   transform: translateY(-2px);
   transition: transform 34ms;
 }
 
 .button-82-pushable2:active .button-82-front2 {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+
+  .button-82-pushable3:active .button-82-front3 {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+
+  .button-82-pushable4:active .button-82-front4 {
     transform: translateY(-2px);
     transition: transform 34ms;
   }
@@ -322,6 +501,22 @@ body{
       cubic-bezier(.3, .7, .4, 1.5);
   }
 
+  .button-82-pushable3:hover .button-82-shadow3 {
+    transform: translateY(4px);
+    transition:
+      transform
+      250ms
+      cubic-bezier(.3, .7, .4, 1.5);
+  }
+
+  .button-82-pushable4:hover .button-82-shadow4 {
+    transform: translateY(4px);
+    transition:
+      transform
+      250ms
+      cubic-bezier(.3, .7, .4, 1.5);
+  }
+
 
 .button-82-pushable:active .button-82-shadow {
   transform: translateY(1px);
@@ -333,11 +528,29 @@ body{
     transition: transform 34ms;
   }
 
+  .button-82-pushable3:active .button-82-shadow3 {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+
+  .button-82-pushable4:active .button-82-shadow4 {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+
 .button-82-pushable:focus:not(:focus-visible) {
   outline: none;
 }
 
 .button-82-pushable2:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  .button-82-pushable3:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  .button-82-pushable4:focus:not(:focus-visible) {
     outline: none;
   }
 

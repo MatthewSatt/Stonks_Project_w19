@@ -276,11 +276,17 @@ const StockDetail = () => {
             </div>
 
 
-            <button className='add-to-list' onClick={showUsersWatchlists}>Show Watchlists</button>
+            {/* <button className='add-to-list' onClick={showUsersWatchlists}>Show Watchlists</button> */}
+            <button onClick={showUsersWatchlists} class="button-82-pushable3" role="button">
+                    <span class="button-82-shadow3"></span>
+                    <span class="button-82-edge3"></span>
+                    <span id="addToWatchlist-btn" class="button-82-front3 text">
+                    Show Watchlists
+                    </span>
+                </button>
                 {showAddButton && (
                     <AddToWatchlist tickerArr={tickerArr} tickerExists={tickerExists} handleAddToWatchlist={handleAddToWatchlist} />
                     )}
-
         </div>
 
     )
