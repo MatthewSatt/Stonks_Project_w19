@@ -30,7 +30,7 @@ function PortfolioGraph({dates, values}){
       let date5 = new Date(new Date().setDate(new Date().getDate() - 5))
 
       if (values.length === 0){
-        values = [4000.35, 4600.67, 3400.22, 4700.50, 5600.39]
+        values = [4592.23, 4668.22, 4700.68, 4862.325, 4768.89]
         dates = [date5.toLocaleDateString("en-US"), date4.toLocaleDateString("en-US"), date3.toLocaleDateString("en-US"), date2.toLocaleDateString("en-US"), date1.toLocaleDateString("en-US")]
       }
 

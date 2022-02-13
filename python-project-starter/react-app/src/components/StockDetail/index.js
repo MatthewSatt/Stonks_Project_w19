@@ -84,6 +84,16 @@ const StockDetail = () => {
 
         const costToBuy = (ref.current.value * price)
 
+        if(costToBuy === 0){
+            window.alert("You can't buy 0 shares")
+            return
+        }
+        if (!ref.current.value){
+            window.alert("You can't buy 0 shares")
+            return
+        }
+
+
         if(user.cash < costToBuy){
             window.alert("You need more cash in your balance to complete this buy.")
             return
@@ -105,6 +115,18 @@ const StockDetail = () => {
 
     const handleSell = async (e) => {
         e.preventDefault()
+
+        const costToBuy = (ref.current.value * price)
+        if(costToBuy === 0){
+            window.alert("You can't sell 0 shares")
+            return
+        }
+        if (!ref.current.value){
+            window.alert("You can't sell 0 shares")
+            return
+        }
+
+
         const portfolioValues = Object.values(user.portfolio)
         let ticker_filter = portfolioValues.filter(item => {
             if (item.ticker === ticker.ticker) {
@@ -262,9 +284,9 @@ const StockDetail = () => {
                     </span>
                 </button>
                 {/* <button id='buybutton' onClick={handleBuy}>Buy</button> */}
-                <span id='buyprice'>$ {cost}</span>
+                <span id='buyprice'>$ {cost.toFixed(2)}</span>
                 <input placeholder='quantity' onChange={e => setCost((e.target.value * price))} type='number' min='0' ref={ref} />
-                <span id='sellprice'>-$ {cost}</span>
+                <span id='sellprice'>-$ {cost.toFixed(2)}</span>
                 {/* <button onClick={handleSell} id='sellbutton'>Sell</button> */}
                 <button onClick={handleSell} class="button-82-pushable" role="button">
                     <span class="button-82-shadow"></span>

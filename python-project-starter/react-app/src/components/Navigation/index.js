@@ -59,7 +59,7 @@ return (
     {!user ? null : <div className=''>
       <div className='user__balance'>
         <p>Balance: </p>
-        <p className='my__cash'> ${user.cash}</p>
+        <p className='my__cash'> ${user.cash.toFixed(2)}</p>
       </div>
     </div>}
     {/* <div className="wrapper" ref={ref} onClick={() => setIsMenuOpen(oldState => !oldState)}> */}
