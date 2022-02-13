@@ -153,19 +153,26 @@ const Portfolio = () => {
                     <div className='news__container'>
                         <div className='news__title'><h1>News</h1></div>
                         <div className='news__content'>
-                            <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image' />
+                            <img src="https://mediacloud.kiplinger.com/image/private/s--guAmUFz8--/f_auto,t_primary-image-mobile@1/v1640725281/Investing/stock-market-today-122821.jpg" alt="Your picture" className='news__image' />
                             <div className='article__container'>
                                 <p className='news__heading'>BEST NEW STOCK APP</p>
-                                <p className='news__article'>The Stonks has been voted best ivestment training app EVER</p>
+                                <p className='news__article'>The Stonks has been voted best investment training app</p>
                             </div>
 
 
                         </div>
                         <div className='news__content'>
-                            <img src="https://g.foolcdn.com/editorial/images/604040/rising-stock-price.jpg" alt="Your picture" className='news__image' />
+                            <img src="https://images.moneycontrol.com/static-mcnews/2022/02/stocks_sensex_nifty_stockmarket.jpg" alt="Your picture" className='news__image' />
                             <div className='article__container'>
                                 <p className='news__heading'>What should you invest in?</p>
                                 <p className='news__article'>Practice on The Stonks to see the numbers</p>
+                            </div>
+                        </div>
+                        <div className='news__content'>
+                            <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/7325/production/_111277492_gettyimages-1207339125.jpg" alt="Your picture" className='news__image' />
+                            <div className='article__container'>
+                                <p className='news__heading'>The Do's and Do not's of Investing</p>
+                                <p className='news__article'>The game of Investing, it's a game you dont want to lose...</p>
                             </div>
                         </div>
                     </div>
