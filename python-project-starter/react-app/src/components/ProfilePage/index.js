@@ -19,8 +19,8 @@ function ProfileDisplay() {
             <div className='top__container'>
                 <div className='profile__pic__container'>
                     <div>
-                    {/* <img className='profile__pic' src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img> */}
-                        <FaSmile className='profile__pic' />
+                    <img className='profile__pic' src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img>
+                        {/* <FaSmile className='profile__pic' /> */}
                         {/* <FaPlusCircle className='change__profile__pic' /> */}
                     </div>
                 </div>
@@ -46,11 +46,11 @@ function ProfileDisplay() {
                 </div>
                 <div className='stock__categories'>
                     <div className='industry__category'>
-                        <a href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaBusinessTime className='icon' /> Financials</button></a>
-                        <a href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaLightbulb className='icon' /> Energy</button></a>
-                        <a href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaHouseUser className='icon' /> Real Estate</button></a>
-                        <a href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaMicrochip className='icon' /> Technology</button></a>
-                        <a href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaStethoscope className='icon' /> Healthcare</button></a>
+                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaBusinessTime className='icon' /> Financials</button></a>
+                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaLightbulb className='icon' /> Energy</button></a>
+                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaHouseUser className='icon' /> Real Estate</button></a>
+                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaMicrochip className='icon' /> Technology</button></a>
+                        <a target="_blank" href="https://www.fool.com/investing/stock-market/market-sectors/"><button><FaStethoscope className='icon' /> Healthcare</button></a>
                     </div>
                 </div>
             </div>

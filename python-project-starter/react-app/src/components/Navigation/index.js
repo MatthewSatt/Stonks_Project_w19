@@ -69,10 +69,10 @@ return (
           {/* {isMenuOpen && ( */}
             <ul id='learn__container' className={`menuNav ${navbarOpen ? "showMenu1" : ""}`}>
             <div className='stocks__info__container'>
-              <li><a href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
+              <li><a target="_blank" href='https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp'>Stocks</a></li>
             </div>
             <div className='latest__news__container'>
-              <li><a href='https://finance.yahoo.com/topic/stock-market-news/'>Latest News</a></li>
+              <li><a target="_blank" href='https://finance.yahoo.com/topic/stock-market-news/'>Latest News</a></li>
             </div>
           </ul>
           {/* )} */}
@@ -82,16 +82,16 @@ return (
           {/* {isMenuOpen && ( */}
             <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu2" : ""}`}>
             <div className='github__container'>
-              <li><a href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
+              <li><a target="_blank" href='https://github.com/w-duffy'><FaGithub/> Will Duffy</a></li>
             </div>
             <div className='github__container'>
-              <li><a href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
+              <li><a target="_blank" href='https://github.com/DevDre783'><FaGithub/> Andres Soca</a></li>
             </div>
             <div className='github__container'>
-              <li><a href='https://github.com/ta-cos'><FaGithub/> Nathan Treadaway</a></li>
+              <li><a target="_blank" href='https://github.com/ta-cos'><FaGithub/> Nathan Treadaway</a></li>
             </div>
             <div className='github__container'>
-              <li><a href='https://github.com/MatthewSatt'><FaGithub/> Matthew Satterwhite</a></li>
+              <li><a target="_blank" href='https://github.com/MatthewSatt'><FaGithub/> Matthew Satterwhite</a></li>
             </div>
           </ul>
           {/* )} */}

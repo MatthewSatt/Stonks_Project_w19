@@ -117,6 +117,7 @@ body {
 
 .owned__stock__percentage button:hover {
     color: white;
+    cursor: default;
     border: none;
     background-color: rgb(0, 167, 0);
 }
