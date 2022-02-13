@@ -16684,19 +16684,19 @@ const companyNames = ['Agilent Technologies Inc. Common Stock',
 
 
 const zip = (...arr) => {
-    const zipped = [];
-    arr.forEach((element, ind) => {
-       element.forEach((el, index) => {
-          if(!zipped[index]){
-             zipped[index] = [];
+    const zippedFiles = [];
+    arr.forEach((el, ind) => {
+       el.forEach((el1, idx) => {
+          if(!zippedFiles[idx]){
+             zippedFiles[idx] = [];
           };
-          if(!zipped[index][ind]){
-             zipped[index][ind] = [];
+          if(!zippedFiles[idx][ind]){
+             zippedFiles[idx][ind] = [];
           }
-          zipped[index][ind] = el || '';
+          zippedFiles[idx][ind] = el1 || '';
        })
     });
-    return zipped;
+    return zippedFiles;
  };
 
 export const finalResultData = zip(tickerList, companyNames);

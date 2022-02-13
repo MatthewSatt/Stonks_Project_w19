@@ -103,12 +103,6 @@ function PortfolioGraph({dates, values}){
           datalabels: {
             display: false
           },
-          // title: {
-          //   text: (ctx) => {
-          //     const {intersect, mode} = ctx.chart.options.interaction;
-          //     return 'Mode: ' + mode + ', intersect: ' + intersect;
-          //   }
-          // },
         },
         interaction: {
           intersect: false,
