@@ -19,8 +19,8 @@ function ProfileDisplay() {
             <div className='top__container'>
                 <div className='profile__pic__container'>
                     <div>
-                    <img className='profile__pic' src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img>
-                        {/* <FaSmile className='profile__pic' /> */}
+                    {/* <img className='profile__pic' src="https://www.kindpng.com/picc/m/163-1634256_stonks-meme-transparent-hd-png-download.png"></img> */}
+                        <FaSmile className='profile__pic' />
                         {/* <FaPlusCircle className='change__profile__pic' /> */}
                     </div>
                 </div>
