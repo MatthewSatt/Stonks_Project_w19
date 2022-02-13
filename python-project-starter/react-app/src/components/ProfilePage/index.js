@@ -41,7 +41,7 @@ function ProfileDisplay() {
                     <button>Financials 68%</button>
                 </div>
                 <div className='learn__more'>
-                    <p>Stocks are pieces of a company that investors can own <a className='learn__stocks' href="https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp">Learn more</a></p>
+                    <p>Stocks are pieces of a company that investors can own <a className='learn__stocks' target="_blank" href="https://www.investopedia.com/articles/investing/082614/how-stock-market-works.asp">Learn more</a></p>
 
                 </div>
                 <div className='stock__categories'>
