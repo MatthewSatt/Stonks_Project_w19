@@ -36,7 +36,7 @@ const EditForm = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         ></input>
-        <div id='change__theme__container'>
+        {/* <div id='change__theme__container'>
           <h3>Change Theme</h3>
           <div className='color__palette'>
             <div className='color1__container'>
@@ -55,7 +55,7 @@ const EditForm = () => {
               <button id='theme__color__btn5' className='color5'></button>
             </div>
           </div>
-        </div>
+        </div> */}
         <button className='submit__edit__form' type='submit'>Submit</button>
     </form>
   )

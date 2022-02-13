@@ -2,6 +2,16 @@
     box-sizing: border-box;
 }
 
+.profile__pic {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+.profile__pic:hover {
+    transform: scale(7.1);
+}
+
 body {
     margin: 0;
     letter-spacing: normal;
