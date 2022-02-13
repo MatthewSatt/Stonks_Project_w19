@@ -4,10 +4,12 @@ import "./index.css"
 
 const AddToWatchlist = ({handleAddToWatchlist, tickerArr}) => {
 
+
     return (
         <div className='add-to-list-container'>
-            {tickerArr.map(list =>(
-                <>
+
+                {tickerArr.map(list =>(
+                    <>
                     <button key={list.id} className='add-to-list-ticker' onClick={e => handleAddToWatchlist(e, list.id)} class="button-82-pushable4" role="button">
                         <span class="button-82-shadow4"></span>
                         <span class="button-82-edge4"></span>

@@ -45,7 +45,6 @@ export const editStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     })
     if(res.ok) {
         let data = await res.json()
-        console.log("DATA IN STORE", data)
         dispatch(edit(data.stock))
         await dispatch(updateUser(data.user))
     }
@@ -61,7 +60,6 @@ export const buy = (stonk) => {
 }
 
 export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
-    console.log("IDDDD", id)
     const res = await fetch(`/api/portfolio/new/${ticker}`, {
         method: 'POST',
         headers: {
@@ -76,7 +74,6 @@ export const buyStonk = (ticker, quantity, price, id) => async (dispatch) =>{
     })
     if(res.ok) {
         let data = await res.json()
-        console.log("DATA STOCKKKK", data.stock)
         await dispatch(buy(data.stock))
         await dispatch(updateUser(data.user))
 
