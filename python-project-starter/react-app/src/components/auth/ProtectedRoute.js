@@ -5,7 +5,6 @@ import * as sessionActions from "../../store/session"
 import LoginFormModal from './Login';
 import SignUpFormModal from './SignUp';
 import "./protectedRoute.css"
-// import handleClick from '../Splash';
 
 const ProtectedRoute = props => {
   const user = useSelector(state => state.session.user)

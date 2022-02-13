@@ -20,8 +20,16 @@ body{
 .all-kpi{
  display: flex;
  flex-direction: row;
- justify-content: space-around;
+ padding-left: 10px;
+
 }
+
+.all-kpi .kpi{
+  /* display: flex;
+  flex-direction: row; */
+  padding-left: 20px;
+
+ }
 
 .grid-area-template div {
     font-size: 50;
@@ -121,7 +129,6 @@ body{
     color: red;
     font-weight: bold;
 }
-
 
 
 
