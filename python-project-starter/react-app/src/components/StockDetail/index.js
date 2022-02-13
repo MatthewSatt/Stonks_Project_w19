@@ -88,6 +88,12 @@ const StockDetail = () => {
             window.alert("You can't buy 0 shares")
             return
         }
+
+        if(costToBuy < 0){
+            window.alert("You can't buy negative amounts")
+            return
+        }
+
         if (!ref.current.value){
             window.alert("You can't buy 0 shares")
             return
@@ -121,6 +127,12 @@ const StockDetail = () => {
             window.alert("You can't sell 0 shares")
             return
         }
+
+        if(costToBuy < 0){
+            window.alert("You can't sell negative amounts")
+            return
+        }
+
         if (!ref.current.value){
             window.alert("You can't sell 0 shares")
             return
