@@ -24,7 +24,6 @@ function SearchBar() {
 // })
     // const result = await res.json()
 
-        console.log(finalResultData)
     const filteredResult = finalResultData.filter(word =>{
         return (word[0].includes(searchTerm.toUpperCase()) || word[1].toUpperCase().includes(searchTerm.toUpperCase()))
     })

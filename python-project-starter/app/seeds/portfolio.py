@@ -12,7 +12,7 @@ def seed_portfolio():
         user_id=1, ticker="UAA", quantity=25, average_price=18.00)
 
     user_portfolio4 = Portfolio(
-        user_id=1, ticker="TSLA", quantity=1, average_price=1200.34)
+        user_id=1, ticker="DIS", quantity=1, average_price=150.55)
 
     user_portfolio5 = Portfolio(
         user_id=2, ticker="GOOG", quantity=2, average_price=500.50)

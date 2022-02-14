@@ -27,8 +27,14 @@ def get_company_stats(ticker):
         company_stats["price"] = object["price"]["regularMarketPrice"]["raw"]
     except:
         company_stats["price"] = "N/A"
-    company_stats["name"] = object["price"]["longName"]
-    company_stats["about"] = object["assetProfile"]["longBusinessSummary"]
+    try:
+        company_stats["name"] = object["price"]["longName"]
+    except:
+        company_stats["name"] = "N/A"
+    try:
+        company_stats["about"] = object["assetProfile"]["longBusinessSummary"]
+    except:
+         company_stats["about"] = "N/A"
     try:
         company_stats["employees"] = object["assetProfile"]["fullTimeEmployees"]
     except:
@@ -38,10 +44,22 @@ def get_company_stats(ticker):
         company_stats["state"] = object["assetProfile"]["state"]
     except:
         company_stats["state"] = "N/A"
-    company_stats["sector"] = object["assetProfile"]["sector"]
-    company_stats["volume"] = object["price"]["regularMarketVolume"]["fmt"]
-    company_stats["avgvolume"] = object["price"]["averageDailyVolume10Day"]["fmt"]
-    company_stats["marketcap"] = object["price"]["marketCap"]["fmt"]
+    try:
+        company_stats["sector"] = object["assetProfile"]["sector"]
+    except:
+        company_stats["sector"] = "N/A"
+    try:
+        company_stats["volume"] = object["price"]["regularMarketVolume"]["fmt"]
+    except:
+        company_stats["volume"] = "N/A"
+    try:
+        company_stats["avgvolume"] = object["price"]["averageDailyVolume10Day"]["fmt"]
+    except:
+        company_stats["avgvolume"] = "N/A"
+    try:
+        company_stats["marketcap"] = object["price"]["marketCap"]["fmt"]
+    except:
+        company_stats["marketcap"] = "N/A"
     try:
         company_stats["peratio"] = object["summaryDetail"]["forwardPE"]["fmt"]
     except:
@@ -50,9 +68,12 @@ def get_company_stats(ticker):
         company_stats["divyield"] = object["summaryDetail"]["dividendYield"]["fmt"]
     except:
         company_stats["divyield"] = "--"
-    company_stats["52high"] = object["summaryDetail"]["fiftyTwoWeekHigh"]["raw"]
-    company_stats["52low"] = object["summaryDetail"]["fiftyTwoWeekLow"]["raw"]
-
+    try:
+        company_stats["52high"] = object["summaryDetail"]["fiftyTwoWeekHigh"]["raw"]
+        company_stats["52low"] = object["summaryDetail"]["fiftyTwoWeekLow"]["raw"]
+    except:
+        company_stats["52high"] = "N/A"
+        company_stats["52low"] = "N/A"
     #Code below is for historical prices.  "Outputsize": "compact" returns 100 results "full" returns 20 years
 
     url = "https://alpha-vantage.p.rapidapi.com/query"

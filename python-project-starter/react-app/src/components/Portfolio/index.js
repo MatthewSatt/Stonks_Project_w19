@@ -9,7 +9,7 @@ import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
 import { setUser } from '../../store/session'
 import { delWatchlistTicker } from '../../store/watchlistTickers';
 
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaYoutubeSquare } from "react-icons/fa";
 
 
 import PortfolioGraph from "../PortfolioGraph"
@@ -52,6 +52,13 @@ const Portfolio = () => {
     //     }
     //     getPortfolioValues()
     // }, [setStonks])
+    const handleDeleteTicker = async (e, id) => {
+        e.preventDefault()
+        let tickerId = id
+        await dispatch(delWatchlistTicker(tickerId))
+        await dispatch(loadUserWatchlists(user.id))
+        // dispatch(loadWatchlistTickers(list.id))
+    }
 
     useEffect(() => {
         async function getWatchlists() {
@@ -102,12 +109,7 @@ const Portfolio = () => {
     //   }, [stonkticker]);
 
     //   console.log("USER TICKER", userTickersAndValues)
-    const handleDeleteTicker = async (e, id) => {
-        e.preventDefault()
-        let tickerId = id
-        await dispatch(delWatchlistTicker(tickerId))
-        // dispatch(loadWatchlistTickers(list.id))
-    }
+
 
     const GraphStyle = {
         width: '100%'
@@ -138,7 +140,7 @@ const Portfolio = () => {
         <div className='home-page'>
             <div className='left-container'>
                 <div className='left-content'>
-                    <h2 id='portheader'>Portfolio</h2>
+                    <h2 id='portheader'>Portfolio Value: ${user.value_of_holdings.toFixed(2)}</h2>
                     {<MyStonks portfolios={user.portfolio} style={watchlistStyle}/>}
 
                 </div>
@@ -148,7 +150,7 @@ const Portfolio = () => {
                     <h1 className='welcome__msg'>Welcome {user.username}</h1>
                 </div>
                 <div className='middle-content'>
-                    <h2 id='graphheader'>Balance Over Time</h2>
+                    <h2 id='graphheader'>Total Value: ${(user.value_of_holdings + user.cash).toFixed(2)}</h2>
                     <PortfolioGraph dates={dateFormatArr} values={valueArr} style={GraphStyle} />
                     <div className='news__container'>
                         <div className='news__title'><h1>News</h1></div>

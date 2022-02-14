@@ -6,8 +6,8 @@ def seed_watchlist_tickers():
     apple = WatchlistTicker(
         ticker="AAPL", watchlist_id=1)
 
-    tesla = WatchlistTicker(
-        ticker="TSLA", watchlist_id=1)
+    paypal = WatchlistTicker(
+        ticker="PYPL", watchlist_id=1)
 
     facebook = WatchlistTicker(
         ticker="FB", watchlist_id=1)
@@ -26,7 +26,7 @@ def seed_watchlist_tickers():
 
 
     db.session.add(apple)
-    db.session.add(tesla)
+    db.session.add(paypal)
     db.session.add(facebook)
     db.session.add(google)
     db.session.add(disney)

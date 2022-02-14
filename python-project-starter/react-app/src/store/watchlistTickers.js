@@ -88,7 +88,7 @@ const watchlistTickerReducer = (state = initialState, action) => {
 
         case DELETE_WATCHLIST_TICKERS: {
             newState = { ...state };
-            console.log("newState", newState)
+            // console.log("newState", newState)
             delete newState[action.tickerId];
             return newState
         //     newState = JSON.parse(JSON.stringify(state));
