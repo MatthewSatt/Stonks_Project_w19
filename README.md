@@ -1,5 +1,5 @@
 <h1> The Stonks </h1>
-<h3> The stonks is an investment practice site that was inspired by popular investing site RobinHood</h3>
+<h3> [The Stonks](https://the-stonks-app.herokuapp.com/) is an investment practice site that was inspired by popular investing site RobinHood</h3>
 <br>
 </br>
 
