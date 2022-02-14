@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
+import {Link} from 'react-router-dom'
 // import { useDispatch } from "react-redux";
 // import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 
@@ -31,7 +32,7 @@ const Tickers = ({ticker, handleDeleteTicker}) => {
                 {showTicker && (
 
                     <tr key={ticker.id}>
-                            <td>{ticker.ticker}</td>
+                            <td><Link id='linktostonk' to={`stonk/${ticker.ticker}`}>{ticker.ticker}</Link></td>
                             <td> {ticker.price} </td>
                            <td><button className='trash__btn' onClick={(e) => [handleDeleteTicker(e, ticker.id), setShowTicker(!showTicker)]}><FaTrashAlt className='trash'/></button></td>
                         </tr>
