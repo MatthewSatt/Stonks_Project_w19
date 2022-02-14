@@ -52,6 +52,13 @@ const Portfolio = () => {
     //     }
     //     getPortfolioValues()
     // }, [setStonks])
+    const handleDeleteTicker = async (e, id) => {
+        e.preventDefault()
+        let tickerId = id
+        await dispatch(delWatchlistTicker(tickerId))
+        await dispatch(loadUserWatchlists(user.id))
+        // dispatch(loadWatchlistTickers(list.id))
+    }
 
     useEffect(() => {
         async function getWatchlists() {
@@ -102,12 +109,7 @@ const Portfolio = () => {
     //   }, [stonkticker]);
 
     //   console.log("USER TICKER", userTickersAndValues)
-    const handleDeleteTicker = async (e, id) => {
-        e.preventDefault()
-        let tickerId = id
-        await dispatch(delWatchlistTicker(tickerId))
-        // dispatch(loadWatchlistTickers(list.id))
-    }
+
 
     const GraphStyle = {
         width: '100%'

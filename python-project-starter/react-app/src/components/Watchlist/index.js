@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../MyStonks/index.css'
 import { useDispatch } from "react-redux";
 import { delWatchlist, editWatchlist } from '../../store/watchlists';
@@ -6,6 +6,7 @@ import WatchlistTickers from '../WatchlistTickers';
 // import { loadWatchlistTickers, delWatchlistTicker } from '../../store/watchlistTickers';
 import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
+// import { loadUserWatchlists } from '../../store/watchlists';
 
 
 const Watchlist = ({ list, handleDeleteTicker }) => {
@@ -25,7 +26,8 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
     //         await dispatch(loadUserWatchlists(user.id))
     //     }
     //     getWatchlists()
-    // }, [])
+    // }, [dispatch])
+    
     const handleDelete = (e) => {
         e.preventDefault();
         let watchlistId = list.id
