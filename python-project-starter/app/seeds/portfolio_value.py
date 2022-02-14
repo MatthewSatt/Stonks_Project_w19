@@ -11,19 +11,19 @@ def seed_portfolio_value():
     day_before5 = today - timedelta(days = 5)
 
     portfolio_val1 = PortfolioValue(
-       value=5000.00, date=day_before,  user_id=1)
+       value=5000.00, date=day_before5,  user_id=1)
 
     portfolio_val2 = PortfolioValue(
-        value=4689.45, date=day_before2, user_id=1)
+        value=4689.45, date=day_before4, user_id=1)
 
     portfolio_val3 = PortfolioValue(
         value=5000.30, date=day_before3, user_id=1)
 
     portfolio_val10 = PortfolioValue(
-        value=5505.33, date=day_before4, user_id=1)
+        value=5505.33, date=day_before2, user_id=1)
 
     portfolio_val11 = PortfolioValue(
-        value=5601.22, date=day_before5, user_id=1)
+        value=5601.22, date=day_before, user_id=1)
 
     portfolio_val4 = PortfolioValue(
        value=6000.60, date=day_before,  user_id=3)
