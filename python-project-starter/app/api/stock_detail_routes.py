@@ -106,6 +106,18 @@ def get_company_stats(ticker):
     company_stats["dates"] = dates
     company_stats["values"] = values
 
+    # url = "https://stock-and-options-trading-data-provider.p.rapidapi.com/options/AAPL?length=100"
+
+    # headers = {
+    #     'x-rapidapi-proxy-secret': "a755b180-f5a9-11e9-9f69-7bf51e845926",
+    #     'x-rapidapi-host': "stock-and-options-trading-data-provider.p.rapidapi.com",
+    #     'x-rapidapi-key': "87f3ecae37msh3f216162a2c9eafp1df5c4jsn35365762bd67"
+    #     }
+
+    # response = requests.request("GET", url, headers=headers)
+
+    # print("RESSSSSSS", response.text)
+
     return(company_stats)
 
 
