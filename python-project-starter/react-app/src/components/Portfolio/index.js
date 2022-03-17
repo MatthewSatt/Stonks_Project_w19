@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addWatchlist, loadUserWatchlists } from '../../store/watchlists';
 import { setUser } from '../../store/session'
 import { delWatchlistTicker } from '../../store/watchlistTickers';
-
+import { FaAngleDown, FaAngleUp, FaChartLine, FaGithub } from 'react-icons/fa';
 import { FaPlus, FaYoutubeSquare } from "react-icons/fa";
 
 
@@ -137,6 +137,7 @@ const Portfolio = () => {
     //End code needed for the graph
     // console.log(user.watchlists)
     return (
+        <>
         <div className='home-page'>
             <div className='left-container'>
                 <div className='left-content'>
@@ -152,6 +153,44 @@ const Portfolio = () => {
                 <div className='middle-content'>
                     <h2 id='graphheader'>Total Value: ${(user.value_of_holdings + user.cash).toFixed(2)}</h2>
                     <PortfolioGraph dates={dateFormatArr} values={valueArr} style={GraphStyle} />
+
+                </div>
+            </div>
+
+            <div className='right-container'>
+                <div className='right-content'>
+                    <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
+                        <h2>Watchlists<span>< FaAngleDown/></span></h2>
+                    </button>
+                    {showWatchlists && (
+                        <>
+                            {watchlistLists.map(list => (
+
+                                <div className='indv-watch'>
+                                    <Watchlist handleDeleteTicker={handleDeleteTicker} list={list} style={watchlistStyle}></Watchlist>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                    <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist' /></button>
+                    {showForm && (
+                        <form onSubmit={handleWatchListSubmit}>
+                            <div className='add__list__container'>
+                                <input
+                                    className='add__watchlist__input'
+                                    name="Watchlist"
+                                    placeholder='Watchlist Name..'
+                                    value={watchlistName}
+                                    onChange={e => setWatchlistName(e.target.value)}
+                                    >
+                                </input>
+                                <button className='submit__watchlist__btn' type="submit">Submit</button>
+                            </div>
+                        </form>
+                    )}
+                </div>
+            </div >
+        </div >
                     <div className='news__container'>
                         <div className='news__title'><h1>News</h1></div>
                         <div className='news__content'>
@@ -178,44 +217,7 @@ const Portfolio = () => {
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
-            <div className='right-container'>
-                <div className='right-content'>
-                    <button className='my__watchlists__btn' onClick={(e) => setShowWatchlists(!showWatchlists)}>
-                        <h2>Watchlists</h2>
-                    </button>
-                    {showWatchlists && (
-                        <>
-                            {watchlistLists.map(list => (
-
-                                <div className='indv-watch'>
-                                    <Watchlist handleDeleteTicker={handleDeleteTicker} list={list} style={watchlistStyle}></Watchlist>
-                                </div>
-                            ))}
-                        </>
-                    )}
-                    <button className='add__watchlist__btn' onClick={(e) => setShowForm(!showForm)}><FaPlus className='add__new__watchlist' /></button>
-                    {showForm && (
-                        <form onSubmit={handleWatchListSubmit}>
-                            <div className='add__list__container'>
-                                <input
-                                    className='add__watchlist__input'
-                                    name="Watchlist"
-                                    placeholder='Watchlist Name..'
-                                    value={watchlistName}
-                                    onChange={e => setWatchlistName(e.target.value)}
-                                >
-                                </input>
-                                <button className='submit__watchlist__btn' type="submit">Submit</button>
-                            </div>
-                        </form>
-                    )}
-                </div>
-            </div >
-        </div >
+                    </>
     )
 
 };

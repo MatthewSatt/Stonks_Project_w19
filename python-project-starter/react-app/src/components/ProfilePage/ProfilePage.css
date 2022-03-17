@@ -22,9 +22,10 @@ body {
 .outer__container {
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 80%;
     flex-direction: column;
     margin-top: 6%;
+
     height: 100%;
     margin-left: auto;
     margin-right: auto;

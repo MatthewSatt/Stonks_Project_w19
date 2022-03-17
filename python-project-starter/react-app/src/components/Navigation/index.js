@@ -7,9 +7,6 @@ import { NavLink } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 import { useSelector } from 'react-redux';
 
-
-
-
 function Navbar({ isLoaded }) {
 const user = useSelector(state => state.session.user)
 // const ref = useRef()
@@ -78,7 +75,7 @@ return (
           {/* )} */}
         </span>
         <span>
-          <a onClick={handleToggle2} className='whoweare__tab'>Who we are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</a>
+          <a onClick={handleToggle2} className='whoweare__tab'>Who We Are {navbarOpen2 ? < FaAngleUp/> : < FaAngleDown/>}</a>
           {/* {isMenuOpen && ( */}
             <ul id='whoweare__container' className={`menuNav ${navbarOpen2 ? "showMenu2" : ""}`}>
             <div className='github__container'>
