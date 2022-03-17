@@ -42,7 +42,6 @@ body{
 }
 
 #modal-form input {
-    margin: 10px;
     height: 30px;
     border-radius: 12px;
     text-align: center;
@@ -83,7 +82,7 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
-    width: 100%;
+    width: 115%;
     border-radius: 12px;
     box-shadow: 10px 0px 10px black;
 }

@@ -183,9 +183,25 @@ body {
 
 
 /* Edit form modal */
+.form__container input {
+    width: 100%;
+    margin-right: 15%;
+}
 
 .form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position:relative;
+    left: 50%;
     margin-right: 15%;
+    top: 0;
+    transform: translateX(-50%);
+    text-align: center;
+
 }
 
 #change__theme__container {

@@ -30,7 +30,9 @@ const EditForm = () => {
     }
 
   return (
-    <form className='form__container' onSubmit={handleSubmit}>
+    <div className='form__container'>
+
+    <form onSubmit={handleSubmit}>
         <h2>Nickname</h2>
         <input type='text'
         value={name}
@@ -39,25 +41,26 @@ const EditForm = () => {
         {/* <div id='change__theme__container'>
           <h3>Change Theme</h3>
           <div className='color__palette'>
-            <div className='color1__container'>
-              <button id='theme__color__btn1' className='color1'></button>
-            </div>
-            <div className='color2__container'>
-              <button id='theme__color__btn2' className='color2'></button>
-            </div>
-            <div className='color3__container'>
-              <button id='theme__color__btn3' className='color3'></button>
-            </div>
-            <div className='color4__container'>
-              <button id='theme__color__btn4' className='color4'></button>
-            </div>
-            <div className='color5__container'>
-              <button id='theme__color__btn5' className='color5'></button>
-            </div>
+          <div className='color1__container'>
+          <button id='theme__color__btn1' className='color1'></button>
+          </div>
+          <div className='color2__container'>
+          <button id='theme__color__btn2' className='color2'></button>
+          </div>
+          <div className='color3__container'>
+          <button id='theme__color__btn3' className='color3'></button>
+          </div>
+          <div className='color4__container'>
+          <button id='theme__color__btn4' className='color4'></button>
+          </div>
+          <div className='color5__container'>
+          <button id='theme__color__btn5' className='color5'></button>
+          </div>
           </div>
         </div> */}
         <button className='submit__edit__form' type='submit'>Submit</button>
     </form>
+        </div>
   )
 }
 
