@@ -224,12 +224,17 @@ body{
   font-size: 20px;
 }
 
-.new__container {
-  margin-top: 25px;
+.news__container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 80%;
+  margin-left: auto;
+  margin-right:auto;
+  /* left: 50%;
+  bottom: 0; */
+  /* transform: translateX(-50%); */
+
 }
 
 .news__content {
@@ -239,6 +244,7 @@ body{
   border: 1px rgba(255, 255, 255, 0.589) solid;
   width: 100%;
   height: 100%;
+  justify-content: center;
 }
 
 .news__content img:hover {

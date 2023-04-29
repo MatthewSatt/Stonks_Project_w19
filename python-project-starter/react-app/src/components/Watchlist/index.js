@@ -7,6 +7,7 @@ import WatchlistTickers from '../WatchlistTickers';
 import { FaPen, FaPlus, FaTrashAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 // import { loadUserWatchlists } from '../../store/watchlists';
+import { FaAngleDown, FaAngleUp, FaChartLine, FaGithub } from 'react-icons/fa';
 
 
 const Watchlist = ({ list, handleDeleteTicker }) => {
@@ -27,7 +28,7 @@ const Watchlist = ({ list, handleDeleteTicker }) => {
     //     }
     //     getWatchlists()
     // }, [dispatch])
-    
+
     const handleDelete = (e) => {
         e.preventDefault();
         let watchlistId = list.id
