@@ -31,7 +31,7 @@ export function Modal({ onClose, children }) {
             <div id="modal-background" onClick={onClose} />
             <div id="modal-content">
                 <div id="modal-img">
-                    <img id='img' src='https://firstfinancial.is/wp-content/uploads/2019/10/Design-Investment-Portfolio.jpg' alt='modal' />
+                    <img id='img' src='https://firstfinancial.is/wp-content/uploads/2019/10/Design-Investment-Portfolio.jpg' alt='picture' />
                 </div>
                 <div id='modal-form'>
                     {children}

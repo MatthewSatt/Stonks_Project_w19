@@ -12,6 +12,7 @@ function LoginFormModal({ prop = false }) {
 
     return (
         <>
+    
             <button
                 className='auth-button'
                 onClick={() => setShowModal(true)}
